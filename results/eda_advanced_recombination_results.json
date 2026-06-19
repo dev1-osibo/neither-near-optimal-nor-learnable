@@ -1,0 +1,752 @@
+{
+  "test_date": "2026-06-14",
+  "analyses": {
+    "piecewise_models": [
+      {
+        "regime": "Cold (<10\u00b0C)",
+        "n": 19341,
+        "mape_global": 5.504477098148952,
+        "mape_local": 4.651208615381126,
+        "improvement_pct": 15.5013540351501,
+        "best_feature": "it_load_kw",
+        "coefficients": {
+          "temperature_2m": -0.024533720753272842,
+          "shortwave_radiation": 0.00018463435013957308,
+          "carbon_intensity_gco2_kwh": -0.0013098298615162624,
+          "it_load_kw": 0.3488786475803119,
+          "hour": 0.0018143383804628459,
+          "day_of_week": 0.10815737894779272,
+          "month": 0.020438863895742707
+        }
+      },
+      {
+        "regime": "Cool (10-20\u00b0C)",
+        "n": 16491,
+        "mape_global": 4.8940941178432205,
+        "mape_local": 4.452162368787104,
+        "improvement_pct": 9.02989886207728,
+        "best_feature": "temperature_2m",
+        "coefficients": {
+          "temperature_2m": 1.034605377045026,
+          "shortwave_radiation": 0.0002641529434606049,
+          "carbon_intensity_gco2_kwh": 0.0038544946972582403,
+          "it_load_kw": 0.35497852437761457,
+          "hour": 0.009145437836406742,
+          "day_of_week": 0.161435442361337,
+          "month": 0.029797572165423464
+        }
+      },
+      {
+        "regime": "Warm (20-30\u00b0C)",
+        "n": 14394,
+        "mape_global": 4.153300693174035,
+        "mape_local": 3.8950244118772925,
+        "improvement_pct": 6.218578917756201,
+        "best_feature": "temperature_2m",
+        "coefficients": {
+          "temperature_2m": 2.286261585023868,
+          "shortwave_radiation": 0.0013521070387312456,
+          "carbon_intensity_gco2_kwh": 0.009676606756621438,
+          "it_load_kw": 0.3815290658087133,
+          "hour": -0.021205551780130033,
+          "day_of_week": 0.06516208287829389,
+          "month": 0.07806575191242805
+        }
+      },
+      {
+        "regime": "Hot (>30\u00b0C)",
+        "n": 2238,
+        "mape_global": 4.511235834295989,
+        "mape_local": 3.09025770220016,
+        "improvement_pct": 31.498644369089668,
+        "best_feature": "temperature_2m",
+        "coefficients": {
+          "temperature_2m": 2.4900114659976675,
+          "shortwave_radiation": -0.002088041616579113,
+          "carbon_intensity_gco2_kwh": -0.01159141981267572,
+          "it_load_kw": 0.4114579739768602,
+          "hour": -0.06676816686334958,
+          "day_of_week": 0.021909297332944007,
+          "month": 0.4253344222512019
+        }
+      },
+      {
+        "regime": "Low load (<400 kW)",
+        "n": 12395,
+        "mape_global": 7.120287973967647,
+        "mape_local": 6.092712130966419,
+        "improvement_pct": 14.431661286146424
+      },
+      {
+        "regime": "Medium (400-700 kW)",
+        "n": 25396,
+        "mape_global": 4.605002438711307,
+        "mape_local": 4.558264280488804,
+        "improvement_pct": 1.0149431806942224
+      },
+      {
+        "regime": "High (700-1000 kW)",
+        "n": 13511,
+        "mape_global": 3.3773144719432358,
+        "mape_local": 3.292829161161971,
+        "improvement_pct": 2.50155297894583
+      },
+      {
+        "regime": "Peak (>1000 kW)",
+        "n": 1162,
+        "mape_global": 3.016275252650468,
+        "mape_local": 2.563211252314024,
+        "improvement_pct": 15.020645079998143
+      }
+    ],
+    "interaction_surfaces": [
+      {
+        "temp_bin": "-15-4",
+        "load_bin": "300-382",
+        "avg_cooling": 115.90237165178571,
+        "n": 3584
+      },
+      {
+        "temp_bin": "-15-4",
+        "load_bin": "382-495",
+        "avg_cooling": 150.62776025236593,
+        "n": 2219
+      },
+      {
+        "temp_bin": "-15-4",
+        "load_bin": "495-599",
+        "avg_cooling": 191.29896551724138,
+        "n": 1450
+      },
+      {
+        "temp_bin": "-15-4",
+        "load_bin": "599-772",
+        "avg_cooling": 240.8773726541555,
+        "n": 1865
+      },
+      {
+        "temp_bin": "-15-4",
+        "load_bin": "772-1500",
+        "avg_cooling": 300.8602272727273,
+        "n": 1232
+      },
+      {
+        "temp_bin": "4-11",
+        "load_bin": "300-382",
+        "avg_cooling": 115.96271623113726,
+        "n": 2717
+      },
+      {
+        "temp_bin": "4-11",
+        "load_bin": "382-495",
+        "avg_cooling": 153.5010737628385,
+        "n": 2142
+      },
+      {
+        "temp_bin": "4-11",
+        "load_bin": "495-599",
+        "avg_cooling": 190.03581769437,
+        "n": 1865
+      },
+      {
+        "temp_bin": "4-11",
+        "load_bin": "599-772",
+        "avg_cooling": 240.4409970958374,
+        "n": 2066
+      },
+      {
+        "temp_bin": "4-11",
+        "load_bin": "772-1500",
+        "avg_cooling": 309.47348578491966,
+        "n": 1618
+      },
+      {
+        "temp_bin": "11-17",
+        "load_bin": "300-382",
+        "avg_cooling": 118.04643874643874,
+        "n": 2106
+      },
+      {
+        "temp_bin": "11-17",
+        "load_bin": "382-495",
+        "avg_cooling": 152.18123209169053,
+        "n": 2094
+      },
+      {
+        "temp_bin": "11-17",
+        "load_bin": "495-599",
+        "avg_cooling": 191.26649305555554,
+        "n": 2304
+      },
+      {
+        "temp_bin": "11-17",
+        "load_bin": "599-772",
+        "avg_cooling": 240.68594491927823,
+        "n": 2106
+      },
+      {
+        "temp_bin": "11-17",
+        "load_bin": "772-1500",
+        "avg_cooling": 315.3254712175242,
+        "n": 1963
+      },
+      {
+        "temp_bin": "17-23",
+        "load_bin": "300-382",
+        "avg_cooling": 124.5034702549575,
+        "n": 1412
+      },
+      {
+        "temp_bin": "17-23",
+        "load_bin": "382-495",
+        "avg_cooling": 160.60707201379907,
+        "n": 2319
+      },
+      {
+        "temp_bin": "17-23",
+        "load_bin": "495-599",
+        "avg_cooling": 201.0180015860428,
+        "n": 2522
+      },
+      {
+        "temp_bin": "17-23",
+        "load_bin": "599-772",
+        "avg_cooling": 250.48185483870967,
+        "n": 1984
+      },
+      {
+        "temp_bin": "17-23",
+        "load_bin": "772-1500",
+        "avg_cooling": 333.65950376606116,
+        "n": 2257
+      },
+      {
+        "temp_bin": "23-38",
+        "load_bin": "300-382",
+        "avg_cooling": 135.07119402985074,
+        "n": 670
+      },
+      {
+        "temp_bin": "23-38",
+        "load_bin": "382-495",
+        "avg_cooling": 173.10482558139535,
+        "n": 1720
+      },
+      {
+        "temp_bin": "23-38",
+        "load_bin": "495-599",
+        "avg_cooling": 212.26527836804078,
+        "n": 2353
+      },
+      {
+        "temp_bin": "23-38",
+        "load_bin": "599-772",
+        "avg_cooling": 267.88807785888076,
+        "n": 2466
+      },
+      {
+        "temp_bin": "23-38",
+        "load_bin": "772-1500",
+        "avg_cooling": 360.3241973146526,
+        "n": 3426
+      }
+    ],
+    "lag_by_regime": [
+      {
+        "regime": "Cold (<10\u00b0C)",
+        "signal": "temperature_2m",
+        "best_lag_h": 6,
+        "correlation": -0.19023693717379175
+      },
+      {
+        "regime": "Cold (<10\u00b0C)",
+        "signal": "shortwave_radiation",
+        "best_lag_h": 0,
+        "correlation": 0.4256829223822361
+      },
+      {
+        "regime": "Cold (<10\u00b0C)",
+        "signal": "carbon_intensity_gco2_kwh",
+        "best_lag_h": 8,
+        "correlation": 0.04381775509451978
+      },
+      {
+        "regime": "Cool (10-20\u00b0C)",
+        "signal": "temperature_2m",
+        "best_lag_h": 4,
+        "correlation": -0.2690232272247874
+      },
+      {
+        "regime": "Cool (10-20\u00b0C)",
+        "signal": "shortwave_radiation",
+        "best_lag_h": 0,
+        "correlation": 0.48202307286039126
+      },
+      {
+        "regime": "Cool (10-20\u00b0C)",
+        "signal": "carbon_intensity_gco2_kwh",
+        "best_lag_h": 8,
+        "correlation": 0.11933154840832413
+      },
+      {
+        "regime": "Warm (20-30\u00b0C)",
+        "signal": "temperature_2m",
+        "best_lag_h": 4,
+        "correlation": -0.40593729289954256
+      },
+      {
+        "regime": "Warm (20-30\u00b0C)",
+        "signal": "shortwave_radiation",
+        "best_lag_h": 0,
+        "correlation": 0.5672976626102015
+      },
+      {
+        "regime": "Warm (20-30\u00b0C)",
+        "signal": "carbon_intensity_gco2_kwh",
+        "best_lag_h": 0,
+        "correlation": -0.15689506006751
+      },
+      {
+        "regime": "Hot (>30\u00b0C)",
+        "signal": "temperature_2m",
+        "best_lag_h": 2,
+        "correlation": -0.24369500713636214
+      },
+      {
+        "regime": "Hot (>30\u00b0C)",
+        "signal": "shortwave_radiation",
+        "best_lag_h": 0,
+        "correlation": 0.5799342678641057
+      },
+      {
+        "regime": "Hot (>30\u00b0C)",
+        "signal": "carbon_intensity_gco2_kwh",
+        "best_lag_h": 4,
+        "correlation": 0.11338260907556115
+      }
+    ],
+    "permutation_importance": [
+      {
+        "feature": "it_load_kw",
+        "mape_without": 45.255019297273115,
+        "delta_mape": 40.930183109212365,
+        "importance": 946.3984606447118
+      },
+      {
+        "feature": "temperature_2m",
+        "mape_without": 6.629311442937421,
+        "delta_mape": 2.304475254876672,
+        "importance": 53.28468304160198
+      },
+      {
+        "feature": "shortwave_radiation",
+        "mape_without": 4.368131599346611,
+        "delta_mape": 0.043295411285861896,
+        "importance": 1.0010878887247634
+      },
+      {
+        "feature": "month",
+        "mape_without": 4.330316806046019,
+        "delta_mape": 0.005480617985269554,
+        "importance": 0.12672429074653704
+      },
+      {
+        "feature": "carbon_intensity_gco2_kwh",
+        "mape_without": 4.330268609148384,
+        "delta_mape": 0.005432421087634864,
+        "importance": 0.12560986940110566
+      },
+      {
+        "feature": "hour",
+        "mape_without": 4.326772886013758,
+        "delta_mape": 0.0019366979530088813,
+        "importance": 0.04478083952301773
+      },
+      {
+        "feature": "day_of_week",
+        "mape_without": 4.325739696479014,
+        "delta_mape": 0.0009035084182640318,
+        "importance": 0.02089115931739287
+      }
+    ],
+    "quantile_regression": [
+      {
+        "quantile": 0.5,
+        "mae_kw": 7.913324776030245,
+        "coverage_pct": 49.7093300295435,
+        "oversize_factor": 0.9988919836673105
+      },
+      {
+        "quantile": 0.75,
+        "mae_kw": 9.652319836296536,
+        "coverage_pct": 74.52587439245211,
+        "oversize_factor": 1.0319113896693903
+      },
+      {
+        "quantile": 0.9,
+        "mae_kw": 13.744742560663491,
+        "coverage_pct": 89.5358810635662,
+        "oversize_factor": 1.062320711112871
+      },
+      {
+        "quantile": 0.95,
+        "mae_kw": 16.863864245870335,
+        "coverage_pct": 94.81559134661202,
+        "oversize_factor": 1.0801684639378237
+      }
+    ],
+    "daytype_season": [
+      {
+        "season": "Winter",
+        "day_type": "Weekday",
+        "avg_cooling": 194.97996961805555,
+        "std_cooling": 69.30744540323545,
+        "temp_cool_r": 0.09189875167793023,
+        "n": 9216
+      },
+      {
+        "season": "Winter",
+        "day_type": "Weekend",
+        "avg_cooling": 147.228399122807,
+        "std_cooling": 45.82871299115649,
+        "temp_cool_r": 0.05112003999488153,
+        "n": 3648
+      },
+      {
+        "season": "Spring",
+        "day_type": "Weekday",
+        "avg_cooling": 248.74672165820644,
+        "std_cooling": 73.10061971476976,
+        "temp_cool_r": 0.29641028971058586,
+        "n": 9456
+      },
+      {
+        "season": "Spring",
+        "day_type": "Weekend",
+        "avg_cooling": 180.87465717299577,
+        "std_cooling": 54.562572344588325,
+        "temp_cool_r": 0.3062887947633552,
+        "n": 3792
+      },
+      {
+        "season": "Summer",
+        "day_type": "Weekday",
+        "avg_cooling": 267.1006027918782,
+        "std_cooling": 80.10481201619923,
+        "temp_cool_r": 0.3593773928699737,
+        "n": 9456
+      },
+      {
+        "season": "Summer",
+        "day_type": "Weekend",
+        "avg_cooling": 193.7387658227848,
+        "std_cooling": 58.72492893259866,
+        "temp_cool_r": 0.33768481854119875,
+        "n": 3792
+      },
+      {
+        "season": "Fall",
+        "day_type": "Weekday",
+        "avg_cooling": 199.79127136752138,
+        "std_cooling": 73.80455971853206,
+        "temp_cool_r": 0.3115627624338504,
+        "n": 9360
+      },
+      {
+        "season": "Fall",
+        "day_type": "Weekend",
+        "avg_cooling": 150.6497596153846,
+        "std_cooling": 48.84858124725902,
+        "temp_cool_r": 0.2729805287355832,
+        "n": 3744
+      }
+    ],
+    "horizon_decay_by_regime": [
+      {
+        "regime": "Cold (<10\u00b0C)",
+        "horizons": {
+          "1h": 18.177424658741227,
+          "4h": 23.832787634307298,
+          "12h": 26.82250969115716,
+          "24h": 28.019854461074743,
+          "48h": 31.208373506341598,
+          "168h": 32.524252693979705
+        },
+        "collapse_point": "1h"
+      },
+      {
+        "regime": "Cool (10-20\u00b0C)",
+        "horizons": {
+          "1h": 20.08044047718697,
+          "4h": 25.980722709931587,
+          "12h": 29.696565906203176,
+          "24h": 31.40850730464902,
+          "48h": 31.572191106156396,
+          "168h": 31.961546291440058
+        },
+        "collapse_point": "1h"
+      },
+      {
+        "regime": "Warm (20-30\u00b0C)",
+        "horizons": {
+          "1h": 18.790942330735515,
+          "4h": 25.08901706741854,
+          "12h": 29.043182213666096,
+          "24h": 32.06332213780652,
+          "48h": 32.122965509798895,
+          "168h": 32.865372563635376
+        },
+        "collapse_point": "1h"
+      },
+      {
+        "regime": "Hot (>30\u00b0C)",
+        "horizons": {
+          "1h": 17.076308799797253,
+          "4h": 22.53746160539169,
+          "12h": 25.945503560676936,
+          "24h": 25.624949995867645,
+          "48h": 25.661962597185067,
+          "168h": 25.862737956590394
+        },
+        "collapse_point": "1h"
+      }
+    ],
+    "partial_dependence": {
+      "temperature": [
+        {
+          "temp": -1.9,
+          "pred_kw": 185.9938631747262,
+          "delta": -0.1845486005001078
+        },
+        {
+          "temp": 0.32857142857142874,
+          "pred_kw": 186.17000849298842,
+          "delta": -0.008403282237878784
+        },
+        {
+          "temp": 2.5571428571428574,
+          "pred_kw": 186.54614886313385,
+          "delta": 0.36773708790755677
+        },
+        {
+          "temp": 4.7857142857142865,
+          "pred_kw": 186.46503863529782,
+          "delta": 0.2866268600715216
+        },
+        {
+          "temp": 7.014285714285714,
+          "pred_kw": 186.39662815451828,
+          "delta": 0.218216379291988
+        },
+        {
+          "temp": 9.242857142857142,
+          "pred_kw": 185.9349768519391,
+          "delta": -0.24343492328719663
+        },
+        {
+          "temp": 11.471428571428572,
+          "pred_kw": 185.97466202980164,
+          "delta": -0.20374974542465907
+        },
+        {
+          "temp": 13.700000000000001,
+          "pred_kw": 186.1784117752263,
+          "delta": 0.0
+        },
+        {
+          "temp": 15.928571428571429,
+          "pred_kw": 187.66923483359466,
+          "delta": 1.4908230583683633
+        },
+        {
+          "temp": 18.15714285714286,
+          "pred_kw": 191.663106548715,
+          "delta": 5.484694773488712
+        },
+        {
+          "temp": 20.385714285714286,
+          "pred_kw": 196.28601499173038,
+          "delta": 10.107603216504089
+        },
+        {
+          "temp": 22.614285714285717,
+          "pred_kw": 199.79719056810163,
+          "delta": 13.618778792875332
+        },
+        {
+          "temp": 24.842857142857145,
+          "pred_kw": 205.05141473177204,
+          "delta": 18.873002956545747
+        },
+        {
+          "temp": 27.071428571428573,
+          "pred_kw": 210.52891250066347,
+          "delta": 24.350500725437172
+        },
+        {
+          "temp": 29.3,
+          "pred_kw": 214.7163995110553,
+          "delta": 28.537987735829006
+        }
+      ],
+      "it_load": [
+        {
+          "load_kw": 300.0,
+          "pred_kw": 106.60842394312249,
+          "delta": -79.5699878321038
+        },
+        {
+          "load_kw": 371.42055555555555,
+          "pred_kw": 129.73030484521846,
+          "delta": -56.44810693000784
+        },
+        {
+          "load_kw": 442.8411111111111,
+          "pred_kw": 153.92431655800635,
+          "delta": -32.25409521721994
+        },
+        {
+          "load_kw": 514.2616666666665,
+          "pred_kw": 179.22020210983746,
+          "delta": -6.958209665388836
+        },
+        {
+          "load_kw": 585.6822222222222,
+          "pred_kw": 206.48905905550504,
+          "delta": 20.310647280278744
+        },
+        {
+          "load_kw": 657.1027777777776,
+          "pred_kw": 228.9728876737917,
+          "delta": 42.794475898565395
+        },
+        {
+          "load_kw": 728.5233333333332,
+          "pred_kw": 255.68040316048254,
+          "delta": 69.50199138525625
+        },
+        {
+          "load_kw": 799.9438888888888,
+          "pred_kw": 279.5680530551174,
+          "delta": 93.3896412798911
+        },
+        {
+          "load_kw": 871.3644444444443,
+          "pred_kw": 305.3056757732289,
+          "delta": 119.12726399800263
+        },
+        {
+          "load_kw": 942.7849999999999,
+          "pred_kw": 329.369388011857,
+          "delta": 143.1909762366307
+        }
+      ]
+    },
+    "granger_causality": [
+      {
+        "signal": "temperature_2m",
+        "best_lag": 7,
+        "f_stat": 56.01449374514945,
+        "p_value": 6.091126286930078e-74,
+        "granger_causes": "True"
+      },
+      {
+        "signal": "shortwave_radiation",
+        "best_lag": 2,
+        "f_stat": 206.14776314164104,
+        "p_value": 1.010509720571294e-82,
+        "granger_causes": "True"
+      },
+      {
+        "signal": "carbon_intensity_gco2_kwh",
+        "best_lag": 5,
+        "f_stat": 8.366129198892054,
+        "p_value": 7.570666604560028e-08,
+        "granger_causes": "True"
+      },
+      {
+        "signal": "it_load_kw",
+        "best_lag": 7,
+        "f_stat": 96.78792104293203,
+        "p_value": 3.308278832029038e-123,
+        "granger_causes": "True"
+      }
+    ],
+    "mutual_information": [
+      {
+        "feature": "it_load_kw",
+        "mi_score": 1.6329818358500905,
+        "mi_normalized": 0.6105491326455996,
+        "linear_r2": 0.9637688320835726
+      },
+      {
+        "feature": "hour",
+        "mi_score": 0.4321979162504581,
+        "mi_normalized": 0.16159277286791388,
+        "linear_r2": 0.0005557840608648259
+      },
+      {
+        "feature": "shortwave_radiation",
+        "mi_score": 0.25080403354523506,
+        "mi_normalized": 0.09377213008946075,
+        "linear_r2": 0.334457799931377
+      },
+      {
+        "feature": "month",
+        "mi_score": 0.16631598811776893,
+        "mi_normalized": 0.0621832282889652,
+        "linear_r2": 0.011879509984916731
+      },
+      {
+        "feature": "temperature_2m",
+        "mi_score": 0.09084549980522105,
+        "mi_normalized": 0.03396586532265966,
+        "linear_r2": 0.12968138124359224
+      },
+      {
+        "feature": "day_of_week",
+        "mi_score": 0.09041337323449428,
+        "mi_normalized": 0.03380429922488797,
+        "linear_r2": 0.0737834940740132
+      },
+      {
+        "feature": "carbon_intensity_gco2_kwh",
+        "mi_score": 0.011053024126701061,
+        "mi_normalized": 0.004132571560512894,
+        "linear_r2": 0.0008825650360931011
+      }
+    ],
+    "final_model_comparison": {
+      "Internal-only (baseline)": {
+        "mape": 5.827113110501654,
+        "r2": 0.9655370320594924,
+        "mae": 11.365955757264663,
+        "vs_baseline": 0.0
+      },
+      "All signals linear": {
+        "mape": 4.918336857452097,
+        "r2": 0.9783243375961549,
+        "mae": 9.08606625643228,
+        "vs_baseline": 15.595651496995236
+      },
+      "Engineered features": {
+        "mape": 4.371009112792974,
+        "r2": 0.9838098141805905,
+        "mae": 7.949912686757603,
+        "vs_baseline": 24.98842857682789
+      },
+      "Gradient Boosting (100 trees)": {
+        "mape": 4.3248361880607495,
+        "r2": 0.9841897266907429,
+        "mae": 7.864814309503145,
+        "vs_baseline": 25.780809363962625
+      },
+      "GB + Engineered": {
+        "mape": 4.326587668666669,
+        "r2": 0.9841916084952392,
+        "mae": 7.860328503304257,
+        "vs_baseline": 25.75075193118751
+      }
+    }
+  }
+}

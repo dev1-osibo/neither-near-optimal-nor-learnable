@@ -1,0 +1,57 @@
+{
+  "date": "2026-06-15",
+  "task": "Predict cooling_load_kw at T+horizon using ONLY data up to T",
+  "horizons": [
+    1,
+    4,
+    12,
+    24
+  ],
+  "lookback_lags": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    12,
+    24,
+    48,
+    168
+  ],
+  "train_period": "2020-01-01 to 2024-06-30",
+  "test_period": "2025-03-31 to 2025-12-25",
+  "results": {
+    "1h": {
+      "Persistence (naive)": 15.343084475563353,
+      "Linear (internal lags)": 12.472055622934034,
+      "Linear (fusion lags)": 11.994047049833224,
+      "Gradient Boosting (fusion lags)": 9.860118606325198,
+      "LSTM (fusion)": 8.873327721825493,
+      "TFT (fusion, 168h lookback)": 8.053399548482984
+    },
+    "4h": {
+      "Persistence (naive)": 29.94959645674293,
+      "Linear (internal lags)": 14.818063299730547,
+      "Linear (fusion lags)": 14.001920206150997,
+      "Gradient Boosting (fusion lags)": 9.802799897360668,
+      "LSTM (fusion)": 9.538995465700474,
+      "TFT (fusion, 168h lookback)": 8.09817309652935
+    },
+    "12h": {
+      "Persistence (naive)": 56.41018391269624,
+      "Linear (internal lags)": 17.07525991543121,
+      "Linear (fusion lags)": 15.076292851246315,
+      "Gradient Boosting (fusion lags)": 9.908653179389692,
+      "LSTM (fusion)": 9.346570917327464,
+      "TFT (fusion, 168h lookback)": 8.163086591706302
+    },
+    "24h": {
+      "Persistence (naive)": 18.911802828515707,
+      "Linear (internal lags)": 16.6176702591942,
+      "Linear (fusion lags)": 15.704568432261626,
+      "Gradient Boosting (fusion lags)": 9.93089134854624,
+      "LSTM (fusion)": 9.48012451584836,
+      "TFT (fusion, 168h lookback)": 8.27372048812835
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "correlations": "{'temperature_2m': {'r': np.float64(0.2567242535892861), 'p': np.float64(0.0)}, 'relative_humidity_2m': {'r': np.float64(-0.16173484022219026), 'p': np.float64(2.3600305228047863e-304)}, 'wind_speed_10m': {'r': np.float64(-0.028489226982214306), 'p': np.float64(6.726474415367387e-11)}, 'shortwave_radiation': {'r': np.float64(0.5243715362568743), 'p': np.float64(0.0)}, 'cloud_cover': {'r': np.float64(0.03845234109874395), 'p': np.float64(1.2451637274205844e-18)}, 'carbon_intensity_gco2_kwh': {'r': np.float64(-0.007370513743407557), 'p': np.float64(0.09137275764690399)}, 'grid_demand_mw': {'r': np.float64(-0.007592558884106139), 'p': np.float64(0.08202405900564762)}}",
+  "mape_internal": 5.827113110501654,
+  "mape_external": 4.91833685745205,
+  "improvement_pct": 15.595651496996044,
+  "total_rows": 52464,
+  "columns": 21
+}

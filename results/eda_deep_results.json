@@ -1,0 +1,77 @@
+{
+  "test_date": "2026-06-13",
+  "dataset_rows": 52464,
+  "progressive_model_comparison": {
+    "A_internal_only": {
+      "mape_pct": 5.83,
+      "features": "it_load_kw, hour, day_of_week, month"
+    },
+    "B_plus_temperature": {
+      "mape_pct": 5.3,
+      "improvement_pct": 9.1
+    },
+    "C_plus_solar": {
+      "mape_pct": 5.18,
+      "improvement_pct": 11.1
+    },
+    "D_plus_humidity_wind": {
+      "mape_pct": 5.18,
+      "improvement_pct": 11.1
+    },
+    "E_plus_carbon": {
+      "mape_pct": 4.91,
+      "improvement_pct": 15.8
+    },
+    "F_plus_interactions": {
+      "mape_pct": 4.55,
+      "improvement_pct": 21.9
+    },
+    "G_plus_lags": {
+      "mape_pct": 4.55,
+      "improvement_pct": 22.0
+    }
+  },
+  "compound_events": {
+    "0_conditions": {
+      "pct_time": 15.4,
+      "avg_cooling_kw": 206,
+      "avg_carbon": 353
+    },
+    "1_conditions": {
+      "pct_time": 57.2,
+      "avg_cooling_kw": 200,
+      "avg_carbon": 365
+    },
+    "2_conditions": {
+      "pct_time": 24.6,
+      "avg_cooling_kw": 224,
+      "avg_carbon": 419
+    },
+    "3_conditions": {
+      "pct_time": 2.8,
+      "avg_cooling_kw": 330,
+      "avg_carbon": 439
+    }
+  },
+  "temperature_threshold": {
+    "jump_starts_at": "25C",
+    "delta_per_5C_below_25": "7-12 kW",
+    "delta_per_5C_above_25": "26-36 kW"
+  },
+  "carbon_optimization": {
+    "optimal_window_pct_of_time": 6.8,
+    "savings_pct": 11.9,
+    "compound_emissions_multiplier": 2.28
+  },
+  "best_lag_correlations": {
+    "cooling_lag_168h": 0.8234,
+    "it_load_lag_168h": 0.8202,
+    "solar_lag_24h": 0.5718,
+    "temperature_lag_24h": 0.347
+  },
+  "key_interactions": {
+    "carbon_x_demand_r": 0.9471,
+    "temp_x_solar_r": 0.5368,
+    "temp_squared_r": 0.3824
+  }
+}

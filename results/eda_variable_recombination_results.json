@@ -1,0 +1,1029 @@
+{
+  "test_date": "2026-06-14",
+  "analyses": {
+    "temperature_thresholds": [
+      {
+        "threshold": 5.0,
+        "below_mean": 179.50521963364753,
+        "above_mean": 219.51026978504538,
+        "jump_pct": 22.28628796034133,
+        "n_below": 11246,
+        "n_above": 41218
+      },
+      {
+        "threshold": 7.0,
+        "below_mean": 182.0527474817645,
+        "above_mean": 221.85612177887518,
+        "jump_pct": 21.86364932564263,
+        "n_below": 14395,
+        "n_above": 38069
+      },
+      {
+        "threshold": 9.0,
+        "below_mean": 183.47451101618705,
+        "above_mean": 225.02628922473465,
+        "jump_pct": 22.647166616447173,
+        "n_below": 17792,
+        "n_above": 34672
+      },
+      {
+        "threshold": 11.0,
+        "below_mean": 185.21964888910034,
+        "above_mean": 228.12396883447286,
+        "jump_pct": 23.164021853351716,
+        "n_below": 21019,
+        "n_above": 31445
+      },
+      {
+        "threshold": 13.0,
+        "below_mean": 186.6038934171873,
+        "above_mean": 231.71798904400072,
+        "jump_pct": 24.17639567999397,
+        "n_below": 24169,
+        "n_above": 28295
+      },
+      {
+        "threshold": 15.0,
+        "below_mean": 188.5595140814242,
+        "above_mean": 235.4181941561552,
+        "jump_pct": 24.85087018971442,
+        "n_below": 27412,
+        "n_above": 25052
+      },
+      {
+        "threshold": 17.0,
+        "below_mean": 190.33901276484607,
+        "above_mean": 239.830334814272,
+        "jump_pct": 26.001670036278828,
+        "n_below": 30631,
+        "n_above": 21833
+      },
+      {
+        "threshold": 19.0,
+        "below_mean": 192.56169256528506,
+        "above_mean": 244.8896531132946,
+        "jump_pct": 27.174647174576823,
+        "n_below": 34043,
+        "n_above": 18421
+      },
+      {
+        "threshold": 21.0,
+        "below_mean": 195.04043914613422,
+        "above_mean": 251.38424999999998,
+        "jump_pct": 28.88827111984203,
+        "n_below": 37664,
+        "n_above": 14800
+      },
+      {
+        "threshold": 23.0,
+        "below_mean": 198.0254094245344,
+        "above_mean": 261.69795995111406,
+        "jump_pct": 32.153727499725065,
+        "n_below": 41827,
+        "n_above": 10637
+      },
+      {
+        "threshold": 25.0,
+        "below_mean": 201.1255407433566,
+        "above_mean": 273.0427613191727,
+        "jump_pct": 35.75737835682693,
+        "n_below": 45308,
+        "n_above": 7156
+      },
+      {
+        "threshold": 27.0,
+        "below_mean": 203.90375793376484,
+        "above_mean": 281.9742857142857,
+        "jump_pct": 38.28792984084234,
+        "n_below": 47739,
+        "n_above": 4725
+      },
+      {
+        "threshold": 29.0,
+        "below_mean": 206.36726931536148,
+        "above_mean": 288.85869191049915,
+        "jump_pct": 39.97311340543924,
+        "n_below": 49559,
+        "n_above": 2905
+      },
+      {
+        "threshold": 31.0,
+        "below_mean": 208.27449483521886,
+        "above_mean": 293.43428920073217,
+        "jump_pct": 40.888249150665054,
+        "n_below": 50825,
+        "n_above": 1639
+      },
+      {
+        "threshold": 33.0,
+        "below_mean": 209.71698937198067,
+        "above_mean": 299.2098039215686,
+        "jump_pct": 42.67313526557074,
+        "n_below": 51750,
+        "n_above": 714
+      },
+      {
+        "threshold": 35.0,
+        "below_mean": 210.54852285128953,
+        "above_mean": 296.8136170212765,
+        "jump_pct": 40.97159790140918,
+        "n_below": 52229,
+        "n_above": 235
+      }
+    ],
+    "carbon_thresholds": [
+      {
+        "threshold": 200.0,
+        "pct_below": 0.00953034461726136,
+        "hrs_below": 5,
+        "hrs_above": 52459
+      },
+      {
+        "threshold": 225.0,
+        "pct_below": 0.00953034461726136,
+        "hrs_below": 5,
+        "hrs_above": 52459
+      },
+      {
+        "threshold": 250.0,
+        "pct_below": 0.015248551387618176,
+        "hrs_below": 8,
+        "hrs_above": 52456
+      },
+      {
+        "threshold": 275.0,
+        "pct_below": 0.08767917047880451,
+        "hrs_below": 46,
+        "hrs_above": 52418
+      },
+      {
+        "threshold": 300.0,
+        "pct_below": 1.5381976212259836,
+        "hrs_below": 807,
+        "hrs_above": 51657
+      },
+      {
+        "threshold": 325.0,
+        "pct_below": 9.517002134797194,
+        "hrs_below": 4993,
+        "hrs_above": 47471
+      },
+      {
+        "threshold": 350.0,
+        "pct_below": 28.478575785300396,
+        "hrs_below": 14941,
+        "hrs_above": 37523
+      },
+      {
+        "threshold": 375.0,
+        "pct_below": 51.21035376639219,
+        "hrs_below": 26867,
+        "hrs_above": 25597
+      },
+      {
+        "threshold": 400.0,
+        "pct_below": 69.78308935651113,
+        "hrs_below": 36611,
+        "hrs_above": 15853
+      },
+      {
+        "threshold": 425.0,
+        "pct_below": 84.05954559316865,
+        "hrs_below": 44101,
+        "hrs_above": 8363
+      },
+      {
+        "threshold": 450.0,
+        "pct_below": 93.37259835315646,
+        "hrs_below": 48987,
+        "hrs_above": 3477
+      },
+      {
+        "threshold": 475.0,
+        "pct_below": 98.0710582494663,
+        "hrs_below": 51452,
+        "hrs_above": 1012
+      }
+    ],
+    "interactions": [
+      {
+        "pair": "shortwave_radiation \u00d7 hour",
+        "r2_linear": 0.34398689836778684,
+        "r2_interaction": 0.4202826714567336,
+        "gain": 0.07629577308894675
+      },
+      {
+        "pair": "carbon_intensity_gco2_kwh \u00d7 month",
+        "r2_linear": 0.019597907776648937,
+        "r2_interaction": 0.03353201194729771,
+        "gain": 0.013934104170648776
+      },
+      {
+        "pair": "temperature_2m \u00d7 month",
+        "r2_linear": 0.16067693087348267,
+        "r2_interaction": 0.16905707803403447,
+        "gain": 0.008380147160551799
+      },
+      {
+        "pair": "shortwave_radiation \u00d7 carbon_intensity_gco2_kwh",
+        "r2_linear": 0.3292506137972049,
+        "r2_interaction": 0.3371787937159775,
+        "gain": 0.007928179918772593
+      },
+      {
+        "pair": "carbon_intensity_gco2_kwh \u00d7 hour",
+        "r2_linear": -0.005291491888463451,
+        "r2_interaction": 0.002469797507951732,
+        "gain": 0.007761289396415183
+      },
+      {
+        "pair": "shortwave_radiation \u00d7 day_of_week",
+        "r2_linear": 0.3886949019817235,
+        "r2_interaction": 0.39401286205475883,
+        "gain": 0.0053179600730353105
+      },
+      {
+        "pair": "temperature_2m \u00d7 carbon_intensity_gco2_kwh",
+        "r2_linear": 0.12172139313987862,
+        "r2_interaction": 0.12636760313723638,
+        "gain": 0.004646209997357764
+      },
+      {
+        "pair": "temperature_2m \u00d7 it_load_kw",
+        "r2_linear": 0.9752835825097819,
+        "r2_interaction": 0.978943305246425,
+        "gain": 0.0036597227366431673
+      },
+      {
+        "pair": "temperature_2m \u00d7 day_of_week",
+        "r2_linear": 0.19341067164382353,
+        "r2_interaction": 0.19525027010028062,
+        "gain": 0.0018395984564570922
+      },
+      {
+        "pair": "shortwave_radiation \u00d7 month",
+        "r2_linear": 0.3386305752716733,
+        "r2_interaction": 0.3398834687606862,
+        "gain": 0.0012528934890129184
+      }
+    ],
+    "compound_events": [
+      {
+        "combo": "hot",
+        "hours": 5112,
+        "avg_kw": 280.3805555555556,
+        "vs_baseline_pct": 32.922773767171606
+      },
+      {
+        "combo": "high_carbon",
+        "hours": 5237,
+        "avg_kw": 212.4455413404621,
+        "vs_baseline_pct": 0.7161519224795132
+      },
+      {
+        "combo": "gpu_spike",
+        "hours": 2600,
+        "avg_kw": 333.79769230769233,
+        "vs_baseline_pct": 58.24676233594184
+      },
+      {
+        "combo": "high_load",
+        "hours": 5243,
+        "avg_kw": 363.43375929811174,
+        "vs_baseline_pct": 72.29662474566129
+      },
+      {
+        "combo": "peak_hour",
+        "hours": 8744,
+        "avg_kw": 237.91675434583715,
+        "vs_baseline_pct": 12.791540949298286
+      },
+      {
+        "combo": "high_solar",
+        "hours": 5232,
+        "avg_kw": 304.76907492354735,
+        "vs_baseline_pct": 44.48487954888125
+      },
+      {
+        "combo": "hot + high_carbon",
+        "hours": 1137,
+        "avg_kw": 276.9182937554969,
+        "vs_baseline_pct": 31.281385187068246
+      },
+      {
+        "combo": "hot + gpu_spike",
+        "hours": 249,
+        "avg_kw": 415.7755020080321,
+        "vs_baseline_pct": 97.11079066035751
+      },
+      {
+        "combo": "hot + high_load",
+        "hours": 1193,
+        "avg_kw": 388.03830678960605,
+        "vs_baseline_pct": 83.96114510933359
+      },
+      {
+        "combo": "hot + peak_hour",
+        "hours": 2265,
+        "avg_kw": 280.1829580573951,
+        "vs_baseline_pct": 32.82909677344106
+      },
+      {
+        "combo": "hot + high_solar",
+        "hours": 2478,
+        "avg_kw": 318.75730427764324,
+        "vs_baseline_pct": 51.11641732493568
+      },
+      {
+        "combo": "high_carbon + gpu_spike",
+        "hours": 252,
+        "avg_kw": 343.588492063492,
+        "vs_baseline_pct": 62.88838328701374
+      },
+      {
+        "combo": "high_carbon + high_load",
+        "hours": 417,
+        "avg_kw": 383.71127098321347,
+        "vs_baseline_pct": 81.90978459171166
+      },
+      {
+        "combo": "high_carbon + peak_hour",
+        "hours": 867,
+        "avg_kw": 257.01222606689737,
+        "vs_baseline_pct": 21.844319457874217
+      },
+      {
+        "combo": "high_carbon + high_solar",
+        "hours": 440,
+        "avg_kw": 330.47249999999997,
+        "vs_baseline_pct": 56.67035564121956
+      },
+      {
+        "combo": "gpu_spike + high_load",
+        "hours": 1377,
+        "avg_kw": 399.43572984749454,
+        "vs_baseline_pct": 89.36443380619288
+      },
+      {
+        "combo": "gpu_spike + peak_hour",
+        "hours": 443,
+        "avg_kw": 363.03476297968405,
+        "vs_baseline_pct": 72.10746862795831
+      },
+      {
+        "combo": "gpu_spike + high_solar",
+        "hours": 259,
+        "avg_kw": 432.44015444015446,
+        "vs_baseline_pct": 105.01116670731427
+      },
+      {
+        "combo": "high_load + peak_hour",
+        "hours": 570,
+        "avg_kw": 376.92929824561406,
+        "vs_baseline_pct": 78.69458792406532
+      },
+      {
+        "combo": "high_load + high_solar",
+        "hours": 1680,
+        "avg_kw": 375.04613095238096,
+        "vs_baseline_pct": 77.80181624241935
+      },
+      {
+        "combo": "peak_hour + high_solar",
+        "hours": 2690,
+        "avg_kw": 281.8231226765799,
+        "vs_baseline_pct": 33.60666578205092
+      },
+      {
+        "combo": "hot + high_carbon + gpu_spike",
+        "hours": 52,
+        "avg_kw": 428.3692307692308,
+        "vs_baseline_pct": 103.08122379432798
+      },
+      {
+        "combo": "hot + high_carbon + high_load",
+        "hours": 250,
+        "avg_kw": 391.3236,
+        "vs_baseline_pct": 85.5186364457023
+      },
+      {
+        "combo": "hot + high_carbon + peak_hour",
+        "hours": 430,
+        "avg_kw": 289.6167441860465,
+        "vs_baseline_pct": 37.301464755100696
+      },
+      {
+        "combo": "hot + high_carbon + high_solar",
+        "hours": 406,
+        "avg_kw": 335.1327586206896,
+        "vs_baseline_pct": 58.879690383092175
+      },
+      {
+        "combo": "hot + gpu_spike + high_load",
+        "hours": 183,
+        "avg_kw": 453.52076502732234,
+        "vs_baseline_pct": 115.00505956625307
+      },
+      {
+        "combo": "hot + gpu_spike + peak_hour",
+        "hours": 111,
+        "avg_kw": 407.8315315315315,
+        "vs_baseline_pct": 93.3447142704712
+      },
+      {
+        "combo": "hot + gpu_spike + high_solar",
+        "hours": 109,
+        "avg_kw": 458.945871559633,
+        "vs_baseline_pct": 117.5769932969224
+      },
+      {
+        "combo": "hot + high_load + peak_hour",
+        "hours": 219,
+        "avg_kw": 392.9625570776256,
+        "vs_baseline_pct": 86.2956329831821
+      },
+      {
+        "combo": "hot + high_load + high_solar",
+        "hours": 805,
+        "avg_kw": 389.81664596273293,
+        "vs_baseline_pct": 84.80421989075867
+      },
+      {
+        "combo": "hot + peak_hour + high_solar",
+        "hours": 1431,
+        "avg_kw": 295.3846960167715,
+        "vs_baseline_pct": 40.035934535917896
+      },
+      {
+        "combo": "high_carbon + gpu_spike + high_load",
+        "hours": 133,
+        "avg_kw": 412.5022556390977,
+        "vs_baseline_pct": 95.55901048886885
+      },
+      {
+        "combo": "high_carbon + gpu_spike + peak_hour",
+        "hours": 44,
+        "avg_kw": 395.36590909090904,
+        "vs_baseline_pct": 87.43501376267861
+      },
+      {
+        "combo": "high_carbon + gpu_spike + high_solar",
+        "hours": 17,
+        "avg_kw": 455.8235294117647,
+        "vs_baseline_pct": 116.09675377702256
+      },
+      {
+        "combo": "high_carbon + high_load + peak_hour",
+        "hours": 52,
+        "avg_kw": 405.2557692307692,
+        "vs_baseline_pct": 92.12359724648987
+      },
+      {
+        "combo": "high_carbon + high_load + high_solar",
+        "hours": 142,
+        "avg_kw": 390.8021126760563,
+        "vs_baseline_pct": 85.27140980958387
+      },
+      {
+        "combo": "high_carbon + peak_hour + high_solar",
+        "hours": 271,
+        "avg_kw": 306.24649446494465,
+        "vs_baseline_pct": 45.18529439423753
+      },
+      {
+        "combo": "gpu_spike + high_load + peak_hour",
+        "hours": 297,
+        "avg_kw": 402.6420875420876,
+        "vs_baseline_pct": 90.88450340449488
+      },
+      {
+        "combo": "gpu_spike + high_load + high_solar",
+        "hours": 222,
+        "avg_kw": 452.6522522522522,
+        "vs_baseline_pct": 114.5933151537855
+      },
+      {
+        "combo": "gpu_spike + peak_hour + high_solar",
+        "hours": 129,
+        "avg_kw": 408.78914728682173,
+        "vs_baseline_pct": 93.79870061108639
+      },
+      {
+        "combo": "high_load + peak_hour + high_solar",
+        "hours": 303,
+        "avg_kw": 381.0095709570957,
+        "vs_baseline_pct": 80.62896302886524
+      }
+    ],
+    "conditional_correlations": [
+      {
+        "regime": "Low (Q1)",
+        "temp_cooling_r": 0.3472318586618525,
+        "solar_cooling_r": 0.24276261528833706,
+        "carbon_cooling_r": 0.12510681522732697,
+        "n": 13111
+      },
+      {
+        "regime": "Medium (Q2)",
+        "temp_cooling_r": 0.4324811673495837,
+        "solar_cooling_r": 0.2256955979671529,
+        "carbon_cooling_r": 0.1787570768785663,
+        "n": 13114
+      },
+      {
+        "regime": "High (Q3)",
+        "temp_cooling_r": 0.38415969226382435,
+        "solar_cooling_r": 0.39887046189249953,
+        "carbon_cooling_r": 0.09999572739926287,
+        "n": 13123
+      },
+      {
+        "regime": "Very High (Q4)",
+        "temp_cooling_r": 0.47686360034163255,
+        "solar_cooling_r": 0.3414913548435717,
+        "carbon_cooling_r": 0.14343447070565904,
+        "n": 13113
+      }
+    ],
+    "model_comparison": {
+      "linear_r2": 0.9783243375961549,
+      "linear_mape": 4.918336857452097,
+      "poly_r2": 0.9822706672955885,
+      "poly_mape": 4.484542567673948,
+      "dt_r2": 0.9824554601642833,
+      "dt_mape": 4.444634804538068,
+      "feature_importance": [
+        {
+          "feature": "temperature_2m",
+          "linear_importance": 0.5770120014449642,
+          "tree_importance": 0.021991392670710055,
+          "linear_rank": 1,
+          "tree_rank": 2,
+          "rank_change": -1
+        },
+        {
+          "feature": "shortwave_radiation",
+          "linear_importance": 0.008911178033556915,
+          "tree_importance": 2.923513907216322e-05,
+          "linear_rank": 7,
+          "tree_rank": 4,
+          "rank_change": 3
+        },
+        {
+          "feature": "carbon_intensity_gco2_kwh",
+          "linear_importance": 0.047752506981351445,
+          "tree_importance": 7.665660787262902e-05,
+          "linear_rank": 4,
+          "tree_rank": 3,
+          "rank_change": 1
+        },
+        {
+          "feature": "it_load_kw",
+          "linear_importance": 0.24998515167082494,
+          "tree_importance": 0.9778354780783155,
+          "linear_rank": 2,
+          "tree_rank": 1,
+          "rank_change": 1
+        },
+        {
+          "feature": "hour",
+          "linear_importance": 0.030175910295806185,
+          "tree_importance": 2.5150169000513885e-05,
+          "linear_rank": 5,
+          "tree_rank": 5,
+          "rank_change": 0
+        },
+        {
+          "feature": "day_of_week",
+          "linear_importance": 0.06643179589878502,
+          "tree_importance": 2.325197910801271e-05,
+          "linear_rank": 3,
+          "tree_rank": 6,
+          "rank_change": -3
+        },
+        {
+          "feature": "month",
+          "linear_importance": 0.019731455674711282,
+          "tree_importance": 1.8835355921044243e-05,
+          "linear_rank": 6,
+          "tree_rank": 7,
+          "rank_change": -1
+        }
+      ]
+    },
+    "regimes": [
+      {
+        "cluster": 0,
+        "avg_temp": 23.88950570342205,
+        "avg_load": 759.1423098859315,
+        "avg_solar": 597.7023764258555,
+        "avg_cooling": 290.56942015209125,
+        "count": 10520
+      },
+      {
+        "cluster": 1,
+        "avg_temp": 10.368114055074537,
+        "avg_load": 449.4352060412733,
+        "avg_solar": 1.3603932035674762,
+        "avg_cooling": 160.34234099342493,
+        "count": 15361
+      },
+      {
+        "cluster": 2,
+        "avg_temp": 13.612488025181333,
+        "avg_load": 424.1180032845217,
+        "avg_solar": 69.25044477897906,
+        "avg_cooling": 153.67465444094705,
+        "count": 14614
+      },
+      {
+        "cluster": 3,
+        "avg_temp": 10.091461274960313,
+        "avg_load": 775.611889046704,
+        "avg_solar": 149.77592112958476,
+        "avg_cooling": 275.7857465118222,
+        "count": 11969
+      }
+    ],
+    "correlation_stability": {
+      "monthly_values": [
+        {
+          "year": 2020,
+          "month": 1,
+          "r_temp_cool": -0.023042456101271713
+        },
+        {
+          "year": 2020,
+          "month": 2,
+          "r_temp_cool": 0.15575176283127543
+        },
+        {
+          "year": 2020,
+          "month": 3,
+          "r_temp_cool": 0.2091531589762568
+        },
+        {
+          "year": 2020,
+          "month": 4,
+          "r_temp_cool": 0.18701903855200308
+        },
+        {
+          "year": 2020,
+          "month": 5,
+          "r_temp_cool": 0.17755178609199612
+        },
+        {
+          "year": 2020,
+          "month": 6,
+          "r_temp_cool": 0.3323773065595803
+        },
+        {
+          "year": 2020,
+          "month": 7,
+          "r_temp_cool": 0.3032906101909029
+        },
+        {
+          "year": 2020,
+          "month": 8,
+          "r_temp_cool": 0.3038613982730399
+        },
+        {
+          "year": 2020,
+          "month": 9,
+          "r_temp_cool": 0.3538968352107601
+        },
+        {
+          "year": 2020,
+          "month": 10,
+          "r_temp_cool": 0.3341146831142099
+        },
+        {
+          "year": 2020,
+          "month": 11,
+          "r_temp_cool": 0.12457822853965544
+        },
+        {
+          "year": 2020,
+          "month": 12,
+          "r_temp_cool": 0.049391704290200886
+        },
+        {
+          "year": 2021,
+          "month": 1,
+          "r_temp_cool": 0.13247996892786243
+        },
+        {
+          "year": 2021,
+          "month": 2,
+          "r_temp_cool": 0.07214660838074036
+        },
+        {
+          "year": 2021,
+          "month": 3,
+          "r_temp_cool": 0.2131436951708618
+        },
+        {
+          "year": 2021,
+          "month": 4,
+          "r_temp_cool": 0.29186990395464374
+        },
+        {
+          "year": 2021,
+          "month": 5,
+          "r_temp_cool": 0.3242983293171144
+        },
+        {
+          "year": 2021,
+          "month": 6,
+          "r_temp_cool": 0.2664576127667015
+        },
+        {
+          "year": 2021,
+          "month": 7,
+          "r_temp_cool": 0.40470957995385015
+        },
+        {
+          "year": 2021,
+          "month": 8,
+          "r_temp_cool": 0.37597940623255677
+        },
+        {
+          "year": 2021,
+          "month": 9,
+          "r_temp_cool": 0.3415949539502594
+        },
+        {
+          "year": 2021,
+          "month": 10,
+          "r_temp_cool": 0.30781521056626737
+        },
+        {
+          "year": 2021,
+          "month": 11,
+          "r_temp_cool": 0.2570025821951855
+        },
+        {
+          "year": 2021,
+          "month": 12,
+          "r_temp_cool": 0.034913988581839105
+        },
+        {
+          "year": 2022,
+          "month": 1,
+          "r_temp_cool": 0.04515271452945509
+        },
+        {
+          "year": 2022,
+          "month": 2,
+          "r_temp_cool": 0.16390700318856838
+        },
+        {
+          "year": 2022,
+          "month": 3,
+          "r_temp_cool": 0.15379842309170974
+        },
+        {
+          "year": 2022,
+          "month": 4,
+          "r_temp_cool": 0.2019538222510458
+        },
+        {
+          "year": 2022,
+          "month": 5,
+          "r_temp_cool": 0.27659036154091365
+        },
+        {
+          "year": 2022,
+          "month": 6,
+          "r_temp_cool": 0.3993313131027936
+        },
+        {
+          "year": 2022,
+          "month": 7,
+          "r_temp_cool": 0.41803468662088006
+        },
+        {
+          "year": 2022,
+          "month": 8,
+          "r_temp_cool": 0.39006694867725666
+        },
+        {
+          "year": 2022,
+          "month": 9,
+          "r_temp_cool": 0.30308106843535865
+        },
+        {
+          "year": 2022,
+          "month": 10,
+          "r_temp_cool": 0.22248592093195957
+        },
+        {
+          "year": 2022,
+          "month": 11,
+          "r_temp_cool": 0.12802278827237487
+        },
+        {
+          "year": 2022,
+          "month": 12,
+          "r_temp_cool": 0.07828497339303597
+        },
+        {
+          "year": 2023,
+          "month": 1,
+          "r_temp_cool": 0.1025363736568881
+        },
+        {
+          "year": 2023,
+          "month": 2,
+          "r_temp_cool": 0.25727541101266616
+        },
+        {
+          "year": 2023,
+          "month": 3,
+          "r_temp_cool": 0.1332525603896572
+        },
+        {
+          "year": 2023,
+          "month": 4,
+          "r_temp_cool": 0.32067731960866763
+        },
+        {
+          "year": 2023,
+          "month": 5,
+          "r_temp_cool": 0.26059278657444696
+        },
+        {
+          "year": 2023,
+          "month": 6,
+          "r_temp_cool": 0.3148278240282324
+        },
+        {
+          "year": 2023,
+          "month": 7,
+          "r_temp_cool": 0.38586358036750085
+        },
+        {
+          "year": 2023,
+          "month": 8,
+          "r_temp_cool": 0.2759306281869781
+        },
+        {
+          "year": 2023,
+          "month": 9,
+          "r_temp_cool": 0.32582845062477656
+        },
+        {
+          "year": 2023,
+          "month": 10,
+          "r_temp_cool": 0.2836792753910229
+        },
+        {
+          "year": 2023,
+          "month": 11,
+          "r_temp_cool": 0.15611734072963063
+        },
+        {
+          "year": 2023,
+          "month": 12,
+          "r_temp_cool": 0.04309333444508261
+        },
+        {
+          "year": 2024,
+          "month": 1,
+          "r_temp_cool": 0.14010633414007367
+        },
+        {
+          "year": 2024,
+          "month": 2,
+          "r_temp_cool": 0.11160331927955604
+        },
+        {
+          "year": 2024,
+          "month": 3,
+          "r_temp_cool": 0.13067409471335775
+        },
+        {
+          "year": 2024,
+          "month": 4,
+          "r_temp_cool": 0.3051955068911071
+        },
+        {
+          "year": 2024,
+          "month": 5,
+          "r_temp_cool": 0.4125604222047867
+        },
+        {
+          "year": 2024,
+          "month": 6,
+          "r_temp_cool": 0.3355264089473831
+        },
+        {
+          "year": 2024,
+          "month": 7,
+          "r_temp_cool": 0.324339726982752
+        },
+        {
+          "year": 2024,
+          "month": 8,
+          "r_temp_cool": 0.3413687894404294
+        },
+        {
+          "year": 2024,
+          "month": 9,
+          "r_temp_cool": 0.23557147802507528
+        },
+        {
+          "year": 2024,
+          "month": 10,
+          "r_temp_cool": 0.21645458628688447
+        },
+        {
+          "year": 2024,
+          "month": 11,
+          "r_temp_cool": 0.24057300696769418
+        },
+        {
+          "year": 2024,
+          "month": 12,
+          "r_temp_cool": 0.08737251843834751
+        },
+        {
+          "year": 2025,
+          "month": 1,
+          "r_temp_cool": 0.045040564163487444
+        },
+        {
+          "year": 2025,
+          "month": 2,
+          "r_temp_cool": 0.08116405118512204
+        },
+        {
+          "year": 2025,
+          "month": 3,
+          "r_temp_cool": 0.17285545851155873
+        },
+        {
+          "year": 2025,
+          "month": 4,
+          "r_temp_cool": 0.14400108640647136
+        },
+        {
+          "year": 2025,
+          "month": 5,
+          "r_temp_cool": 0.25966695669439555
+        },
+        {
+          "year": 2025,
+          "month": 6,
+          "r_temp_cool": 0.32452064257385926
+        },
+        {
+          "year": 2025,
+          "month": 7,
+          "r_temp_cool": 0.36237971417023834
+        },
+        {
+          "year": 2025,
+          "month": 8,
+          "r_temp_cool": 0.2860338663651961
+        },
+        {
+          "year": 2025,
+          "month": 9,
+          "r_temp_cool": 0.2040104850748336
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "r_temp_cool": 0.21835370431393675
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "r_temp_cool": 0.032307025121929185
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "r_temp_cool": 0.09209860005498685
+        }
+      ],
+      "mean_r": 0.22603498822959522,
+      "std_r": 0.11182609411234755,
+      "trend_slope": -0.0027881522409590347,
+      "trend_p": 0.718729065387771
+    },
+    "cross_regional": {
+      "pjm_only_mape": 5.060664897895898,
+      "all_regions_mape": 5.058640667829711,
+      "improvement_pct": 0.039999290745938186
+    },
+    "model_comparison_full": {
+      "Internal-only Linear": 5.827113110501654,
+      "All-signals Linear": 4.918336857452097,
+      "Polynomial degree 2": 4.3856766072743945,
+      "Decision Tree (depth 12)": 4.505493432969994,
+      "Engineered features Linear": 4.404740107670167
+    }
+  }
+}

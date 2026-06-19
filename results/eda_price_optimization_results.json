@@ -1,0 +1,199 @@
+{
+  "test_date": "2026-06-14",
+  "analyses": {
+    "volatility": [
+      {
+        "region": "PJM",
+        "daily_range_cents": 3.254631680081498,
+        "std_cents": 1.6909300472079312,
+        "cov_pct": 21.476276407204093,
+        "max_spread_cents": 13.462318253932253,
+        "peak_offpeak_saving_cents": -0.19882187288707165
+      },
+      {
+        "region": "ERCOT",
+        "daily_range_cents": 2.617810527185497,
+        "std_cents": 1.3517523625121475,
+        "cov_pct": 21.567139752182342,
+        "max_spread_cents": 10.165740012853197,
+        "peak_offpeak_saving_cents": -0.3204841183085234
+      },
+      {
+        "region": "CAISO",
+        "daily_range_cents": 7.192679775211641,
+        "std_cents": 4.133670346217178,
+        "cov_pct": 23.28732711735414,
+        "max_spread_cents": 25.71154428255054,
+        "peak_offpeak_saving_cents": -2.9485020093043346
+      }
+    ],
+    "price_carbon_correlation": {
+      "r_value": -0.08826546784255786,
+      "p_value": 4.888597665098539e-91,
+      "win_win_pct": 5.740210124164278,
+      "enrichment_factor": 0.9184336198662845
+    },
+    "cost_savings": {
+      "facility_kw": 500,
+      "total_baseline_cost": 2060883.0481815187,
+      "net_savings_20pct_shift": -4799.448858168951,
+      "annual_savings": -802.2877324696611,
+      "savings_by_shift": [
+        {
+          "shift_pct": 0.1,
+          "annual_savings": -401.14386623483176,
+          "pct_of_bill": -0.11644156281463672
+        },
+        {
+          "shift_pct": 0.15,
+          "annual_savings": -601.7157993522452,
+          "pct_of_bill": -0.17466234422195437
+        },
+        {
+          "shift_pct": 0.2,
+          "annual_savings": -802.2877324696635,
+          "pct_of_bill": -0.23288312562927344
+        },
+        {
+          "shift_pct": 0.25,
+          "annual_savings": -1002.8596655870818,
+          "pct_of_bill": -0.29110390703659245
+        },
+        {
+          "shift_pct": 0.3,
+          "annual_savings": -1203.4315987044904,
+          "pct_of_bill": -0.34932468844390874
+        },
+        {
+          "shift_pct": 0.4,
+          "annual_savings": -1604.575464939327,
+          "pct_of_bill": -0.46576625125854687
+        },
+        {
+          "shift_pct": 0.5,
+          "annual_savings": -2005.7193311741637,
+          "pct_of_bill": -0.5822078140731849
+        }
+      ]
+    },
+    "multi_objective": {
+      "pareto_distribution": [
+        {
+          "range": "Excellent",
+          "hours": 3,
+          "pct": 0.005730659025787966,
+          "avg_price": 6.290960894900447,
+          "avg_carbon": 44.666666666666664
+        },
+        {
+          "range": "Good",
+          "hours": 2875,
+          "pct": 5.491881566380133,
+          "avg_price": 5.295607667623764,
+          "avg_carbon": 332.11071304347826
+        },
+        {
+          "range": "Average",
+          "hours": 42672,
+          "pct": 81.51289398280802,
+          "avg_price": 7.701049845250989,
+          "avg_carbon": 375.140436351706
+        },
+        {
+          "range": "Poor",
+          "hours": 6765,
+          "pct": 12.922636103151863,
+          "avg_price": 10.016870253499054,
+          "avg_carbon": 419.1635624538064
+        },
+        {
+          "range": "Worst",
+          "hours": 35,
+          "pct": 0.06685768863419293,
+          "avg_price": 15.701098506553707,
+          "avg_carbon": 392.13428571428574
+        }
+      ],
+      "best_hours": {
+        "8": 0.5341620121266548,
+        "9": 0.5321276198697793,
+        "7": 0.5304314998817107,
+        "10": 0.5229851163114285,
+        "6": 0.5228248889774934,
+        "11": 0.5102057926633424
+      },
+      "worst_hours": {
+        "1": 0.4457263416305636,
+        "23": 0.4455273427762729,
+        "0": 0.44339159715771076
+      }
+    },
+    "seasonal_economics": [
+      {
+        "season": "Winter",
+        "peak_price": 8.167218668252165,
+        "offpeak_price": 8.161874397338947,
+        "spread": 0.0053442709132180966,
+        "spread_pct": 0.0654784753237628,
+        "annual_value_per_mw": 136.6396465737037
+      },
+      {
+        "season": "Spring",
+        "peak_price": 8.070757671027302,
+        "offpeak_price": 7.952218921158329,
+        "spread": 0.11853874986897228,
+        "spread_pct": 1.490637406291448,
+        "annual_value_per_mw": 3030.7394872749487
+      },
+      {
+        "season": "Summer",
+        "peak_price": 8.042086948166423,
+        "offpeak_price": 8.241220698229437,
+        "spread": -0.19913375006301415,
+        "spread_pct": -2.4163137641223043,
+        "annual_value_per_mw": -5091.352154736115
+      },
+      {
+        "season": "Fall",
+        "peak_price": 7.501887136316368,
+        "offpeak_price": 8.683338824676165,
+        "spread": -1.1814516883597967,
+        "spread_pct": -13.605960935238038,
+        "annual_value_per_mw": -30206.766042139105
+      }
+    ],
+    "regional_arbitrage": {
+      "regions": [
+        {
+          "region": "PJM",
+          "mean_price": 7.873478694103222,
+          "hours_cheapest": 6875,
+          "pct_cheapest": 13.132760267430754
+        },
+        {
+          "region": "ERCOT",
+          "mean_price": 6.26840831141745,
+          "hours_cheapest": 45475,
+          "pct_cheapest": 86.86723973256925
+        },
+        {
+          "region": "CAISO",
+          "mean_price": 17.75344177720581,
+          "hours_cheapest": 0,
+          "pct_cheapest": 0.0
+        }
+      ],
+      "avg_saving_vs_pjm": 1.7870550054868828,
+      "annual_saving_per_mw": 156546.0184806509
+    },
+    "combined_optimization": {
+      "facility_mw": 1.0,
+      "baseline_annual_cost": 689716.7336034423,
+      "baseline_annual_carbon_tonnes": 3315.29792,
+      "price_only_saving_pct": -0.9981849435623004,
+      "carbon_only_saving_pct": 7.340440522038421,
+      "fusion_cost_saving_pct": 10.6923999577735,
+      "fusion_carbon_saving_pct": 4.03831347705319
+    }
+  }
+}
