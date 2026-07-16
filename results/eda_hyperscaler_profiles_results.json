@@ -1,0 +1,179 @@
+{
+  "hyperscaler_profiles": {
+    "AWS_typical": {
+      "total_cost": 23426231.216263875,
+      "annual_cost": 3911516.191187701,
+      "total_carbon_kg": 148738105.8182773,
+      "annual_carbon_kg": 24835045.116043556,
+      "grid_dependency_pct": 100.0,
+      "renewable_hours_pct": 53.17169868862458,
+      "description": "Grid + Solar PPA + Battery (limited)"
+    },
+    "Microsoft_typical": {
+      "total_cost": 19721768.192311786,
+      "annual_cost": 3292975.933300001,
+      "total_carbon_kg": 127888301.74548376,
+      "annual_carbon_kg": 21353719.184401453,
+      "grid_dependency_pct": 98.66384568465996,
+      "renewable_hours_pct": 97.08371454711802,
+      "description": "Grid + Solar PPA + Fuel Cells + Battery (growing)"
+    },
+    "Google_typical": {
+      "total_cost": 13807358.39369236,
+      "annual_cost": 2305437.243228596,
+      "total_carbon_kg": 92308245.04687826,
+      "annual_carbon_kg": 15412858.848175008,
+      "grid_dependency_pct": 83.70311070448308,
+      "renewable_hours_pct": 97.08371454711802,
+      "description": "Grid + Solar + Wind + Battery + Fuel Cells"
+    },
+    "Equinix_colo_typical": {
+      "total_cost": 25787689.48806891,
+      "annual_cost": 4305812.74617802,
+      "total_carbon_kg": 159662633.95253295,
+      "annual_carbon_kg": 26659131.46965898,
+      "grid_dependency_pct": 100.0,
+      "renewable_hours_pct": 53.17169868862458,
+      "description": "Grid only + some Solar PPA"
+    },
+    "With_Optena_full": {
+      "total_cost": 12890318.462317701,
+      "annual_cost": 2152317.584055792,
+      "total_carbon_kg": 93354970.10441977,
+      "annual_carbon_kg": 15587632.245248498,
+      "grid_dependency_pct": 77.2644098810613,
+      "renewable_hours_pct": 97.08371454711802,
+      "description": "Grid + Solar + Wind + Gas + Battery + FORECAST OPTIMIZATION"
+    }
+  },
+  "optena_value_add": {
+    "AWS_typical": {
+      "without_optena_cost": 3911516.191187701,
+      "with_optena_cost": 3281946.136019339,
+      "annual_cost_saving": 629570.0551683623,
+      "cost_saving_pct": 16.095294622242083,
+      "annual_carbon_saving_kg": 3225234.5538598187,
+      "carbon_saving_pct": 12.986626514224861
+    },
+    "Microsoft_typical": {
+      "without_optena_cost": 3292975.933300001,
+      "with_optena_cost": 3273394.5004845117,
+      "annual_cost_saving": 19581.43281548936,
+      "cost_saving_pct": 0.594642451451692,
+      "annual_carbon_saving_kg": -4564.232194017619,
+      "carbon_saving_pct": -0.021374413302914074
+    },
+    "Google_typical": {
+      "without_optena_cost": 2305437.243228596,
+      "with_optena_cost": 2305437.243228596,
+      "annual_cost_saving": 0.0,
+      "cost_saving_pct": 0.0,
+      "annual_carbon_saving_kg": 0.0,
+      "carbon_saving_pct": 0.0
+    },
+    "Equinix_colo_typical": {
+      "without_optena_cost": 4305812.74617802,
+      "with_optena_cost": 3686364.1645909767,
+      "annual_cost_saving": 619448.5815870431,
+      "cost_saving_pct": 14.386333500844547,
+      "annual_carbon_saving_kg": 3226340.0785904676,
+      "carbon_saving_pct": 12.102195010600392
+    }
+  },
+  "infrastructure_advisory": {
+    "AWS_typical": [
+      [
+        "Enable Gas Dispatch",
+        619261.3688130514
+      ],
+      [
+        "Add 2MW Wind",
+        429091.22581875883
+      ],
+      [
+        "Add 2MW Solar",
+        170882.17212706897
+      ],
+      [
+        "Add 10MWh Battery",
+        135621.09756368725
+      ],
+      [
+        "Add Forecast (Optena)",
+        10224.82829410769
+      ]
+    ],
+    "Microsoft_typical": [
+      [
+        "Add 2MW Wind",
+        418913.3814402288
+      ],
+      [
+        "Add 2MW Solar",
+        167122.57178628678
+      ],
+      [
+        "Add 10MWh Battery",
+        93945.47653131979
+      ],
+      [
+        "Add Forecast (Optena)",
+        19581.43281548936
+      ],
+      [
+        "Enable Gas Dispatch",
+        0.0
+      ]
+    ],
+    "Google_typical": [
+      [
+        "Add 2MW Wind",
+        291048.4033003168
+      ],
+      [
+        "Add 2MW Solar",
+        150465.41874479083
+      ],
+      [
+        "Add 10MWh Battery",
+        80234.18536532251
+      ],
+      [
+        "Enable Gas Dispatch",
+        0.0
+      ],
+      [
+        "Add Forecast (Optena)",
+        0.0
+      ]
+    ],
+    "Equinix_colo_typical": [
+      [
+        "Enable Gas Dispatch",
+        619448.5815870431
+      ],
+      [
+        "Add 2MW Wind",
+        429067.1708960938
+      ],
+      [
+        "Add 2MW Solar",
+        170882.41792247538
+      ],
+      [
+        "Add 10MWh Battery",
+        131357.0041250321
+      ],
+      [
+        "Add Forecast (Optena)",
+        0.0
+      ]
+    ]
+  },
+  "workload_flexibility": {
+    "defer_window_hours": 12,
+    "deferrable_pct": 0.3,
+    "annual_saving_usd": 508571.4501204471,
+    "saving_pct": 11.582260247463552
+  }
+}

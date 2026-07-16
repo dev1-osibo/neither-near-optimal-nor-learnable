@@ -1,0 +1,26 @@
+{
+  "coordination_value": {
+    "baseline_annual_cost": 4391253.955139204,
+    "isolated_annual_cost": 2237890.053313037,
+    "sequential_annual_cost": 2152272.521754087,
+    "coordinated_annual_cost": 2007241.5285917602,
+    "savings_pct_isolated": 49.03756247816246,
+    "savings_pct_sequential": 50.98729101660759,
+    "savings_pct_coordinated": 54.290014900125946,
+    "coordination_premium_vs_isolated_pct": 10.306517265216764,
+    "coordination_premium_vs_sequential_pct": 6.738505077606413,
+    "coordination_value_dollars_vs_isolated": 230648.5247212768,
+    "coordination_value_dollars_vs_sequential": 145030.99316232675
+  },
+  "coordination_conditions": {
+    "high_volatility_days_pct": 10.0,
+    "spike_days_count": 79,
+    "spike_days_pct": 3.6155606407322654
+  },
+  "theoretical_bound": {
+    "omniscient_annual_cost": 935208.1446131,
+    "coordinated_annual_cost": 2007241.5285917602,
+    "gap_to_optimal_pct": 114.630458487096,
+    "fraction_of_possible_savings_captured": 68.98092667887792
+  }
+}

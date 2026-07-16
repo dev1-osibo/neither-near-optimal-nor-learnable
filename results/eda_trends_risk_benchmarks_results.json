@@ -1,0 +1,131 @@
+{
+  "yearly_trends": {
+    "2020": {
+      "avg_price_mwh": 22.90763091985428,
+      "price_volatility_mwh": 36.61606815250559,
+      "peak_offpeak_spread_mwh": 38.88912568306011,
+      "negative_price_pct": 0.0,
+      "spike_pct": 0.273224043715847,
+      "renewable_fraction_pct": 36.72485765219708,
+      "opportunity_index": 13.447198906839148,
+      "annual_grid_cost": 1712713.5012431694
+    },
+    "2021": {
+      "avg_price_mwh": 148.21637100456618,
+      "price_volatility_mwh": 891.3117111689179,
+      "peak_offpeak_spread_mwh": 43.962849315068496,
+      "negative_price_pct": 0.0,
+      "spike_pct": 2.4657534246575343,
+      "renewable_fraction_pct": 35.68351163451524,
+      "opportunity_index": 318.0513181547577,
+      "annual_grid_cost": 10802611.462270001
+    },
+    "2022": {
+      "avg_price_mwh": 69.92219748858449,
+      "price_volatility_mwh": 92.14398547045167,
+      "peak_offpeak_spread_mwh": 94.45764383561645,
+      "negative_price_pct": 0.0,
+      "spike_pct": 3.41324200913242,
+      "renewable_fraction_pct": 37.46028942832401,
+      "opportunity_index": 34.51740364802402,
+      "annual_grid_cost": 5306062.45513
+    },
+    "2023": {
+      "avg_price_mwh": 57.294932648401826,
+      "price_volatility_mwh": 218.38752054008,
+      "peak_offpeak_spread_mwh": 183.70917808219178,
+      "negative_price_pct": 0.0,
+      "spike_pct": 3.6187214611872145,
+      "renewable_fraction_pct": 36.23370253329419,
+      "opportunity_index": 79.12988456232934,
+      "annual_grid_cost": 4094069.4638500004
+    },
+    "2024": {
+      "avg_price_mwh": 28.269832650273223,
+      "price_volatility_mwh": 59.671592028575255,
+      "peak_offpeak_spread_mwh": 61.25775956284154,
+      "negative_price_pct": 0.011384335154826957,
+      "spike_pct": 0.7627504553734062,
+      "renewable_fraction_pct": 35.76782265287666,
+      "opportunity_index": 21.343229210928886,
+      "annual_grid_cost": 1980921.3589247267
+    },
+    "2025": {
+      "avg_price_mwh": 34.65917943361189,
+      "price_volatility_mwh": 25.94218462320478,
+      "peak_offpeak_spread_mwh": 45.114401114206125,
+      "negative_price_pct": 0.02321262766945218,
+      "spike_pct": 0.2669452181987001,
+      "renewable_fraction_pct": 39.334231482667185,
+      "opportunity_index": 10.20415895135226,
+      "annual_grid_cost": 2432895.4121353766
+    }
+  },
+  "trend_direction": {
+    "opportunity_slope": -24.62077101984616,
+    "opportunity_p_value": 0.45072106583887506,
+    "volatility_slope": -69.20132114279725,
+    "volatility_p_value": 0.4504291004862749
+  },
+  "failure_economics": {
+    "battery_wrong_cycle_cost": 0.0,
+    "sla_penalty_per_event": 24665.741861007366,
+    "carbon_misfire_cost_yr": NaN,
+    "downtime_cost_5pct": 11532.45,
+    "gross_value": 2576345.0,
+    "total_risk": NaN,
+    "risk_adjusted_value": NaN,
+    "risk_reward_ratio_pct": NaN
+  },
+  "benchmarks": {
+    "published": {
+      "DeepMind Cooling (2016)": {
+        "savings_pct": 15,
+        "sources": 1,
+        "objectives": 1
+      },
+      "DC-CFR AAAI (2024)": {
+        "savings_pct": 14.5,
+        "sources": 2,
+        "objectives": 3
+      },
+      "Google 24/7 CFE (2024)": {
+        "savings_pct": 35,
+        "sources": 2,
+        "objectives": 1
+      },
+      "Microsoft Carbon-Aware (2023)": {
+        "savings_pct": 10,
+        "sources": 1,
+        "objectives": 1
+      },
+      "arxiv 2507.21153 (2025)": {
+        "savings_pct": 38,
+        "sources": 2,
+        "objectives": 2
+      }
+    },
+    "optena": {
+      "claim": "54.3% cost reduction (coordination), 57.1% carbon, 39% water",
+      "scope": "Full multi-source orchestration + workload + cross-facility",
+      "sources": 5,
+      "objectives": 4,
+      "method": "TFT forecasting + Multi-agent RL (SAC)",
+      "savings_pct_cost": 54.3,
+      "savings_pct_vs_rules": 10.3
+    },
+    "key_differentiators": [
+      "5 energy sources (most have 1-2)",
+      "4 simultaneous objectives (most have 1-2)",
+      "Forecast-informed RL (most are reactive)",
+      "Cross-regional coordination",
+      "Grid services as revenue stream"
+    ],
+    "honest_limitations": [
+      "Simulation only (not production validated)",
+      "Coordination premium moderate (10.3%)",
+      "ERCOT-specific price patterns (extreme volatility)",
+      "Calibrated synthetic DC telemetry"
+    ]
+  }
+}

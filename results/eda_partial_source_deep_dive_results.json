@@ -1,0 +1,44 @@
+{
+  "partial_source_configs": {
+    "Config A: Grid Only (Equinix-style colo)": {
+      "current_annual_cost": 4391253.955139275,
+      "optena_annual_cost": 4391253.955139275,
+      "saving_annual": 0.0,
+      "saving_pct": 0.0,
+      "carbon_saving_tons_yr": 0.0,
+      "description": "Typical colo: zero on-site gen, zero flexibility"
+    },
+    "Config B: Grid + Diesel Backup (Enterprise DC)": {
+      "current_annual_cost": 4391253.955139275,
+      "optena_annual_cost": 3113745.592286194,
+      "saving_annual": 1277508.3628530805,
+      "saving_pct": 29.0921084479288,
+      "carbon_saving_tons_yr": 2710.5751848331292,
+      "description": "Standard enterprise: diesel for emergencies only"
+    },
+    "Config C: Grid + 2MW Solar PPA (New Build)": {
+      "current_annual_cost": 4220371.537216789,
+      "optena_annual_cost": 3555897.5996549237,
+      "saving_annual": 664473.937561865,
+      "saving_pct": 15.744441732257206,
+      "carbon_saving_tons_yr": 135.18504923311554,
+      "description": "Modern build with rooftop/parking solar"
+    },
+    "Config D: Grid + 10MWh Battery (Peak Shaver)": {
+      "current_annual_cost": 4259916.935146247,
+      "optena_annual_cost": 3512572.0585598443,
+      "saving_annual": 747344.8765864026,
+      "saving_pct": 17.543649042085033,
+      "carbon_saving_tons_yr": 185.07243121492326,
+      "description": "Battery installed for demand charge management"
+    },
+    "Config E: Grid + 2MW Solar + 10MWh Battery": {
+      "current_annual_cost": 4088975.037529008,
+      "optena_annual_cost": 3014127.7518926477,
+      "saving_annual": 1074847.28563636,
+      "saving_pct": 26.286472178756483,
+      "carbon_saving_tons_yr": 259.4387516419929,
+      "description": "Progressive operator with solar+storage"
+    }
+  }
+}

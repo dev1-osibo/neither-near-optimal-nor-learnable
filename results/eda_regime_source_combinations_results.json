@@ -1,0 +1,540 @@
+{
+  "regime_models": {
+    "global_r2": 0.9970443603995071,
+    "global_mape": 18.401197422712496,
+    "per_regime": {
+      "regime_0": {
+        "n_train": 4636,
+        "n_test": 2213,
+        "r2_regime_model": 0.9961520861795687,
+        "r2_global_on_regime": 0.9951895641656657,
+        "mape_regime": 5.984214542930479,
+        "improvement_pct": 0.09671745449922979
+      },
+      "regime_1": {
+        "n_train": 10644,
+        "n_test": 2417,
+        "r2_regime_model": 0.9961269501473199,
+        "r2_global_on_regime": 0.9972042038468398,
+        "mape_regime": 15.282880868899476,
+        "improvement_pct": -0.10802739252043878
+      },
+      "regime_2": {
+        "n_train": 17343,
+        "n_test": 3981,
+        "r2_regime_model": 0.998119686549553,
+        "r2_global_on_regime": 0.9983168690087353,
+        "mape_regime": 7.286069315220719,
+        "improvement_pct": -0.019751490263618485
+      },
+      "regime_3": {
+        "n_train": 9329,
+        "n_test": 1877,
+        "r2_regime_model": 0.9920916997776044,
+        "r2_global_on_regime": 0.9930193448556643,
+        "mape_regime": 84.14412081588158,
+        "improvement_pct": -0.09341661699398347
+      }
+    }
+  },
+  "source_combinations": {
+    "grid_only": {
+      "total_cost_usd": 2629771.937042,
+      "annual_cost_usd": 438295.3228403333,
+      "total_carbon_kg": 16252373.044890001,
+      "annual_carbon_kg": 2708728.8408150002
+    },
+    "grid_solar": {
+      "total_cost_usd": 2118085.983226298,
+      "annual_cost_usd": 353014.33053771633,
+      "total_carbon_kg": 13333529.764701307,
+      "annual_carbon_kg": 2222254.960783551
+    },
+    "grid_wind": {
+      "total_cost_usd": 1234084.903955408,
+      "annual_cost_usd": 205680.81732590133,
+      "total_carbon_kg": 7099775.366264765,
+      "annual_carbon_kg": 1183295.894377461
+    },
+    "grid_gas": {
+      "total_cost_usd": 1084287.8934983716,
+      "annual_cost_usd": 180714.64891639526,
+      "total_carbon_kg": 7978873.04861,
+      "annual_carbon_kg": 1329812.1747683333
+    },
+    "grid_solar_wind": {
+      "total_cost_usd": 943069.3335425977,
+      "annual_cost_usd": 157178.2222570996,
+      "total_carbon_kg": 5489274.34500723,
+      "annual_carbon_kg": 914879.0575012049
+    },
+    "grid_solar_battery": {
+      "total_cost_usd": 1945957.2169691133,
+      "annual_cost_usd": 324326.2028281856,
+      "total_carbon_kg": 12475658.022309974,
+      "annual_carbon_kg": 2079276.3370516624
+    },
+    "grid_wind_battery": {
+      "total_cost_usd": 1144066.9399472475,
+      "annual_cost_usd": 190677.82332454124,
+      "total_carbon_kg": 6592856.9439636,
+      "annual_carbon_kg": 1098809.4906606001
+    },
+    "grid_solar_gas": {
+      "total_cost_usd": 879001.7175265695,
+      "annual_cost_usd": 146500.28625442824,
+      "total_carbon_kg": 6993482.525406355,
+      "annual_carbon_kg": 1165580.4209010592
+    },
+    "grid_wind_gas": {
+      "total_cost_usd": 475258.01727806265,
+      "annual_cost_usd": 79209.66954634378,
+      "total_carbon_kg": 3440878.7602731576,
+      "annual_carbon_kg": 573479.7933788596
+    },
+    "grid_solar_wind_battery": {
+      "total_cost_usd": 855648.3206197583,
+      "annual_cost_usd": 142608.0534366264,
+      "total_carbon_kg": 5111202.954066745,
+      "annual_carbon_kg": 851867.1590111242
+    },
+    "grid_solar_wind_gas": {
+      "total_cost_usd": 362718.7768249733,
+      "annual_cost_usd": 60453.129470828884,
+      "total_carbon_kg": 2903124.1029200912,
+      "annual_carbon_kg": 483854.01715334854
+    },
+    "all_sources": {
+      "total_cost_usd": 365038.09048964723,
+      "annual_cost_usd": 60839.68174827454,
+      "total_carbon_kg": 2897646.910272482,
+      "annual_carbon_kg": 482941.1517120803
+    }
+  },
+  "source_combinations_baseline": {
+    "grid_only_annual_cost": 438295.3228403333,
+    "grid_only_annual_carbon": 2708728.8408150002
+  },
+  "spike_precursors": {
+    "temperature_2m_lag1h": {
+      "pre_spike_mean": 20.060253699788582,
+      "normal_mean": 13.811762763870817,
+      "difference_pct": 45.24035811173022,
+      "t_statistic": 14.357485783704185,
+      "p_value": 1.6682811706812172e-42,
+      "significant": "True"
+    },
+    "wind_speed_10m_lag1h": {
+      "pre_spike_mean": 9.692600422832982,
+      "normal_mean": 10.286541860058646,
+      "difference_pct": -5.773966074370093,
+      "t_statistic": -3.5146131738356496,
+      "p_value": 0.00046044527704997305,
+      "significant": "True"
+    },
+    "shortwave_radiation_lag1h": {
+      "pre_spike_mean": 396.4714587737844,
+      "normal_mean": 169.64884547414212,
+      "difference_pct": 133.70124191868703,
+      "t_statistic": 23.202828981765776,
+      "p_value": 4.545306572469927e-95,
+      "significant": "True"
+    },
+    "it_load_kw_lag1h": {
+      "pre_spike_mean": 645.027378435518,
+      "normal_mean": 577.7080263336763,
+      "difference_pct": 11.65283309790107,
+      "t_statistic": 10.224026662113893,
+      "p_value": 2.188761408761962e-23,
+      "significant": "True"
+    },
+    "carbon_intensity_gco2_kwh_lag1h": {
+      "pre_spike_mean": 416.0285412262156,
+      "normal_mean": 377.72893208785655,
+      "difference_pct": 10.13944283448505,
+      "t_statistic": 22.582708590636734,
+      "p_value": 4.6092388819853964e-91,
+      "significant": "True"
+    },
+    "combined_renewable_kw_lag1h": {
+      "pre_spike_mean": 1175.0865721725481,
+      "normal_mean": 1057.2163042740715,
+      "difference_pct": 11.149115599329622,
+      "t_statistic": 4.047301256378488,
+      "p_value": 5.5901562289823696e-05,
+      "significant": "True"
+    },
+    "temperature_2m_lag2h": {
+      "pre_spike_mean": 20.075581395348838,
+      "normal_mean": 13.811615396566456,
+      "difference_pct": 45.35288464765384,
+      "t_statistic": 14.448223882184038,
+      "p_value": 5.655222629097757e-43,
+      "significant": "True"
+    },
+    "wind_speed_10m_lag2h": {
+      "pre_spike_mean": 9.682452431289642,
+      "normal_mean": 10.28664452730521,
+      "difference_pct": -5.873558616823792,
+      "t_statistic": -3.574220629008338,
+      "p_value": 0.00036832236095924223,
+      "significant": "True"
+    },
+    "shortwave_radiation_lag2h": {
+      "pre_spike_mean": 442.1966173361522,
+      "normal_mean": 168.8120873145343,
+      "difference_pct": 161.94606344286356,
+      "t_statistic": 27.63590035615972,
+      "p_value": 2.0706933536854586e-124,
+      "significant": "True"
+    },
+    "it_load_kw_lag2h": {
+      "pre_spike_mean": 688.6881606765329,
+      "normal_mean": 576.9087955410549,
+      "difference_pct": 19.37556958732888,
+      "t_statistic": 16.276628595501744,
+      "p_value": 6.723618539984076e-53,
+      "significant": "True"
+    },
+    "carbon_intensity_gco2_kwh_lag2h": {
+      "pre_spike_mean": 414.73911205073995,
+      "normal_mean": 377.7530276547813,
+      "difference_pct": 9.791075567436422,
+      "t_statistic": 21.589718085446474,
+      "p_value": 1.0442783650317039e-84,
+      "significant": "True"
+    },
+    "combined_renewable_kw_lag2h": {
+      "pre_spike_mean": 1227.233335137247,
+      "normal_mean": 1056.2399657853678,
+      "difference_pct": 16.18887515061381,
+      "t_statistic": 5.8794962522047545,
+      "p_value": 5.6423948204209265e-09,
+      "significant": "True"
+    },
+    "temperature_2m_lag3h": {
+      "pre_spike_mean": 19.8323467230444,
+      "normal_mean": 13.816197005301898,
+      "difference_pct": 43.54418017804633,
+      "t_statistic": 14.059548048492386,
+      "p_value": 5.587440302196816e-41,
+      "significant": "True"
+    },
+    "wind_speed_10m_lag3h": {
+      "pre_spike_mean": 9.500739957716704,
+      "normal_mean": 10.289922510730028,
+      "difference_pct": -7.669470320990153,
+      "t_statistic": -4.723830519556733,
+      "p_value": 2.650270123583282e-06,
+      "significant": "True"
+    },
+    "shortwave_radiation_lag3h": {
+      "pre_spike_mean": 460.9196617336152,
+      "normal_mean": 168.47138334854634,
+      "difference_pct": 173.58929010515084,
+      "t_statistic": 29.830137453802937,
+      "p_value": 3.22884996913947e-139,
+      "significant": "True"
+    },
+    "it_load_kw_lag3h": {
+      "pre_spike_mean": 722.0827695560254,
+      "normal_mean": 576.3003282126973,
+      "difference_pct": 25.296262071453064,
+      "t_statistic": 21.41119977800499,
+      "p_value": 9.949251301306073e-84,
+      "significant": "True"
+    },
+    "carbon_intensity_gco2_kwh_lag3h": {
+      "pre_spike_mean": 413.10972515856236,
+      "normal_mean": 377.78336990930455,
+      "difference_pct": 9.350955617167239,
+      "t_statistic": 20.33807746894518,
+      "p_value": 7.625512464061453e-77,
+      "significant": "True"
+    },
+    "combined_renewable_kw_lag3h": {
+      "pre_spike_mean": 1226.7958064716167,
+      "normal_mean": 1056.229675483829,
+      "difference_pct": 16.14858348963319,
+      "t_statistic": 5.905309070933435,
+      "p_value": 4.851373204529746e-09,
+      "significant": "True"
+    },
+    "temperature_2m_lag6h": {
+      "pre_spike_mean": 17.735517970401695,
+      "normal_mean": 13.854958436917341,
+      "difference_pct": 28.00845308308091,
+      "t_statistic": 9.908482887700108,
+      "p_value": 4.136026669188996e-22,
+      "significant": "True"
+    },
+    "wind_speed_10m_lag6h": {
+      "pre_spike_mean": 8.539323467230444,
+      "normal_mean": 10.307250233064016,
+      "difference_pct": -17.15226394875274,
+      "t_statistic": -11.35139404661635,
+      "p_value": 3.666748377909756e-28,
+      "significant": "True"
+    },
+    "shortwave_radiation_lag6h": {
+      "pre_spike_mean": 356.723044397463,
+      "normal_mean": 170.39498523927907,
+      "difference_pct": 109.35067067644665,
+      "t_statistic": 19.856140828532574,
+      "p_value": 6.615206165024436e-74,
+      "significant": "True"
+    },
+    "it_load_kw_lag6h": {
+      "pre_spike_mean": 775.5963002114166,
+      "normal_mean": 575.3327688004972,
+      "difference_pct": 34.80829569788732,
+      "t_statistic": 29.60458620981001,
+      "p_value": 4.330859157217602e-138,
+      "significant": "True"
+    },
+    "carbon_intensity_gco2_kwh_lag6h": {
+      "pre_spike_mean": 407.55243128964065,
+      "normal_mean": 377.8866978713487,
+      "difference_pct": 7.850430720477923,
+      "t_statistic": 16.543660677091527,
+      "p_value": 2.5417240217483022e-54,
+      "significant": "True"
+    },
+    "combined_renewable_kw_lag6h": {
+      "pre_spike_mean": 956.6494959411391,
+      "normal_mean": 1061.1375966799192,
+      "difference_pct": -9.846800364599446,
+      "t_statistic": -3.8794067383869204,
+      "p_value": 0.00011167780847104397,
+      "significant": "True"
+    }
+  },
+  "cross_regional": {
+    "overlap_hours": 22654,
+    "price_correlation": -0.0014285493719577269,
+    "spread_mean": 1.932636209904064,
+    "spread_std": 145.2224567167209,
+    "pct_ercot_cheaper": 71.19713957799947,
+    "pct_large_spread": 11.322503752096761,
+    "hourly_ercot": {
+      "0": 23.17093220338983,
+      "1": 21.168813559322036,
+      "2": 20.25335456475584,
+      "3": 20.14864406779661,
+      "4": 21.203400423728812,
+      "5": 24.571302966101698,
+      "6": 31.4076906779661,
+      "7": 31.62867584745763,
+      "8": 24.02675847457627,
+      "9": 19.886218220338982,
+      "10": 20.301398305084746,
+      "11": 22.22270127118644,
+      "12": 25.341949152542373,
+      "13": 32.51292372881356,
+      "14": 43.5170656779661,
+      "15": 62.533644067796615,
+      "16": 78.71929025423728,
+      "17": 89.28438559322035,
+      "18": 100.62256355932203,
+      "19": 125.31810381355932,
+      "20": 82.87277542372881,
+      "21": 39.467182203389825,
+      "22": 29.333569915254238,
+      "23": 24.539692796610172
+    },
+    "hourly_caiso": {
+      "0": 43.05095427436441,
+      "1": 49.295508957450565,
+      "2": 53.96122102618542,
+      "3": 49.90475481461864,
+      "4": 49.28293943149718,
+      "5": 47.90906591013418,
+      "6": 45.01586634622175,
+      "7": 43.71929823799435,
+      "8": 41.8795770480226,
+      "9": 40.22531219367938,
+      "10": 39.49604131532486,
+      "11": 39.980728079096046,
+      "12": 42.024200548199154,
+      "13": 45.103637830155364,
+      "14": 43.46804727754237,
+      "15": 39.581472084216095,
+      "16": 35.945993808262706,
+      "17": 33.59617608403955,
+      "18": 30.792464771362994,
+      "19": 29.021800232168076,
+      "20": 28.628714559498587,
+      "21": 29.240843538135593,
+      "22": 31.525644399717514,
+      "23": 35.095014502118644
+    }
+  },
+  "negative_prices": {
+    "caiso_count": 915,
+    "caiso_pct": 4.038665254237288,
+    "mean_negative_price": -16.2605729417122,
+    "min_price": -129.81518083333333,
+    "by_hour": {
+      "0": 39,
+      "1": 4,
+      "13": 2,
+      "14": 20,
+      "15": 30,
+      "16": 48,
+      "17": 83,
+      "18": 94,
+      "19": 120,
+      "20": 133,
+      "21": 130,
+      "22": 118,
+      "23": 94
+    },
+    "peak_hours": [
+      20,
+      21,
+      19,
+      22,
+      18
+    ]
+  },
+  "autocorrelation": {
+    "lmp_price_usd_mwh": {
+      "1": 0.9836975133042075,
+      "2": 0.9594801009900945,
+      "3": 0.9349470199159516,
+      "6": 0.8814504735648855,
+      "12": 0.8596971380805917,
+      "24": 0.8400957675613692,
+      "48": 0.648246718002757,
+      "168": 0.022671196644900533
+    },
+    "solar_gen_kw": {
+      "1": 0.9314806751668252,
+      "2": 0.7926895260446676,
+      "3": 0.6025985210462547,
+      "6": -0.024481375237663427,
+      "12": -0.4715843146718247,
+      "24": 0.8655216237008436,
+      "48": 0.8394557421998009,
+      "168": 0.8337777205966063
+    },
+    "wind_gen_kw": {
+      "1": 0.8271264622623485,
+      "2": 0.7050224362785766,
+      "3": 0.6125991544717309,
+      "6": 0.4075810720810055,
+      "12": 0.19614539878266024,
+      "24": 0.13154415218947144,
+      "48": 0.0642075944900538,
+      "168": 0.07029382327843052
+    },
+    "it_load_kw": {
+      "1": 0.8011238839758565,
+      "2": 0.7294599206249012,
+      "3": 0.6208313171318103,
+      "6": 0.19716891263366476,
+      "12": -0.3092394751862787,
+      "24": 0.7250663555290907,
+      "48": 0.624950765569981,
+      "168": 0.8268516985417403
+    },
+    "cooling_load_kw": {
+      "1": 0.8041381055610657,
+      "2": 0.7364981737067013,
+      "3": 0.6334781957783867,
+      "6": 0.2301047908293046,
+      "12": -0.2538314004423357,
+      "24": 0.7337506527831652,
+      "48": 0.6403991876766086,
+      "168": 0.823377360629089
+    },
+    "temperature_2m": {
+      "1": 0.9924498939349261,
+      "2": 0.9752454724560319,
+      "3": 0.9513874259413067,
+      "6": 0.8626401756356936,
+      "12": 0.7535852799069964,
+      "24": 0.9199773070155576,
+      "48": 0.863032016237745,
+      "168": 0.816851296914527
+    }
+  },
+  "mutual_information": {
+    "target": "lmp_price_usd_mwh",
+    "scores": {
+      "hour": 0.13702221188874697,
+      "temperature_2m": 0.08343451929838608,
+      "month": 0.0542344184121486,
+      "shortwave_radiation": 0.038786605915821504,
+      "solar_gen_kw": 0.0380362919080417,
+      "carbon_intensity_gco2_kwh": 0.030099417593024924,
+      "it_load_kw": 0.018100822087384394,
+      "wind_speed_10m": 0.00832787131111079,
+      "cloud_cover": 0.002904785714532565,
+      "wind_gen_kw": 0.001805857320924531
+    }
+  },
+  "compound_events": {
+    "0": {
+      "count": 34937,
+      "pct": 66.62280701754386,
+      "avg_price": 35.384180381830156,
+      "p95_price": 80.14399999999995
+    },
+    "1": {
+      "count": 14457,
+      "pct": 27.568649885583525,
+      "avg_price": 113.11863318807498,
+      "p95_price": 145.7259999999995
+    },
+    "2": {
+      "count": 2762,
+      "pct": 5.26697177726926,
+      "avg_price": 99.93616582186822,
+      "p95_price": 169.98399999999995
+    },
+    "3": {
+      "count": 284,
+      "pct": 0.5415713196033562,
+      "avg_price": 46.246901408450704,
+      "p95_price": 108.68749999999997
+    }
+  },
+  "cost_sensitivity": {
+    "Add All Sources": {
+      "annual_cost": 60839.68174827454,
+      "saving_usd": 377455.64109205874,
+      "saving_pct": 86.11902099387954
+    },
+    "Add Solar+Wind": {
+      "annual_cost": 157178.2222570996,
+      "saving_usd": 281117.10058323364,
+      "saving_pct": 64.13874069234407
+    },
+    "Add 2MW Gas": {
+      "annual_cost": 180714.64891639526,
+      "saving_usd": 257580.673923938,
+      "saving_pct": 58.76874803379367
+    },
+    "Add Wind+Battery": {
+      "annual_cost": 190677.82332454124,
+      "saving_usd": 247617.49951579203,
+      "saving_pct": 56.49558336856738
+    },
+    "Add 2MW Wind": {
+      "annual_cost": 205680.81732590133,
+      "saving_usd": 232614.50551443195,
+      "saving_pct": 53.072550262912834
+    },
+    "Add Solar+Battery": {
+      "annual_cost": 324326.2028281856,
+      "saving_usd": 113969.1200121477,
+      "saving_pct": 26.00281455744978
+    },
+    "Add 1MW Solar": {
+      "annual_cost": 353014.33053771633,
+      "saving_usd": 85280.99230261694,
+      "saving_pct": 19.457426958143465
+    }
+  }
+}

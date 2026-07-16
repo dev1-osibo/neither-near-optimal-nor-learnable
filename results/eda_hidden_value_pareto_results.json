@@ -1,0 +1,96 @@
+{
+  "hidden_value_decomposition": {
+    "battery_gap_annual": 557.6375110018291,
+    "curtailed_renewable_mwh": 302.9394255730295,
+    "curtailed_value_usd": 11273.401146663853
+  },
+  "pareto_frontier": {
+    "points": [
+      {
+        "alpha": 1.0,
+        "cost": 2313854.610625012,
+        "carbon": 14562005.085389443
+      },
+      {
+        "alpha": 0.9,
+        "cost": 2319102.087885537,
+        "carbon": 13625239.184875961
+      },
+      {
+        "alpha": 0.8,
+        "cost": 2335987.2107562637,
+        "carbon": 12685122.767325057
+      },
+      {
+        "alpha": 0.7,
+        "cost": 2357620.874757773,
+        "carbon": 12024710.90563414
+      },
+      {
+        "alpha": 0.6,
+        "cost": 2373803.679207037,
+        "carbon": 11714259.136287373
+      },
+      {
+        "alpha": 0.5,
+        "cost": 2377967.4592130333,
+        "carbon": 11657686.630000537
+      },
+      {
+        "alpha": 0.4,
+        "cost": 2377839.4449878703,
+        "carbon": 11659310.741934095
+      },
+      {
+        "alpha": 0.3,
+        "cost": 2378494.86860486,
+        "carbon": 11652398.250724973
+      },
+      {
+        "alpha": 0.2,
+        "cost": 2380618.387068768,
+        "carbon": 11650222.616069991
+      },
+      {
+        "alpha": 0.1,
+        "cost": 2383340.4819811964,
+        "carbon": 11637246.078801539
+      },
+      {
+        "alpha": 0.0,
+        "cost": 2404279.025274846,
+        "carbon": 11627444.15727583
+      }
+    ],
+    "baseline_cost": 4391253.955139204,
+    "baseline_carbon": 27146622.339369398,
+    "n_pareto_improvements": 11
+  },
+  "grid_services": {
+    "demand_response_revenue": 388983.75260750233,
+    "regulation_revenue": 394200.0,
+    "total_grid_services": 783183.7526075023,
+    "scarcity_hours": 251
+  },
+  "diversification": {
+    "ercot_volatility": 141.98161512249754,
+    "caiso_volatility": 30.306581312091406,
+    "portfolio_volatility": 72.5688877419225,
+    "correlation": -0.0014285493719577269,
+    "diversification_benefit_pct": 15.75872376204942,
+    "single_region_spike_pct": 0.6665489538271386,
+    "both_spike_pct": 0.0
+  },
+  "total_value_stack": {
+    "per_10mw_dc": {
+      "Multi-source orchestration (vs grid-only)": 2153364.0,
+      "Coordination premium (vs isolated rules)": 230649.0,
+      "Workload flexibility (30% deferral)": 508571.0,
+      "Grid services revenue": 783183.7526075023,
+      "Cross-regional arbitrage (2 regions)": 145807.0
+    },
+    "total_per_10mw": 3821574.752607502,
+    "total_100mw_campus": 38215747.52607502,
+    "total_500mw_fleet": 191078737.6303751
+  }
+}

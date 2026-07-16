@@ -1,0 +1,70 @@
+{
+  "grid_only_savings": {
+    "workload_deferral": 360030.2668773823,
+    "demand_charge_avoidance": 77249.81777981092,
+    "free_cooling_prediction": 96851.18019082065,
+    "grid_services_revenue": 388983.75260750233,
+    "ppa_spot_arbitrage": 1459998.2462601557,
+    "total_zero_capex": 2383113.263715672,
+    "payback_months": 1.007085998194647
+  },
+  "value_scaling_curve": {
+    "Tier 1: Grid only": {
+      "rule_based_annual": 4391253.955139275,
+      "coordinated_annual": 3732565.8618682846,
+      "optena_value_annual": 658688.0932709897,
+      "optena_value_pct": 15.000000000002245
+    },
+    "Tier 2: Grid + Solar": {
+      "rule_based_annual": 3964047.9103331687,
+      "coordinated_annual": 3305359.817062246,
+      "optena_value_annual": 658688.0932709225,
+      "optena_value_pct": 16.61655227611922
+    },
+    "Tier 3: Grid + Solar + Battery": {
+      "rule_based_annual": 3688966.724634787,
+      "coordinated_annual": 2955722.649682792,
+      "optena_value_annual": 733244.0749519954,
+      "optena_value_pct": 19.876679018420464
+    },
+    "Tier 4: Grid + Solar + Wind + Battery": {
+      "rule_based_annual": 2655754.211007422,
+      "coordinated_annual": 2023965.8113000977,
+      "optena_value_annual": 631788.3997073242,
+      "optena_value_pct": 23.789415341552427
+    },
+    "Tier 5: All sources": {
+      "rule_based_annual": 2237890.053313037,
+      "coordinated_annual": 1650903.8262884177,
+      "optena_value_annual": 586986.2270246195,
+      "optena_value_pct": 26.229448857669666
+    }
+  },
+  "carbon_credits": {
+    "baseline_tons_yr": 27146.622339369398,
+    "optimized_tons_yr": 17343.530492704373,
+    "reduction_tons_yr": 9803.091846665026,
+    "revenue_at_30_per_ton": 294092.7553999508,
+    "revenue_at_60_per_ton": 588185.5107999016
+  },
+  "cooling_degradation": {
+    "avg_pue": 1.4129840271424214,
+    "drift_assumed": 0.05,
+    "extra_cost_annual": 155389.3699711508
+  },
+  "gpu_scheduling": {
+    "spike_hours": 2600,
+    "annual_saving_from_shift": 22971.291705679356
+  },
+  "all_new_angles": {
+    "Workload deferral (zero CAPEX)": 360030.2668773823,
+    "Demand charge avoidance (zero CAPEX)": 77249.81777981092,
+    "Free cooling prediction (zero CAPEX)": 96851.18019082065,
+    "Grid services revenue (zero CAPEX)": 388983.75260750233,
+    "PPA/Spot arbitrage (zero CAPEX)": 1459998.2462601557,
+    "Carbon credit monetization ($30/ton)": 294092.7553999508,
+    "Cooling degradation prevention": 155389.3699711508,
+    "GPU training scheduling": 22971.291705679356
+  },
+  "total_new_angles": 2855566.680792453
+}

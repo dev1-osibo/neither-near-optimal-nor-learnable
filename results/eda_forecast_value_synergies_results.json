@@ -1,0 +1,52 @@
+{
+  "forecast_value": {
+    "reactive_annual_cost": 60455.13349594492,
+    "perfect_foresight_annual_cost": 54095.142381186444,
+    "imperfect_10pct_annual_cost": 53997.00767515739,
+    "imperfect_20pct_annual_cost": 53160.69195371067,
+    "imperfect_50pct_annual_cost": 54200.531557044065,
+    "perfect_savings_pct": 10.520183724654384,
+    "imperfect_20_savings_pct": 12.065876163723194,
+    "imperfect_50_savings_pct": 10.345857460260829
+  },
+  "source_synergy": {
+    "grid_only_annual": 439298.28696582577,
+    "solar_only_saving": 85476.14331475274,
+    "wind_only_saving": 233146.80415405403,
+    "solar_wind_expected_additive": 318622.94746880676,
+    "solar_wind_actual": 281760.3891429195,
+    "solar_wind_synergy_pct": -11.569335673632274,
+    "all_sources_expected_additive": 591567.5327896309,
+    "all_sources_actual": 379969.2296087552,
+    "all_sources_synergy_pct": -35.76908661350128
+  },
+  "multi_objective_tradeoff": {
+    "cost_carbon_aligned_pct": 97.99771167048054,
+    "cost_carbon_conflict_pct": 2.002288329519451,
+    "avg_clean_premium_usd_mwh": 7.651311487795665,
+    "temp_price_corr": -0.03274035119794043,
+    "temp_cooling_corr": 0.36083091510802934
+  },
+  "forecast_horizon_value": {
+    "1h": 169378.1655376577,
+    "2h": 103217.71756923388,
+    "4h": 80014.05636824816,
+    "6h": 78440.58957405771,
+    "12h": 74585.60356948963,
+    "24h": 70616.90253995034
+  },
+  "adversarial": {
+    "failure_days_pct": 0.0,
+    "success_days_pct": 100.0,
+    "avg_saving_when_works": 266.1019620332291,
+    "avg_loss_when_fails": 0
+  },
+  "cross_regional_value": {
+    "overlap_hours": 22536,
+    "ercot_high_price": 199.30056813138037,
+    "caiso_at_ercot_high": 38.78044986980323,
+    "tradeable_hours_pct": 54.28647497337593,
+    "avg_tradeable_spread": 61.32137303988883,
+    "annual_trade_value_500kw": 145806.7478093983
+  }
+}

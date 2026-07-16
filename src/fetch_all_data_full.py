@@ -11,7 +11,7 @@ import numpy as np
 DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data')
 os.makedirs(DATA_DIR, exist_ok=True)
 
-API_KEY = "29E8nLYJS8QZro2mhfIieTrMNSoiinPwClKblFAt"
+API_KEY = os.environ.get("EIA_API_KEY", "")
 
 # ============================================================
 # WEATHER — Open-Meteo (free, no key, chunked by year)

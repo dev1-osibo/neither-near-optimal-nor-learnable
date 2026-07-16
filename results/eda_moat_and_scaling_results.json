@@ -1,0 +1,112 @@
+{
+  "competitive_moat": {
+    "Grid only (baseline)": {
+      "cost": 4391253.955139204,
+      "saving_pct": 0.0
+    },
+    "Rule 1: Use renewables": {
+      "cost": 2902653.384239651,
+      "saving_pct": 33.89921389441399
+    },
+    "Rule 2: + Fixed battery schedule": {
+      "cost": 2659933.750235053,
+      "saving_pct": 39.426556117938475
+    },
+    "Rule 3: + Price threshold ($100)": {
+      "cost": 2267521.728003722,
+      "saving_pct": 48.36277402380749
+    },
+    "Rule 4: + Rolling percentile": {
+      "cost": 2190637.69828055,
+      "saving_pct": 50.11361855497364
+    },
+    "Rule 5: Optena (full coordination)": {
+      "cost": 1814909.053976849,
+      "saving_pct": 58.669913593751254
+    }
+  },
+  "moat_value": 1087744.3302628018,
+  "scaling": {
+    "1MW": {
+      "grid_cost": 439125.3955139204,
+      "optena_cost": 181490.90539769712,
+      "saving": 257634.49011622329,
+      "saving_pct": 58.669913593748454,
+      "per_mw_saving": 257634.49011622329
+    },
+    "2MW": {
+      "grid_cost": 878250.7910278408,
+      "optena_cost": 362981.81079539424,
+      "saving": 515268.98023244657,
+      "saving_pct": 58.669913593748454,
+      "per_mw_saving": 257634.49011622329
+    },
+    "5MW": {
+      "grid_cost": 2195626.977569602,
+      "optena_cost": 907454.5269884245,
+      "saving": 1288172.4505811776,
+      "saving_pct": 58.669913593751254,
+      "per_mw_saving": 257634.4901162355
+    },
+    "10MW": {
+      "grid_cost": 4391253.955139204,
+      "optena_cost": 1814909.053976849,
+      "saving": 2576344.901162355,
+      "saving_pct": 58.669913593751254,
+      "per_mw_saving": 257634.4901162355
+    },
+    "20MW": {
+      "grid_cost": 8782507.910278408,
+      "optena_cost": 3629818.107953698,
+      "saving": 5152689.80232471,
+      "saving_pct": 58.669913593751254,
+      "per_mw_saving": 257634.4901162355
+    },
+    "50MW": {
+      "grid_cost": 21956269.77569602,
+      "optena_cost": 9074545.269885244,
+      "saving": 12881724.505810777,
+      "saving_pct": 58.66991359374669,
+      "per_mw_saving": 257634.49011621554
+    },
+    "100MW": {
+      "grid_cost": 43912539.55139204,
+      "optena_cost": 18149090.539770488,
+      "saving": 25763449.011621553,
+      "saving_pct": 58.66991359374669,
+      "per_mw_saving": 257634.49011621554
+    }
+  },
+  "yearly_value": {
+    "2020": {
+      "avg_price": 22.90763091985428,
+      "volatility": 36.61606815250559,
+      "optena_annual_value": 158389.94839555558
+    },
+    "2021": {
+      "avg_price": 148.21637100456618,
+      "volatility": 891.3117111689179,
+      "optena_annual_value": 1200334.9047022965
+    },
+    "2022": {
+      "avg_price": 69.92219748858449,
+      "volatility": 92.14398547045167,
+      "optena_annual_value": 489566.8676278279
+    },
+    "2023": {
+      "avg_price": 57.294932648401826,
+      "volatility": 218.38752054008,
+      "optena_annual_value": 352753.3095961192
+    },
+    "2024": {
+      "avg_price": 28.269832650273223,
+      "volatility": 59.671592028575255,
+      "optena_annual_value": 190602.46035146253
+    },
+    "2025": {
+      "avg_price": 34.65917943361189,
+      "volatility": 25.94218462320478,
+      "optena_annual_value": 218606.4573473335
+    }
+  }
+}

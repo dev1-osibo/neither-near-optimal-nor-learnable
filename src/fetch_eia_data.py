@@ -10,7 +10,7 @@ import time
 DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data')
 os.makedirs(DATA_DIR, exist_ok=True)
 
-API_KEY = "29E8nLYJS8QZro2mhfIieTrMNSoiinPwClKblFAt"
+API_KEY = os.environ.get("EIA_API_KEY", "")
 BASE_URL = "https://api.eia.gov/v2/electricity/rto"
 
 REGIONS = ['PJM', 'ERCO', 'CISO']

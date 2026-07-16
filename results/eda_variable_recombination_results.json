@@ -556,7 +556,7 @@
         {
           "feature": "temperature_2m",
           "linear_importance": 0.5770120014449642,
-          "tree_importance": 0.021991392670710055,
+          "tree_importance": 0.02199139267071186,
           "linear_rank": 1,
           "tree_rank": 2,
           "rank_change": -1
@@ -564,7 +564,7 @@
         {
           "feature": "shortwave_radiation",
           "linear_importance": 0.008911178033556915,
-          "tree_importance": 2.923513907216322e-05,
+          "tree_importance": 2.9235139072437093e-05,
           "linear_rank": 7,
           "tree_rank": 4,
           "rank_change": 3
@@ -572,7 +572,7 @@
         {
           "feature": "carbon_intensity_gco2_kwh",
           "linear_importance": 0.047752506981351445,
-          "tree_importance": 7.665660787262902e-05,
+          "tree_importance": 7.665660787259158e-05,
           "linear_rank": 4,
           "tree_rank": 3,
           "rank_change": 1
@@ -580,7 +580,7 @@
         {
           "feature": "it_load_kw",
           "linear_importance": 0.24998515167082494,
-          "tree_importance": 0.9778354780783155,
+          "tree_importance": 0.9778354780783148,
           "linear_rank": 2,
           "tree_rank": 1,
           "rank_change": 1
@@ -588,7 +588,7 @@
         {
           "feature": "hour",
           "linear_importance": 0.030175910295806185,
-          "tree_importance": 2.5150169000513885e-05,
+          "tree_importance": 2.515016899993725e-05,
           "linear_rank": 5,
           "tree_rank": 5,
           "rank_change": 0
@@ -596,7 +596,7 @@
         {
           "feature": "day_of_week",
           "linear_importance": 0.06643179589878502,
-          "tree_importance": 2.325197910801271e-05,
+          "tree_importance": 2.325197910767682e-05,
           "linear_rank": 3,
           "tree_rank": 6,
           "rank_change": -3
@@ -604,7 +604,7 @@
         {
           "feature": "month",
           "linear_importance": 0.019731455674711282,
-          "tree_importance": 1.8835355921044243e-05,
+          "tree_importance": 1.8835355920798945e-05,
           "linear_rank": 6,
           "tree_rank": 7,
           "rank_change": -1
@@ -1022,7 +1022,7 @@
       "Internal-only Linear": 5.827113110501654,
       "All-signals Linear": 4.918336857452097,
       "Polynomial degree 2": 4.3856766072743945,
-      "Decision Tree (depth 12)": 4.505493432969994,
+      "Decision Tree (depth 12)": 4.505511560536524,
       "Engineered features Linear": 4.404740107670167
     }
   }

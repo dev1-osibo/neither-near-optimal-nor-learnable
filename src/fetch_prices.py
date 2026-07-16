@@ -4,7 +4,7 @@ import pandas as pd
 import os
 import time
 
-API_KEY = "29E8nLYJS8QZro2mhfIieTrMNSoiinPwClKblFAt"
+API_KEY = os.environ.get("EIA_API_KEY", "")
 DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data')
 
 # Retail prices (monthly, by state) — commercial sector

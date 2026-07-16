@@ -1,0 +1,174 @@
+{
+  "activity_prediction": {
+    "r2_activity_only": 0.826652219627206,
+    "r2_lags_only": 0.7556307530656121,
+    "r2_combined": 0.8182306624079135,
+    "improvement_pct": 8.28445759894394,
+    "weekday_vs_weekend_diff_pct": 26.162063527689426
+  },
+  "water_optimization": {
+    "annual_water_m3": 33742.45167411985,
+    "annual_water_cost_usd": 50613.677511179776,
+    "dry_cooling_eligible_pct": 68.29826166514181,
+    "water_saving_m3_yr": 12998.73646230604,
+    "water_saving_pct": 38.523390617392366,
+    "water_saving_usd": 19498.10469345906
+  },
+  "grid_stress_precursors": {
+    "6h": {
+      "temperature_2m": {
+        "pre_stress_mean": 12.14031007751938,
+        "normal_mean": 14.10702,
+        "diff_pct": -13.94135630686438,
+        "p_value": 0.006738049885004998,
+        "detectable": "False"
+      },
+      "wind_speed_10m": {
+        "pre_stress_mean": 8.737467700258398,
+        "normal_mean": 10.17942,
+        "diff_pct": -14.16536796538116,
+        "p_value": 1.1224754657252356e-08,
+        "detectable": "True"
+      },
+      "shortwave_radiation": {
+        "pre_stress_mean": 273.59948320413434,
+        "normal_mean": 176.5666,
+        "diff_pct": 54.95540108046162,
+        "p_value": 2.3973151354447096e-10,
+        "detectable": "True"
+      },
+      "it_load_kw": {
+        "pre_stress_mean": 705.0542635658915,
+        "normal_mean": 585.8685,
+        "diff_pct": 20.343432624538,
+        "p_value": 7.591950437115835e-21,
+        "detectable": "True"
+      },
+      "carbon_intensity_gco2_kwh": {
+        "pre_stress_mean": 436.44857881136943,
+        "normal_mean": 378.70326,
+        "diff_pct": 15.248170509905151,
+        "p_value": 1.0937396789311362e-56,
+        "detectable": "True"
+      }
+    },
+    "12h": {
+      "temperature_2m": {
+        "pre_stress_mean": 9.504909560723513,
+        "normal_mean": 14.10702,
+        "diff_pct": -32.622839120356296,
+        "p_value": 1.9632489435971922e-14,
+        "detectable": "True"
+      },
+      "wind_speed_10m": {
+        "pre_stress_mean": 8.457622739018088,
+        "normal_mean": 10.17942,
+        "diff_pct": -16.91449278035401,
+        "p_value": 7.02491910349031e-12,
+        "detectable": "True"
+      },
+      "shortwave_radiation": {
+        "pre_stress_mean": 43.23772609819122,
+        "normal_mean": 176.5666,
+        "diff_pct": -75.51194501214204,
+        "p_value": 1.1310898030651696e-80,
+        "detectable": "True"
+      },
+      "it_load_kw": {
+        "pre_stress_mean": 567.1948320413437,
+        "normal_mean": 585.8685,
+        "diff_pct": -3.187348007045322,
+        "p_value": 0.04833564021547623,
+        "detectable": "False"
+      },
+      "carbon_intensity_gco2_kwh": {
+        "pre_stress_mean": 438.68708010335916,
+        "normal_mean": 378.70326,
+        "diff_pct": 15.839266898140556,
+        "p_value": 2.9732065040828987e-61,
+        "detectable": "True"
+      }
+    },
+    "24h": {
+      "temperature_2m": {
+        "pre_stress_mean": 13.966925064599485,
+        "normal_mean": 14.10702,
+        "diff_pct": -0.9930866717458091,
+        "p_value": 0.8543761457608612,
+        "detectable": "False"
+      },
+      "wind_speed_10m": {
+        "pre_stress_mean": 8.85813953488372,
+        "normal_mean": 10.17942,
+        "diff_pct": -12.979918945443645,
+        "p_value": 9.164896434944615e-08,
+        "detectable": "True"
+      },
+      "shortwave_radiation": {
+        "pre_stress_mean": 241.5297157622739,
+        "normal_mean": 176.5666,
+        "diff_pct": 36.792414738842965,
+        "p_value": 2.8210126327921006e-06,
+        "detectable": "True"
+      },
+      "it_load_kw": {
+        "pre_stress_mean": 568.5416020671835,
+        "normal_mean": 585.8685,
+        "diff_pct": -2.957472185791959,
+        "p_value": 0.06964270274405854,
+        "detectable": "False"
+      },
+      "carbon_intensity_gco2_kwh": {
+        "pre_stress_mean": 440.1682170542636,
+        "normal_mean": 378.70326,
+        "diff_pct": 16.23037442409754,
+        "p_value": 2.1985946348887334e-69,
+        "detectable": "True"
+      }
+    }
+  },
+  "learning_curve": {
+    "1 year (2024)": {
+      "train_size": 8784,
+      "r2": 0.8092130067603306,
+      "mape": 8.308584383456505
+    },
+    "2 years (2023-24)": {
+      "train_size": 17544,
+      "r2": 0.8153249805048618,
+      "mape": 7.8639932033692554
+    },
+    "3 years (2022-24)": {
+      "train_size": 26304,
+      "r2": 0.8165218626020121,
+      "mape": 7.729486154197354
+    },
+    "4 years (2021-24)": {
+      "train_size": 35064,
+      "r2": 0.8178207387748353,
+      "mape": 7.670767972775103
+    },
+    "5 years (2020-24)": {
+      "train_size": 43848,
+      "r2": 0.8180570056826054,
+      "mape": 7.699163378505391
+    }
+  },
+  "us_incentives": {
+    "eere_credit": 150000.0,
+    "cpuc_rebate_low": 1613811.0288026074,
+    "cpuc_rebate_high": 5379370.096008692,
+    "rggi_revenue": 152021.08510046866,
+    "ira_credit_onetime": 870000.0,
+    "rec_revenue": 64676.68687292771,
+    "total_annual": 1980508.8007760039
+  },
+  "trading_patterns": {
+    "tx_to_ca_hours": 8808,
+    "ca_to_tx_hours": 3454,
+    "no_trade_pct": 45.8726935640505,
+    "annual_trade_revenue": 580751.4759261764,
+    "avg_value_per_trade_hour": 122.4813037087479,
+    "trades_per_day": 12.99055354462788
+  }
+}

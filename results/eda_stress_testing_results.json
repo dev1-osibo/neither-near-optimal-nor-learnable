@@ -1,0 +1,16 @@
+{
+  "texas_freeze": {
+    "duration_hours": 169,
+    "max_price_mwh": 8995.11,
+    "grid_only_cost": 8115656.55276,
+    "optimized_cost": 2278360.5261312043,
+    "saving_one_week": 5837296.026628796
+  },
+  "stress_tests": {
+    "solar_20pct_loss_cost_increase": 61519.09580972069,
+    "battery_50pct_fade_cost_increase": 8905.03348685382,
+    "gas_3x_cost_increase": 82007.1111427513,
+    "compound_failure_cost_increase": 616113.3723989334,
+    "forecast_miss_cost": 3916143.112808784
+  }
+}

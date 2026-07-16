@@ -1,0 +1,865 @@
+{
+  "correlation_matrix": {
+    "top_15_pairs": [
+      [
+        "ambient_temp_c",
+        "temperature_2m",
+        1.0
+      ],
+      [
+        "shortwave_radiation",
+        "solar_gen_kw",
+        0.9999999999999974
+      ],
+      [
+        "it_load_kw",
+        "total_facility_kw",
+        0.9986794675300453
+      ],
+      [
+        "cooling_load_kw",
+        "total_facility_kw",
+        0.9900265028025689
+      ],
+      [
+        "it_load_kw",
+        "cooling_load_kw",
+        0.9814815331161881
+      ],
+      [
+        "wind_gen_kw",
+        "combined_renewable_kw",
+        0.9689498207491577
+      ],
+      [
+        "wind_gen_kw",
+        "net_demand_kw",
+        -0.7669891329447733
+      ],
+      [
+        "combined_renewable_kw",
+        "net_demand_kw",
+        -0.7545719881543909
+      ],
+      [
+        "wind_speed_10m",
+        "wind_gen_kw",
+        0.7349840872162785
+      ],
+      [
+        "wind_speed_10m",
+        "combined_renewable_kw",
+        0.7247154006183657
+      ],
+      [
+        "relative_humidity_2m",
+        "shortwave_radiation",
+        -0.6120718334794311
+      ],
+      [
+        "relative_humidity_2m",
+        "solar_gen_kw",
+        -0.6120718334794258
+      ],
+      [
+        "wind_speed_10m",
+        "net_demand_kw",
+        -0.576745605105276
+      ],
+      [
+        "cooling_load_kw",
+        "shortwave_radiation",
+        0.5746701059316763
+      ],
+      [
+        "cooling_load_kw",
+        "solar_gen_kw",
+        0.5746701059316727
+      ]
+    ],
+    "price_correlations": {
+      "carbon_intensity_gco2_kwh": 0.15664344270272162,
+      "cloud_cover": 0.03286640725697448,
+      "ambient_temp_c": -0.03274035119794069,
+      "temperature_2m": -0.03274035119794069,
+      "wind_gen_kw": -0.01867808826223983,
+      "wind_speed_10m": -0.015587219888121489,
+      "combined_renewable_kw": -0.015553568291758309,
+      "net_demand_kw": 0.011331105296702778,
+      "pue": 0.011012875871657016,
+      "shortwave_radiation": 0.010561884730056113,
+      "solar_gen_kw": 0.010561884730055794,
+      "cooling_load_kw": 0.008175579788923804,
+      "total_facility_kw": 0.007094562041182165,
+      "it_load_kw": 0.006663270522474666,
+      "relative_humidity_2m": -0.0058562898765126365
+    }
+  },
+  "granger_causality": {
+    "lmp_price_usd_mwh": {
+      "temperature_2m": {
+        "min_p_value": 1.5390159856753619e-52,
+        "best_lag": 3,
+        "causes": "YES"
+      },
+      "wind_speed_10m": {
+        "min_p_value": 0.01923990302901121,
+        "best_lag": 3,
+        "causes": "WEAK"
+      },
+      "shortwave_radiation": {
+        "min_p_value": 2.7946662250695793e-71,
+        "best_lag": 2,
+        "causes": "YES"
+      },
+      "cloud_cover": {
+        "min_p_value": 0.12240324031634067,
+        "best_lag": 6,
+        "causes": "NO"
+      },
+      "carbon_intensity_gco2_kwh": {
+        "min_p_value": 3.115435744202926e-36,
+        "best_lag": 3,
+        "causes": "YES"
+      },
+      "it_load_kw": {
+        "min_p_value": 2.980779717676883e-39,
+        "best_lag": 3,
+        "causes": "YES"
+      },
+      "solar_gen_kw": {
+        "min_p_value": 2.7946662250695793e-71,
+        "best_lag": 2,
+        "causes": "YES"
+      },
+      "wind_gen_kw": {
+        "min_p_value": 0.033044632378312275,
+        "best_lag": 3,
+        "causes": "WEAK"
+      }
+    },
+    "net_demand_kw": {
+      "temperature_2m": {
+        "min_p_value": 7.781983000532885e-212,
+        "best_lag": 6,
+        "causes": "YES"
+      },
+      "wind_speed_10m": {
+        "min_p_value": 1.9137700802304703e-100,
+        "best_lag": 3,
+        "causes": "YES"
+      },
+      "shortwave_radiation": {
+        "min_p_value": 1.0959961037793442e-287,
+        "best_lag": 5,
+        "causes": "YES"
+      },
+      "cloud_cover": {
+        "min_p_value": 1.5426652579765868e-09,
+        "best_lag": 5,
+        "causes": "YES"
+      },
+      "carbon_intensity_gco2_kwh": {
+        "min_p_value": 3.3128255432176434e-92,
+        "best_lag": 6,
+        "causes": "YES"
+      },
+      "it_load_kw": {
+        "min_p_value": 6.568719127016355e-214,
+        "best_lag": 4,
+        "causes": "YES"
+      },
+      "solar_gen_kw": {
+        "min_p_value": 1.0959961037793442e-287,
+        "best_lag": 5,
+        "causes": "YES"
+      },
+      "wind_gen_kw": {
+        "min_p_value": 1.996650659574641e-124,
+        "best_lag": 5,
+        "causes": "YES"
+      }
+    },
+    "cooling_load_kw": {
+      "temperature_2m": {
+        "min_p_value": 0.0,
+        "best_lag": 3,
+        "causes": "YES"
+      },
+      "wind_speed_10m": {
+        "min_p_value": 3.465207936399591e-50,
+        "best_lag": 1,
+        "causes": "YES"
+      },
+      "shortwave_radiation": {
+        "min_p_value": 0.0,
+        "best_lag": 1,
+        "causes": "YES"
+      },
+      "cloud_cover": {
+        "min_p_value": 6.862431279176711e-06,
+        "best_lag": 1,
+        "causes": "YES"
+      },
+      "carbon_intensity_gco2_kwh": {
+        "min_p_value": 1.3933757768061382e-285,
+        "best_lag": 3,
+        "causes": "YES"
+      },
+      "it_load_kw": {
+        "min_p_value": 1.1919686831316266e-145,
+        "best_lag": 3,
+        "causes": "YES"
+      },
+      "solar_gen_kw": {
+        "min_p_value": 0.0,
+        "best_lag": 1,
+        "causes": "YES"
+      },
+      "wind_gen_kw": {
+        "min_p_value": 2.746630741604055e-26,
+        "best_lag": 1,
+        "causes": "YES"
+      }
+    }
+  },
+  "nonlinear_interactions": {
+    "temperature_2m \u2192 cooling_load_kw": {
+      "r2_linear": 0.13019894929769785,
+      "r2_polynomial": 0.1463883858183077,
+      "improvement_pct": 12.434383386299816,
+      "slope_below_median": 1.423453151335947,
+      "slope_above_median": 5.249273214936186,
+      "slope_ratio": 3.6877035327854726,
+      "is_nonlinear": "True"
+    },
+    "temperature_2m \u2192 lmp_price_usd_mwh": {
+      "r2_linear": 0.0010719305965644793,
+      "r2_polynomial": 0.010764889150789991,
+      "improvement_pct": 904.2524381047889,
+      "slope_below_median": -8.906617117424206,
+      "slope_above_median": 4.744611423173855,
+      "slope_ratio": -0.5327063418828086,
+      "is_nonlinear": "True"
+    },
+    "shortwave_radiation \u2192 solar_gen_kw": {
+      "r2_linear": 0.9999999999999938,
+      "r2_polynomial": 1.0,
+      "improvement_pct": 6.217248937900915e-13,
+      "slope_below_median": 0.8500679999999977,
+      "slope_above_median": 0.8500679999999999,
+      "slope_ratio": 1.0000000000000027,
+      "is_nonlinear": "False"
+    },
+    "wind_speed_10m \u2192 wind_gen_kw": {
+      "r2_linear": 0.540201608461139,
+      "r2_polynomial": 0.7718233873699214,
+      "improvement_pct": 42.87691396710176,
+      "slope_below_median": 77.01045441963221,
+      "slope_above_median": 13.048955759552067,
+      "slope_ratio": 0.16944395222560207,
+      "is_nonlinear": "True"
+    },
+    "it_load_kw \u2192 cooling_load_kw": {
+      "r2_linear": 0.9633059998480983,
+      "r2_polynomial": 0.9633480658725025,
+      "improvement_pct": 0.004366839240168437,
+      "slope_below_median": 0.3745135629294847,
+      "slope_above_median": 0.379834687317106,
+      "slope_ratio": 1.014208095284985,
+      "is_nonlinear": "False"
+    },
+    "cloud_cover \u2192 solar_gen_kw": {
+      "r2_linear": 0.010661123518351363,
+      "r2_polynomial": 0.037178547677715,
+      "improvement_pct": 248.73010910827804,
+      "slope_below_median": 1.3050157407605911,
+      "slope_above_median": -4.061597359886288,
+      "slope_ratio": -3.1122976014979726,
+      "is_nonlinear": "True"
+    },
+    "relative_humidity_2m \u2192 cooling_load_kw": {
+      "r2_linear": 0.03517561139049159,
+      "r2_polynomial": 0.04208495151920677,
+      "improvement_pct": 19.642416593739316,
+      "slope_below_median": -1.4546815400948638,
+      "slope_above_median": -0.1951513544333714,
+      "slope_ratio": 0.1341540048831891,
+      "is_nonlinear": "True"
+    },
+    "carbon_intensity_gco2_kwh \u2192 lmp_price_usd_mwh": {
+      "r2_linear": 0.02453716814176038,
+      "r2_polynomial": 0.06676082926833016,
+      "improvement_pct": 172.080416463008,
+      "slope_below_median": 0.11970280278000922,
+      "slope_above_median": 3.7033363365555005,
+      "slope_ratio": 30.937757935054552,
+      "is_nonlinear": "True"
+    }
+  },
+  "interaction_features": {
+    "top_for_price": [
+      [
+        "cloud_cover_x_carbon_intensity_gco2_kwh",
+        0.06473630023500397
+      ],
+      [
+        "it_load_kw_x_carbon_intensity_gco2_kwh",
+        0.05614016665223269
+      ],
+      [
+        "carbon_intensity_gco2_kwh_x_relative_humidity_2m",
+        0.05312519490907746
+      ],
+      [
+        "temperature_2m_x_relative_humidity_2m",
+        0.04910379376773336
+      ],
+      [
+        "cloud_cover_x_it_load_kw",
+        0.031628386549443006
+      ],
+      [
+        "cloud_cover_x_relative_humidity_2m",
+        0.02882522913068583
+      ],
+      [
+        "temperature_2m_x_wind_speed_10m",
+        0.028344090557291444
+      ],
+      [
+        "temperature_2m_x_carbon_intensity_gco2_kwh",
+        0.02772953979544423
+      ],
+      [
+        "temperature_2m_x_it_load_kw",
+        0.02662599429946373
+      ],
+      [
+        "relative_humidity_2m_x_wind_gen_kw",
+        0.02174612611345393
+      ],
+      [
+        "shortwave_radiation_x_cloud_cover",
+        0.019508366829320844
+      ],
+      [
+        "cloud_cover_x_solar_gen_kw",
+        0.01950836682932079
+      ],
+      [
+        "carbon_intensity_gco2_kwh_x_solar_gen_kw",
+        0.018571522868446672
+      ],
+      [
+        "shortwave_radiation_x_carbon_intensity_gco2_kwh",
+        0.018571522868446648
+      ],
+      [
+        "wind_speed_10m_x_relative_humidity_2m",
+        0.018096002236003664
+      ],
+      [
+        "temperature_2m_x_wind_gen_kw",
+        0.018013693758998587
+      ],
+      [
+        "temperature_2m_x_cloud_cover",
+        0.01766520822151326
+      ],
+      [
+        "wind_speed_10m_x_wind_gen_kw",
+        0.01685116051413535
+      ],
+      [
+        "temperature_2m_x_shortwave_radiation",
+        0.015245082737394838
+      ],
+      [
+        "temperature_2m_x_solar_gen_kw",
+        0.015245082737394819
+      ]
+    ],
+    "top_for_cooling": [
+      [
+        "it_load_kw_x_carbon_intensity_gco2_kwh",
+        0.9470667733672747
+      ],
+      [
+        "temperature_2m_x_it_load_kw",
+        0.6957529722216749
+      ],
+      [
+        "it_load_kw_x_solar_gen_kw",
+        0.6721521396289809
+      ],
+      [
+        "shortwave_radiation_x_it_load_kw",
+        0.6721521396289797
+      ],
+      [
+        "it_load_kw_x_relative_humidity_2m",
+        0.6362590974710695
+      ],
+      [
+        "shortwave_radiation_x_relative_humidity_2m",
+        0.6153042803193197
+      ],
+      [
+        "relative_humidity_2m_x_solar_gen_kw",
+        0.6153042803193192
+      ],
+      [
+        "shortwave_radiation_x_carbon_intensity_gco2_kwh",
+        0.5818822997563246
+      ],
+      [
+        "carbon_intensity_gco2_kwh_x_solar_gen_kw",
+        0.5818822997563246
+      ],
+      [
+        "temperature_2m_x_shortwave_radiation",
+        0.5368398783556145
+      ],
+      [
+        "temperature_2m_x_solar_gen_kw",
+        0.5368398783556142
+      ],
+      [
+        "shortwave_radiation_x_solar_gen_kw",
+        0.5127890719177484
+      ],
+      [
+        "wind_speed_10m_x_it_load_kw",
+        0.4699114802620765
+      ],
+      [
+        "shortwave_radiation_x_cloud_cover",
+        0.4441534478060913
+      ],
+      [
+        "cloud_cover_x_solar_gen_kw",
+        0.44415344780609034
+      ],
+      [
+        "wind_speed_10m_x_shortwave_radiation",
+        0.43275118165970206
+      ],
+      [
+        "wind_speed_10m_x_solar_gen_kw",
+        0.43275118165970133
+      ],
+      [
+        "cloud_cover_x_it_load_kw",
+        0.41893824028473087
+      ],
+      [
+        "temperature_2m_x_carbon_intensity_gco2_kwh",
+        0.34996178366278746
+      ],
+      [
+        "shortwave_radiation_x_wind_gen_kw",
+        0.3405739441591286
+      ]
+    ]
+  },
+  "regimes": {
+    "k": 4,
+    "sizes": {
+      "0": 13064,
+      "1": 29570,
+      "2": 120,
+      "3": 9686
+    },
+    "centroids": {
+      "temperature_2m": {
+        "0": 22.69,
+        "1": 12.03,
+        "2": 0.33,
+        "3": 8.04
+      },
+      "shortwave_radiation": {
+        "0": 509.55,
+        "1": 36.52,
+        "2": 81.08,
+        "3": 140.93
+      },
+      "wind_speed_10m": {
+        "0": 8.89,
+        "1": 8.23,
+        "2": 9.02,
+        "3": 18.42
+      },
+      "it_load_kw": {
+        "0": 787.43,
+        "1": 490.88,
+        "2": 596.41,
+        "3": 566.35
+      },
+      "lmp_price_usd_mwh": {
+        "0": 60.08,
+        "1": 37.91,
+        "2": 7489.6,
+        "3": 36.75
+      }
+    },
+    "regime_names": {
+      "0": "Regime_0",
+      "1": "Regime_1",
+      "2": "Cold/Night",
+      "3": "Windy"
+    },
+    "inertias": {
+      "2": 194398.94486523792,
+      "3": 148397.07089258434,
+      "4": 122914.61453364513,
+      "5": 103112.46756071571,
+      "6": 88382.98421544034,
+      "7": 80791.60637471241
+    }
+  },
+  "lag_analysis": {
+    "lmp_price_usd_mwh": {
+      "temperature_2m": {
+        "best_lag": 12,
+        "correlation": 0.06146552470269898
+      },
+      "wind_speed_10m": {
+        "best_lag": 10,
+        "correlation": 0.026611900821952108
+      },
+      "shortwave_radiation": {
+        "best_lag": 13,
+        "correlation": 0.048068370648396405
+      },
+      "carbon_intensity_gco2_kwh": {
+        "best_lag": 17,
+        "correlation": 0.16727148580161852
+      },
+      "it_load_kw": {
+        "best_lag": 6,
+        "correlation": 0.04450632853697867
+      },
+      "solar_gen_kw": {
+        "best_lag": 13,
+        "correlation": 0.048068370648396246
+      },
+      "wind_gen_kw": {
+        "best_lag": 11,
+        "correlation": 0.032432777105629015
+      }
+    },
+    "cooling_load_kw": {
+      "temperature_2m": {
+        "best_lag": 20,
+        "correlation": 0.4932505893325462
+      },
+      "wind_speed_10m": {
+        "best_lag": 5,
+        "correlation": 0.15218290786461047
+      },
+      "shortwave_radiation": {
+        "best_lag": 22,
+        "correlation": 0.7099663708824853
+      },
+      "carbon_intensity_gco2_kwh": {
+        "best_lag": 12,
+        "correlation": 0.21152582198814107
+      },
+      "it_load_kw": {
+        "best_lag": 0,
+        "correlation": 0.9814815331161858
+      },
+      "solar_gen_kw": {
+        "best_lag": 22,
+        "correlation": 0.7099663708824848
+      },
+      "wind_gen_kw": {
+        "best_lag": 4,
+        "correlation": 0.12668570829611486
+      }
+    },
+    "net_demand_kw": {
+      "temperature_2m": {
+        "best_lag": 17,
+        "correlation": 0.22428762258833562
+      },
+      "wind_speed_10m": {
+        "best_lag": 0,
+        "correlation": 0.576745605105279
+      },
+      "shortwave_radiation": {
+        "best_lag": 19,
+        "correlation": 0.35170070638067796
+      },
+      "carbon_intensity_gco2_kwh": {
+        "best_lag": 8,
+        "correlation": 0.17701848568872922
+      },
+      "it_load_kw": {
+        "best_lag": 0,
+        "correlation": 0.35223529493881284
+      },
+      "solar_gen_kw": {
+        "best_lag": 19,
+        "correlation": 0.3517007063806772
+      },
+      "wind_gen_kw": {
+        "best_lag": 0,
+        "correlation": 0.7669891329447731
+      }
+    }
+  },
+  "feature_importance": {
+    "lmp_price_usd_mwh": {
+      "r2": -2.2577054292573244,
+      "mape": 83.95762748736664,
+      "feature_importance": {
+        "carbon_intensity_gco2_kwh": 0.32682417070371017,
+        "dow_feat": 0.13980118810169087,
+        "month_feat": 0.13276431600246577,
+        "ambient_temp_c": 0.13176853446660322,
+        "relative_humidity_2m": 0.08203459019093498,
+        "temperature_2m": 0.06984188295191335,
+        "wind_speed_10m": 0.02750413507451462,
+        "pue": 0.015403765410675568,
+        "cloud_cover": 0.014800886647555639,
+        "combined_renewable_kw": 0.012851076136121598,
+        "hour_feat": 0.01129532466872289,
+        "it_load_kw": 0.008825857325456746,
+        "total_facility_kw": 0.008308917378064936,
+        "cooling_load_kw": 0.008009932450123932,
+        "wind_gen_kw": 0.003678056659330685,
+        "solar_gen_kw": 0.003240417732299647,
+        "shortwave_radiation": 0.003046948099815277
+      },
+      "top_5": [
+        [
+          "carbon_intensity_gco2_kwh",
+          0.32682417070371017
+        ],
+        [
+          "dow_feat",
+          0.13980118810169087
+        ],
+        [
+          "month_feat",
+          0.13276431600246577
+        ],
+        [
+          "ambient_temp_c",
+          0.13176853446660322
+        ],
+        [
+          "relative_humidity_2m",
+          0.08203459019093498
+        ]
+      ]
+    },
+    "cooling_load_kw": {
+      "r2": 0.9999264711294297,
+      "mape": 0.22933908829560712,
+      "feature_importance": {
+        "total_facility_kw": 0.979564065258691,
+        "pue": 0.020271442702610876,
+        "temperature_2m": 8.931372546405399e-05,
+        "ambient_temp_c": 6.182757294132717e-05,
+        "it_load_kw": 1.0847505234823038e-05,
+        "cloud_cover": 4.063553796250381e-07,
+        "hour_feat": 3.9523378986173014e-07,
+        "wind_speed_10m": 3.3974540228317736e-07,
+        "carbon_intensity_gco2_kwh": 3.198334202825037e-07,
+        "relative_humidity_2m": 2.2064865021660507e-07,
+        "solar_gen_kw": 2.193110153603787e-07,
+        "combined_renewable_kw": 1.5121914797410256e-07,
+        "shortwave_radiation": 1.2594940592897039e-07,
+        "wind_gen_kw": 1.1690071210355795e-07,
+        "dow_feat": 1.1679960576642495e-07,
+        "month_feat": 9.123852828556658e-08
+      },
+      "top_5": [
+        [
+          "total_facility_kw",
+          0.979564065258691
+        ],
+        [
+          "pue",
+          0.020271442702610876
+        ],
+        [
+          "temperature_2m",
+          8.931372546405399e-05
+        ],
+        [
+          "ambient_temp_c",
+          6.182757294132717e-05
+        ],
+        [
+          "it_load_kw",
+          1.0847505234823038e-05
+        ]
+      ]
+    },
+    "net_demand_kw": {
+      "r2": 0.9992347700026354,
+      "mape": 10.071375005050088,
+      "feature_importance": {
+        "wind_gen_kw": 0.6455644485991989,
+        "it_load_kw": 0.15471597857079217,
+        "combined_renewable_kw": 0.13434334703390655,
+        "total_facility_kw": 0.04418909657243373,
+        "wind_speed_10m": 0.01524392215704797,
+        "cooling_load_kw": 0.004681991164639212,
+        "hour_feat": 0.0004599245808239353,
+        "solar_gen_kw": 0.0002466779285138107,
+        "shortwave_radiation": 0.0002161370735695003,
+        "dow_feat": 0.00020978551937431627,
+        "pue": 6.255938907561215e-05,
+        "relative_humidity_2m": 5.141856573586564e-05,
+        "month_feat": 4.447102890932448e-06,
+        "carbon_intensity_gco2_kwh": 3.3055109795271116e-06,
+        "temperature_2m": 3.051477273928414e-06,
+        "ambient_temp_c": 2.415622268747469e-06,
+        "cloud_cover": 1.4931314752348948e-06
+      },
+      "top_5": [
+        [
+          "wind_gen_kw",
+          0.6455644485991989
+        ],
+        [
+          "it_load_kw",
+          0.15471597857079217
+        ],
+        [
+          "combined_renewable_kw",
+          0.13434334703390655
+        ],
+        [
+          "total_facility_kw",
+          0.04418909657243373
+        ],
+        [
+          "wind_speed_10m",
+          0.01524392215704797
+        ]
+      ]
+    }
+  },
+  "ablation_study": {
+    "target": "cooling_load_kw",
+    "baseline_r2": 0.9998784900095243,
+    "groups": {
+      "weather": {
+        "r2_without": 0.999878724454953,
+        "r2_drop_pct": -2.3447391955000446e-05,
+        "vars_removed": [
+          "temperature_2m",
+          "relative_humidity_2m",
+          "wind_speed_10m",
+          "shortwave_radiation",
+          "cloud_cover"
+        ]
+      },
+      "renewable_gen": {
+        "r2_without": 0.9998784900095243,
+        "r2_drop_pct": 0.0,
+        "vars_removed": [
+          "solar_gen_kw",
+          "wind_gen_kw",
+          "combined_renewable_kw"
+        ]
+      },
+      "carbon": {
+        "r2_without": 0.9998784158613319,
+        "r2_drop_pct": 7.41572033159341e-06,
+        "vars_removed": [
+          "carbon_intensity_gco2_kwh"
+        ]
+      },
+      "internal_telemetry": {
+        "r2_without": 0.9915102446649169,
+        "r2_drop_pct": 0.8369262293589033,
+        "vars_removed": [
+          "it_load_kw",
+          "cooling_load_kw",
+          "pue"
+        ]
+      },
+      "time_features": {
+        "r2_without": 0.9998781991433533,
+        "r2_drop_pct": 2.9090151847842444e-05,
+        "vars_removed": [
+          "hour_feat",
+          "month_feat",
+          "dow_feat"
+        ]
+      }
+    }
+  },
+  "conditional_distributions": {
+    "high_temp": {
+      "count": 5112,
+      "price_mean": 99.47423708920189,
+      "price_median": 44.239999999999995,
+      "price_std": 258.1017893514313,
+      "price_p95": 273.80299999999994
+    },
+    "low_temp": {
+      "count": 5106,
+      "price_mean": 163.8967312965139,
+      "price_median": 25.485,
+      "price_std": 970.8920097482601,
+      "price_p95": 93.1525
+    },
+    "high_solar": {
+      "count": 5232,
+      "price_mean": 65.87927752293578,
+      "price_median": 35.44,
+      "price_std": 151.0677253993234,
+      "price_p95": 174.2215
+    },
+    "no_solar": {
+      "count": 24554,
+      "price_mean": 50.1740889468111,
+      "price_median": 22.795,
+      "price_std": 401.48499894942853,
+      "price_p95": 60.053499999999985
+    },
+    "low_wind": {
+      "count": 5041,
+      "price_mean": 54.51009521920254,
+      "price_median": 26.55,
+      "price_std": 326.605103602071,
+      "price_p95": 96.71
+    },
+    "high_load": {
+      "count": 5242,
+      "price_mean": 49.29920831743609,
+      "price_median": 27.455,
+      "price_std": 276.7965682900983,
+      "price_p95": 100.199
+    },
+    "low_load": {
+      "count": 5242,
+      "price_mean": 41.10444105303319,
+      "price_median": 24.76,
+      "price_std": 180.70233044000202,
+      "price_p95": 67.88649999999998
+    },
+    "peak_hours": {
+      "count": 10925,
+      "price_mean": 94.55193226544623,
+      "price_median": 41.52,
+      "price_std": 399.7678277778127,
+      "price_p95": 197.9899999999999
+    },
+    "off_peak": {
+      "count": 10925,
+      "price_mean": 41.351073684210526,
+      "price_median": 19.51,
+      "price_std": 370.5792944900365,
+      "price_p95": 49.337999999999994
+    }
+  }
+}
