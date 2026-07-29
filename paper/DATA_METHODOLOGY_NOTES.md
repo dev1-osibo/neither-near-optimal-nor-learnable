@@ -1,79 +1,91 @@
-# Data Methodology Notes — For Paper Writing & Non-Provisional Filing
+# Data Provenance & Methodology — Behind-the-Meter Single-Facility Benchmark
 
-## IMPORTANT: How to Describe Each Data Type
-
-### 1. REAL Data (Weather, EIA)
-**Description in paper:**
-"Hourly weather data was obtained from Open-Meteo Archive API for three major US data center locations (Ashburn VA, Phoenix AZ, The Dalles OR) covering January 2020 through December 2025. Grid operational data including hourly demand, generation by fuel type, and interchange was obtained from the US Energy Information Administration Form EIA-930 Hourly Electric Grid Monitor for the PJM, ERCOT, and CAISO balancing authorities."
-
-No caveats needed — this is government/scientific public data.
+This document describes the data provenance and modelling choices for the benchmark
+(`PAPER1_DRAFT.md`, §3). It is the data-provenance companion for the reproducibility section
+(§9): replayed real Alibaba GPU workload trace, real ERCOT market and environmental data, and
+physically modelled IT power and cooling.
 
 ---
 
-### 2. DERIVED Data (Carbon Intensity)
-**What we did:** Real EIA generation-by-fuel data × published IPCC/EPA emission factors = hourly carbon intensity
+## Data provenance by signal
 
-**Description in paper:**
-"Grid carbon intensity was derived from hourly generation-by-fuel data (EIA Form 930) using IPCC 2014 lifecycle emission factors [cite IPCC AR5]. This methodology is consistent with approaches used by ElectricityMaps [cite] and WattTime [cite] for real-time grid carbon tracking, and follows the EPA eGRID methodology for emission factor assignment by fuel type."
+### 1. Workload trace → IT power — REAL trace, replayed (§3.2)
+**Source:** Alibaba `cluster-trace-gpu-v2020` (Weng et al. 2022).
+**Method:** Hourly cluster GPU utilization is reconstructed by replaying instance start/end
+events weighted by per-instance usage, normalized by machine capacity. Because trace timestamps
+are desensitized (time-of-day and day-of-week are real; calendar dates are not), the
+reconstruction is collapsed into a **typical-week profile** — 168 values indexed by
+(day-of-week × 24 + hour-of-day) — and replayed onto the 2020–2025 timestamp axis.
+**Mapping to power:** linear idle/peak envelope (Fan et al. 2007):
+`IT(t) = P_nom · [ φ + (1 − φ) · u(t) ]`, with `P_nom = 20 MW`, idle fraction `φ = 0.30`.
+**Note:** load is diurnal but relatively flat — the replayed typical-week profile the agent
+sees has mean ≈ 12%, peak ≈ 15% of capacity (raw pre-aggregation hourly peak ≈ 25%, smoothed by
+the typical-week averaging) — a genuine property of ML clusters and a limit on deferral headroom
+(Threats #1–#3).
 
-**Key point:** This is industry standard. ElectricityMaps, WattTime, Google, Microsoft all use the same approach. Not novel methodology — just applying known factors to real data.
+### 2. Cooling — physical model (§3.3)
+Temperature-dependent PUE: `cooling(t) = IT(t) · [ PUE(T(t)) − 1 ]`,
+`PUE(T) = 1.25 + 0.01·max(0, T − 20 °C)`. Uncontrolled demand `D(t) = IT(t) + cooling(t)`
+(mean ≈ 9.7 MW at design sizing).
 
----
+### 3. On-site generation & storage — physical models (§3.4)
+- **Solar (5 MW):** `P_solar = clip(G·32,679·0.18·0.85/1000, 0, 5000)` kW — a 32,679 m² array at
+  18% module efficiency, 0.85 performance ratio, sized to reach 5 MW nameplate at 1000 W/m².
+  Driven by the site's own ambient weather → ~17% capacity factor (conservative vs a
+  purpose-sited farm).
+- **Wind (5 MW):** cubic power curve in wind speed; cut-in 3.5, rated 12, cut-out 25 m/s.
+- **Battery (20 MWh / 10 MW):** **0.90 round-trip efficiency** (√0.90 ≈ 0.949 applied at each of
+  charge and discharge). Surplus renewable auto-charges up to 95% SoC regardless of the agent's
+  action (disclosed dynamic, Threat #11).
+- **Gas (2 MW):** Henry Hub cost, 0.41 kgCO₂/kWh (EIA/EPA natural-gas electricity).
 
-### 3. CALIBRATED SYNTHETIC Data (DC Internal Telemetry)
-**What we did:** Generated synthetic time series, but EVERY parameter is calibrated from real ORNL Summit measurements (8.9M rows, DOE, CC BY 4.0).
+### 4. Market data — REAL (§3.5)
+Dispatch runs on **real ERCOT LMPs**; gas priced at **Henry Hub**. CAISO price history begins
+only in 2023 and is excluded to keep the market signal consistent across the full 2020–2025 span
+(Threat #6).
 
-**Description in paper:**
-"Internal data center telemetry was generated using a synthetic model calibrated against 8,911,312 real measurements from the ORNL Summit supercomputer [Shin et al., 2022, DOI: 10.13139/OLCF/1861393]. Specific calibration parameters include:
-- GPU power draw: 39-53W idle baseline, 5.12x P95 training spike (measured)
-- Thermal behavior: 0.35°C/min rise rate, 22-70°C operating range (measured)
-- Node power patterns: daily/weekly/seasonal cycles matching real HPC usage patterns
-- Cooling load: physically modeled as f(IT_load, ambient_temperature) per ASHRAE TC 9.9
+### 5. Carbon intensity — DERIVED (§3.5)
+Real **EIA hourly fuel mix** × **IPCC lifecycle emission factors** → hourly grid carbon
+intensity. This is the industry-standard method (ElectricityMaps, WattTime, EPA eGRID use the
+same approach): known emission factors applied to real generation data, not a novel methodology.
+The grid-carbon observation is normalized with data-derived mean/std so the agent can resolve it.
 
-The synthetic approach is necessitated by the proprietary nature of production data center operational telemetry. The calibration against government-published real measurements from a 13MW, 4,626-node facility ensures physical realism. This approach is consistent with prior work including DCGen [arXiv:2604.09616], the NeurIPS LC-Opt benchmark, and Google DeepMind's data center optimization studies which similarly use simulators calibrated from real operational data."
-
-**Key points for reviewers:**
-1. NEVER claim it's real production data
-2. ALWAYS cite the calibration source (Shin et al., ORNL Summit)
-3. State WHY we used synthetic (proprietary nature of real DC data)
-4. Reference other papers that do the same thing (DCGen, LC-Opt)
-5. List WHICH parameters were calibrated and to what measured values
-
----
-
-### 4. Pricing Data
-**Current state:** Monthly state-level retail/industrial prices from EIA (REAL).
-**For hourly resolution:** Would need PJM LMP data (available from PJM.com but requires separate data agreement). For the paper, we can:
-- Use monthly real prices as a baseline
-- Interpolate to hourly using the time-of-use patterns visible in our demand data
-- Clearly label as "hourly prices estimated from monthly EIA averages modulated by observed demand patterns"
-
-OR register for PJM Data Miner (free): https://dataminer2.pjm.com — provides actual hourly LMP.
-
----
-
-## Summary Table for Paper
-
-| Data Source | Type | Provenance | Rows | Citation |
-|------------|------|-----------|------|----------|
-| Weather (3 locations) | REAL | Open-Meteo Archive API | 157,392 | open-meteo.com |
-| Grid demand/generation/interchange | REAL | EIA Form 930 | 3,095,000+ | eia.gov |
-| Retail/Industrial prices | REAL | EIA retail-sales | 720 | eia.gov |
-| Carbon intensity (3 regions) | DERIVED | EIA fuel mix × IPCC factors | 157,145 | IPCC AR5 + EIA |
-| DC telemetry | CALIBRATED SYNTHETIC | Parameters from ORNL Summit | 52,464 | Shin et al. 2022, DOI:10.13139/OLCF/1861393 |
+### 6. Weather — REAL (§3.5)
+Temperature, humidity, solar irradiance, and wind speed from **Open-Meteo Archive / NASA POWER**.
+Drives solar/wind generation, cooling PUE, and the evaporative-water model.
 
 ---
 
-## For Non-Provisional Patent Filing
-
-The non-provisional should reference:
-- "Real-world weather and grid data from [Open-Meteo, EIA] demonstrate that the system operates with publicly available signal sources"
-- "System parameters are calibrated from [ORNL Summit DOE dataset]"
-- "Experimental results show the fused-signal model outperforms internal-only baselines by [X%] (cite paper results)"
-
-The patent does NOT need to justify synthetic data the way a paper does — patents describe the METHOD, not prove scientific claims. The paper handles the scientific proof; the patent handles the legal protection.
+## Reward normalization (§3.7)
+Reward is the negative weighted sum of four **normalized** objectives (cost/carbon/water/SLA),
+weights α = (0.4, 0.3, 0.2, 0.1) unless the sweep overrides. Divisors are **data-derived** (mean
+hourly value over the loaded substrate), not hand-set: **C = 592.1, K = 3683.7, W = 2.638**.
+- Water-model humidity factor `h_f = 1 + (50 − RH)/100` — drier air evaporates more per unit of
+  cooling.
+- Divisors use full-record statistics (a train-only C would be ≈733, a 19% offset); this is a
+  reward-shaping choice applied identically to all controllers, not an evaluation leak — every
+  reported cost/carbon/water figure is an absolute physical quantity (Threat #10).
 
 ---
 
-*Notes created: June 13, 2026*
-*For use in: Paper 2 (Energy Orchestration) + Non-Provisional filing for Patent 1*
+## Summary table (substrate)
+| Signal | Type | Provenance | Role |
+|---|---|---|---|
+| GPU workload trace | REAL (replayed typical-week) | Alibaba cluster-trace-gpu-v2020 (Weng et al. 2022) | drives IT power |
+| IT power | MODEL | Fan et al. 2007 linear envelope | facility load |
+| Cooling | MODEL | temperature-dependent PUE(T) | facility load |
+| Solar / wind | MODEL on real weather | irradiance / wind-speed power curves | on-site generation |
+| Battery / gas | MODEL | SoC dynamics (η = 0.90) / Henry Hub + emission factor | storage & dispatchable |
+| Electricity price | REAL | ERCOT LMP | cost objective |
+| Grid carbon intensity | DERIVED | EIA fuel mix × IPCC factors | carbon objective |
+| Weather | REAL | Open-Meteo / NASA POWER | generation, cooling, water |
+
+---
+
+## Key threats a reader should note
+Power and cooling are **models**, not metered facility telemetry (Threat #4) — comparative
+conclusions are more robust than any absolute figure, since every controller (RL, heuristics, and
+the LP optimum) is scored on the same substrate and seeds. The load is real in structure but
+**replayed**, not a real calendar sequence (Threat #3); the trace is a **GPU cluster** (Threat
+#2); and results are for a **single facility**, mitigated by the sizing sweep across a fourfold
+battery range (§5.8, Threat #5).

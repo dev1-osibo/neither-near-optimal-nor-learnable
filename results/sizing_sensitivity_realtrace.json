@@ -1,0 +1,106 @@
+{
+  "protocol": {
+    "forecast_mode": "persistence",
+    "seed_base": 8000,
+    "n_eval_episodes": 200,
+    "note": "battery-sizing sensitivity; rate=capacity/2; heuristic (RuleBased) vs oracle (DeterministicOptimal)"
+  },
+  "results": [
+    {
+      "config": "grid_solar_battery",
+      "battery_capacity_kwh": 10000,
+      "battery_max_rate_kw": 5000,
+      "RuleBased": 44222.55642980164,
+      "DeterministicOptimal": 42481.25977349242,
+      "rb_gap_to_oracle_pct": 3.93757574615419
+    },
+    {
+      "config": "grid_solar_battery",
+      "battery_capacity_kwh": 20000,
+      "battery_max_rate_kw": 10000,
+      "RuleBased": 42918.6306662481,
+      "DeterministicOptimal": 40875.35651188288,
+      "rb_gap_to_oracle_pct": 4.760809286425082
+    },
+    {
+      "config": "grid_solar_battery",
+      "battery_capacity_kwh": 40000,
+      "battery_max_rate_kw": 20000,
+      "RuleBased": 37847.648299746965,
+      "DeterministicOptimal": 37852.630266573775,
+      "rb_gap_to_oracle_pct": -0.013163213701823058
+    },
+    {
+      "config": "grid_wind_battery",
+      "battery_capacity_kwh": 10000,
+      "battery_max_rate_kw": 5000,
+      "RuleBased": 36654.043563518215,
+      "DeterministicOptimal": 34916.07758793045,
+      "rb_gap_to_oracle_pct": 4.741539559137655
+    },
+    {
+      "config": "grid_wind_battery",
+      "battery_capacity_kwh": 20000,
+      "battery_max_rate_kw": 10000,
+      "RuleBased": 35040.57949293814,
+      "DeterministicOptimal": 33502.62331930476,
+      "rb_gap_to_oracle_pct": 4.389071744499341
+    },
+    {
+      "config": "grid_wind_battery",
+      "battery_capacity_kwh": 40000,
+      "battery_max_rate_kw": 20000,
+      "RuleBased": 31141.26230341863,
+      "DeterministicOptimal": 31104.8306347466,
+      "rb_gap_to_oracle_pct": 0.11698841336958571
+    },
+    {
+      "config": "grid_solar_wind_battery",
+      "battery_capacity_kwh": 10000,
+      "battery_max_rate_kw": 5000,
+      "RuleBased": 31869.743623616137,
+      "DeterministicOptimal": 30090.8850513686,
+      "rb_gap_to_oracle_pct": 5.581653223370663
+    },
+    {
+      "config": "grid_solar_wind_battery",
+      "battery_capacity_kwh": 20000,
+      "battery_max_rate_kw": 10000,
+      "RuleBased": 29834.27931330952,
+      "DeterministicOptimal": 28429.76846784966,
+      "rb_gap_to_oracle_pct": 4.7077083066433785
+    },
+    {
+      "config": "grid_solar_wind_battery",
+      "battery_capacity_kwh": 40000,
+      "battery_max_rate_kw": 20000,
+      "RuleBased": 26503.463367942288,
+      "DeterministicOptimal": 26261.968978550583,
+      "rb_gap_to_oracle_pct": 0.9111804975790746
+    },
+    {
+      "config": "all_sources",
+      "battery_capacity_kwh": 10000,
+      "battery_max_rate_kw": 5000,
+      "RuleBased": 30525.705322066857,
+      "DeterministicOptimal": 28121.854670359233,
+      "rb_gap_to_oracle_pct": 7.874840651003383
+    },
+    {
+      "config": "all_sources",
+      "battery_capacity_kwh": 20000,
+      "battery_max_rate_kw": 10000,
+      "RuleBased": 28997.849462812486,
+      "DeterministicOptimal": 26998.42882650734,
+      "rb_gap_to_oracle_pct": 6.895065231886415
+    },
+    {
+      "config": "all_sources",
+      "battery_capacity_kwh": 40000,
+      "battery_max_rate_kw": 20000,
+      "RuleBased": 26375.883095772333,
+      "DeterministicOptimal": 25403.313146505432,
+      "rb_gap_to_oracle_pct": 3.687345541134847
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "n_episodes": 200,
+  "note": "RB & LP-optimum weekly cost by battery capacity, test window, corrected substrate. gap=(RB-LP)/RB*100.",
+  "results": [
+    {
+      "config": "grid_solar_battery",
+      "battery_capacity_kwh": 10000,
+      "RuleBased": 44222.55642980164,
+      "lp_optimum": 37930.49296521285,
+      "rb_to_opt_pct": 14.228176687561556
+    },
+    {
+      "config": "grid_solar_battery",
+      "battery_capacity_kwh": 20000,
+      "RuleBased": 42918.6306662481,
+      "lp_optimum": 34198.59242277198,
+      "rb_to_opt_pct": 20.31760591638283
+    },
+    {
+      "config": "grid_solar_battery",
+      "battery_capacity_kwh": 40000,
+      "RuleBased": 37847.648299746965,
+      "lp_optimum": 30375.187059652926,
+      "rb_to_opt_pct": 19.74352853026273
+    },
+    {
+      "config": "grid_wind_battery",
+      "battery_capacity_kwh": 10000,
+      "RuleBased": 36654.043563518215,
+      "lp_optimum": 30575.097625394385,
+      "rb_to_opt_pct": 16.584653007217483
+    },
+    {
+      "config": "grid_wind_battery",
+      "battery_capacity_kwh": 20000,
+      "RuleBased": 35040.57949293814,
+      "lp_optimum": 27602.79625934049,
+      "rb_to_opt_pct": 21.22619928445136
+    },
+    {
+      "config": "grid_wind_battery",
+      "battery_capacity_kwh": 40000,
+      "RuleBased": 31141.26230341863,
+      "lp_optimum": 24566.510351969417,
+      "rb_to_opt_pct": 21.11267002406466
+    },
+    {
+      "config": "grid_solar_wind_battery",
+      "battery_capacity_kwh": 10000,
+      "RuleBased": 31869.743623616137,
+      "lp_optimum": 26044.130566668027,
+      "rb_to_opt_pct": 18.27944750905122
+    },
+    {
+      "config": "grid_solar_wind_battery",
+      "battery_capacity_kwh": 20000,
+      "RuleBased": 29834.27931330952,
+      "lp_optimum": 23348.613352055396,
+      "rb_to_opt_pct": 21.73897312264141
+    },
+    {
+      "config": "grid_solar_wind_battery",
+      "battery_capacity_kwh": 40000,
+      "RuleBased": 26503.463367942288,
+      "lp_optimum": 20733.929847108604,
+      "rb_to_opt_pct": 21.768979550847384
+    },
+    {
+      "config": "all_sources",
+      "battery_capacity_kwh": 10000,
+      "RuleBased": 30525.705322066857,
+      "lp_optimum": 23529.360008444553,
+      "rb_to_opt_pct": 22.91952058046202
+    },
+    {
+      "config": "all_sources",
+      "battery_capacity_kwh": 20000,
+      "RuleBased": 28997.849462812486,
+      "lp_optimum": 21725.27672887461,
+      "rb_to_opt_pct": 25.079696834982162
+    },
+    {
+      "config": "all_sources",
+      "battery_capacity_kwh": 40000,
+      "RuleBased": 26375.883095772333,
+      "lp_optimum": 19796.72142561596,
+      "rb_to_opt_pct": 24.943853619107507
+    }
+  ]
+}

@@ -37,7 +37,13 @@ class DataCenterEnergyEnv(gym.Env):
                  alpha_cost=0.4, alpha_carbon=0.3, alpha_water=0.2, alpha_sla=0.1,
                  use_solar=True, use_wind=True, use_battery=True, use_gas=True,
                  forecast_mode="persistence",
-                 price_forecast_4h=None, price_forecast_24h=None):
+                 price_forecast_4h=None, price_forecast_24h=None,
+                 episode_start_range=None,
+                 load_mode="real_trace", workload_util_csv=None,
+                 it_nameplate_kw=20000.0, idle_frac=0.30,
+                 pue_min=1.25, pue_slope=0.01, pue_tref=20.0,
+                 battery_capacity_kwh=None, battery_max_rate_kw=None,
+                 solar_capacity_kw=None, wind_capacity_kw=None, gas_capacity_kw=None):
         """
         Args:
             data_path: Path to merged_enriched CSV with price data
@@ -54,8 +60,28 @@ class DataCenterEnergyEnv(gym.Env):
                   indexed by absolute timestep, passed via price_forecast_4h/24h.
             price_forecast_4h / price_forecast_24h: optional arrays (len == n_hours)
                 of $/kWh forecasts, required when forecast_mode == "provided".
+            episode_start_range: optional (lo, hi) integer index bounds restricting
+                where an episode may start. Enables a proper TRAIN/TEST TEMPORAL
+                SPLIT (e.g. train on 2020-2023 rows, evaluate on 2024-2025 rows) so
+                that reported generalization is leakage-free. Default None samples
+                across the entire dataset (original behavior, unchanged).
         """
         super().__init__()
+
+        # Optional temporal-split window for episode starts (leakage control).
+        # Resolved against max_start inside _load_data once n_hours is known.
+        self._episode_start_range = episode_start_range
+
+        # Load substrate (Fix 1 + Fix 2): "real_trace" drives IT load from the
+        # replayed Alibaba GPU-2020 utilization + physical PUE(T) cooling;
+        # "legacy_csv" keeps the original synthetic CSV load.
+        self.load_mode = load_mode
+        self.workload_util_csv = workload_util_csv
+        self.it_nameplate_kw = it_nameplate_kw
+        self.idle_frac = idle_frac
+        self.pue_min = pue_min
+        self.pue_slope = pue_slope
+        self.pue_tref = pue_tref
 
         # Forecast configuration (controls whether the agent gets any lookahead)
         if forecast_mode not in ("persistence", "oracle", "provided"):
@@ -78,14 +104,28 @@ class DataCenterEnergyEnv(gym.Env):
         self.use_battery = use_battery
         self.use_gas = use_gas
         
-        # Infrastructure specs (from EDA)
-        self.solar_capacity_kw = 5000 if use_solar else 0  # 5 MW
-        self.wind_capacity_kw = 5000 if use_wind else 0    # 5 MW
-        self.battery_capacity_kwh = 20000 if use_battery else 0  # 20 MWh
-        self.battery_max_rate_kw = 10000 if use_battery else 0   # 10 MW (C/2)
-        self.battery_efficiency = 0.90
-        self.gas_capacity_kw = 2000 if use_gas else 0      # 2 MW
-        self.gas_carbon_kg_kwh = 0.00041  # kg CO2 per kWh from gas
+        # Infrastructure specs (from EDA). Optional *_capacity overrides enable the
+        # Gate 4 sizing-sensitivity sweep; None preserves the original design sizing.
+        # A source that is disabled (use_*) is always 0 regardless of any override.
+        _solar_cap = 5000 if solar_capacity_kw is None else solar_capacity_kw
+        _wind_cap = 5000 if wind_capacity_kw is None else wind_capacity_kw
+        _batt_cap = 20000 if battery_capacity_kwh is None else battery_capacity_kwh
+        _batt_rate = 10000 if battery_max_rate_kw is None else battery_max_rate_kw
+        _gas_cap = 2000 if gas_capacity_kw is None else gas_capacity_kw
+        self.solar_capacity_kw = _solar_cap if use_solar else 0  # 5 MW default
+        self.wind_capacity_kw = _wind_cap if use_wind else 0     # 5 MW default
+        self.battery_capacity_kwh = _batt_cap if use_battery else 0  # 20 MWh default
+        self.battery_max_rate_kw = _batt_rate if use_battery else 0  # 10 MW (C/2) default
+        # One-way efficiency applied at BOTH charge and discharge (audit #4). Set to
+        # sqrt(0.90) so the effective ROUND-TRIP efficiency is exactly 0.90, matching the
+        # paper's stated design (previously 0.90 one-way => 0.81 round-trip).
+        self.battery_efficiency = float(np.sqrt(0.90))  # ~0.94868; round-trip = 0.90
+        self.gas_capacity_kw = _gas_cap if use_gas else 0      # 2 MW default
+        # Gas-generator CO2 emission factor (kg CO2 / kWh electric).
+        # Corrected 2026-07-24: was 0.00041 (a ~1000x unit error that made gas appear
+        # nearly carbon-free vs the ~0.38 kg/kWh grid). Set to EIA/EPA natural-gas
+        # electricity factor ~0.91 lb CO2/kWh = 0.41 kg CO2/kWh. Sensitivity-tested.
+        self.gas_carbon_kg_kwh = 0.41
         
         # Load data
         self._load_data(data_path)
@@ -155,8 +195,13 @@ class DataCenterEnergyEnv(gym.Env):
         df = df.dropna(subset=["lmp_price_usd_mwh"]).reset_index(drop=True)
         
         # Pre-compute energy source availability
-        # Solar (5MW array from irradiance)
-        df["solar_available_kw"] = (df["shortwave_radiation"] * 5556 * 0.18 * 0.85) / 1000
+        # Solar (5 MW array from irradiance).
+        # Area corrected 2026-07-26 (audit #1): the previous 5,556 m2 peaked at only
+        # ~850 kW at 1000 W/m2 (1000*5556*0.18*0.85/1000), so the "5 MW" clip never bound.
+        # A true 5 MW array at 18% module efficiency x 0.85 performance ratio needs
+        # 5,000,000 / (1000 * 0.18 * 0.85) = 32,679 m2. The clip stays as the nameplate cap.
+        _solar_area_m2 = 32679.0
+        df["solar_available_kw"] = (df["shortwave_radiation"] * _solar_area_m2 * 0.18 * 0.85) / 1000
         df["solar_available_kw"] = df["solar_available_kw"].clip(0, self.solar_capacity_kw)
         
         # Wind (5MW turbine from wind speed)
@@ -167,7 +212,11 @@ class DataCenterEnergyEnv(gym.Env):
         wind_kw[(speed >= 12) & (speed <= 25)] = self.wind_capacity_kw
         df["wind_available_kw"] = wind_kw
         
-        # Store key columns as numpy arrays for fast access
+        # Store key columns as numpy arrays for fast access.
+        # NOTE: the `scale` multiplier below applies ONLY in legacy_csv mode. In the
+        # reported "real_trace" mode these three arrays are immediately overwritten by the
+        # workload-driven IT load + PUE(T) cooling block below, so `scale` has no effect on
+        # any reported experiment (kept only for backward compatibility with legacy_csv).
         self.timestamps = df["timestamp"].values
         self.it_load = df["it_load_kw"].values * self.scale
         self.cooling_load = df["cooling_load_kw"].values * self.scale
@@ -183,19 +232,77 @@ class DataCenterEnergyEnv(gym.Env):
         self.wind_available = df["wind_available_kw"].values
         self.hours = df["timestamp"].dt.hour.values
         self.months = df["timestamp"].dt.month.values
-        
+
+        # --- Fix 1 + Fix 2: real-workload-driven IT load + physical PUE(T) cooling ---
+        # Replays the reconstructed Alibaba GPU-2020 utilization (typical-week profile)
+        # onto this timestamp axis by (day-of-week, hour-of-day), converts to IT power,
+        # and derives cooling physically from IT power and real ambient temperature.
+        if self.load_mode == "real_trace":
+            import sys as _sys
+            _sys.path.insert(0, os.path.dirname(__file__))
+            import workload_power as wp
+            util_csv = self.workload_util_csv or os.path.join(
+                data_path, "alibaba_gpu2020", "hourly_utilization.csv")
+            typ_week = wp.build_typical_week(util_csv, col="gpu_util")
+            dow = df["timestamp"].dt.dayofweek.values
+            util = wp.replay_utilization(typ_week, dow, self.hours)
+            self.it_load = wp.it_power_kw(util, self.it_nameplate_kw, self.idle_frac)
+            self.cooling_load = wp.cooling_power_kw(
+                self.it_load, self.temperature, self.pue_min, self.pue_slope, self.pue_tref)
+            self.total_demand = self.it_load + self.cooling_load
+            self._cluster_util = util
+            print(f"  [ENV] Real-trace load: IT mean={self.it_load.mean():,.0f}kW "
+                  f"peak={self.it_load.max():,.0f}kW; total mean={self.total_demand.mean():,.0f}kW")
+
         # Normalization stats (for observation scaling)
         self.price_mean = self.grid_price.mean()
         self.price_std = max(self.grid_price.std(), 0.001)
+        # Carbon normalization stats, data-derived (audit #2). The previous hardcoded
+        # (x - 0.0004)/0.0002 were calibrated for kg/MWh and saturated the observation to a
+        # constant 1.0 for kg/kWh values (~0.38), blinding the agent to grid carbon. Use the
+        # same mean/std + clip scheme as price so the carbon observation actually varies.
+        self.carbon_mean = self.grid_carbon.mean()
+        self.carbon_std = max(self.grid_carbon.std(), 1e-6)
         self.demand_mean = self.total_demand.mean()
         self.demand_std = max(self.total_demand.std(), 0.001)
         self.temp_mean = self.temperature.mean()
         self.temp_std = max(self.temperature.std(), 0.001)
-        
+
+        # Reward-normalization divisors computed FROM DATA (Fix 3 / AWS-6):
+        # replaces the previous hardcoded magic numbers (178 / 3178 / 5.4). Each is the
+        # mean hourly cost / carbon / water under the current load+price+weather substrate,
+        # so the multi-objective reward stays balanced on whatever substrate is loaded.
+        self.cost_norm_div = max(float((self.total_demand * self.grid_price).mean()), 1e-6)
+        self.carbon_norm_div = max(float((self.total_demand * self.grid_carbon).mean()), 1e-6)
+        # Humidity factor must match the (corrected) sign used in step() (audit #5): drier -> more water.
+        _hum_factor = 1.0 + (50.0 - self.humidity) / 100.0
+        _temp_factor = np.where(self.temperature > 25, 1.2,
+                                np.where(self.temperature < 10, 0.5, 1.0))
+        _water_ref = self.cooling_load * 1.8 * _hum_factor * _temp_factor / 1000.0
+        self.water_norm_div = max(float(np.mean(_water_ref)), 1e-6)
+        print(f"  [ENV] Reward norm divisors: cost={self.cost_norm_div:,.1f} "
+              f"carbon={self.carbon_norm_div:,.1f} water={self.water_norm_div:,.3f}")
+
         self.n_hours = len(df)
         self.max_start = self.n_hours - self.episode_length - 24  # Room for forecast
-        
+
+        # Resolve optional temporal-split window into concrete, clamped bounds.
+        # These are the [lo, hi) episode-start indices reset() will sample from.
+        if self._episode_start_range is not None:
+            lo, hi = self._episode_start_range
+            lo = max(0, int(lo))
+            hi = min(self.max_start, int(hi))
+            if hi <= lo:
+                raise ValueError(
+                    f"episode_start_range ({lo},{hi}) is empty after clamping to "
+                    f"max_start={self.max_start}; window too small for episode_length."
+                )
+            self._start_lo, self._start_hi = lo, hi
+        else:
+            self._start_lo, self._start_hi = 0, self.max_start
+
         print(f"  [ENV] Loaded {self.n_hours:,} hours of data")
+        print(f"  [ENV] Episode-start window: [{self._start_lo:,}, {self._start_hi:,})")
         print(f"  [ENV] Sources: solar={self.use_solar}, wind={self.use_wind}, "
               f"battery={self.use_battery}, gas={self.use_gas}")
 
@@ -220,7 +327,10 @@ class DataCenterEnergyEnv(gym.Env):
         wind_norm = self.wind_speed[t] / 15 - 1  # 0-30 → [-1, 1]
         price_norm = (self.grid_price[t] - self.price_mean) / self.price_std
         price_norm = np.clip(price_norm, -3, 3) / 3  # Clip outliers
-        carbon_norm = (self.grid_carbon[t] - 0.0004) / 0.0002  # Center around avg
+        # Data-derived carbon normalization (audit #2): same mean/std + clip scheme as price,
+        # so the agent receives a real, varying grid-carbon signal instead of a saturated 1.0.
+        carbon_norm = (self.grid_carbon[t] - self.carbon_mean) / self.carbon_std
+        carbon_norm = np.clip(carbon_norm, -3, 3) / 3
         gas_price_norm = (self.gas_price[t] - 0.03) / 0.02  # Center around $30/MWh
         
         # Battery state of charge (already 0-1)
@@ -267,12 +377,15 @@ class DataCenterEnergyEnv(gym.Env):
         """Reset environment to start of a new episode."""
         super().reset(seed=seed)
         
-        # Pick a random starting point in the training data
+        # Pick a random starting point WITHIN the (optionally restricted) window.
+        # Same seed -> same start index -> same historical week, which is what makes
+        # cross-policy comparisons on identical episodes properly paired.
+        lo, hi = self._start_lo, self._start_hi
         if seed is not None:
             rng = np.random.default_rng(seed)
-            self.episode_start = rng.integers(0, self.max_start)
+            self.episode_start = int(rng.integers(lo, hi))
         else:
-            self.episode_start = np.random.randint(0, self.max_start)
+            self.episode_start = int(np.random.randint(lo, hi))
         
         self.current_step = 0
         self.battery_soc = 0.5  # Start at 50% charge
@@ -401,8 +514,10 @@ class DataCenterEnergyEnv(gym.Env):
         hour_carbon += grid_used * self.grid_carbon[t]
         
         # --- Water consumption ---
-        # Evaporative cooling model: water ∝ cooling × humidity factor
-        humidity_factor = 1 + (self.humidity[t] - 50) / 100
+        # Evaporative cooling model: water ∝ cooling × humidity factor.
+        # Sign corrected 2026-07-26 (audit #5): evaporation rises as air gets DRIER, so lower
+        # RH must INCREASE water use. Previously used (RH-50) which inverted the physics.
+        humidity_factor = 1 + (50 - self.humidity[t]) / 100
         temp_factor = 1.2 if self.temperature[t] > 25 else (0.5 if self.temperature[t] < 10 else 1.0)
         # Higher cooling setpoint = less mechanical cooling but MORE evaporative water
         water_factor = 1.0 + cooling_offset * 0.05  # +3°C → 15% more water
@@ -416,9 +531,9 @@ class DataCenterEnergyEnv(gym.Env):
         # --- Compute reward ---
         # Normalize each component to mean ~1.0 (calibrated from data)
         # These divisors are set so that at average conditions, each component ≈ 1.0
-        cost_norm = hour_cost / 178.0  # Mean hourly cost from data
-        carbon_norm = hour_carbon / 3178.0  # Mean hourly carbon from data
-        water_norm = hour_water / 5.4  # Mean hourly water from data
+        cost_norm = hour_cost / self.cost_norm_div      # data-derived (Fix 3 / AWS-6)
+        carbon_norm = hour_carbon / self.carbon_norm_div
+        water_norm = hour_water / self.water_norm_div
         
         reward = -(
             self.alpha_cost * cost_norm +

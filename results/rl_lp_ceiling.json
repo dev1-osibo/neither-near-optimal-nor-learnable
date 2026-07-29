@@ -1,0 +1,175 @@
+{
+  "n_episodes": 200,
+  "note": "LP true optimum as ceiling (audit #3). gap=(controller-LP)/controller*100. LP is conservative (no cooling-offset lever) => gap is a lower bound.",
+  "summary": {
+    "renewable_only_rb_to_opt": [
+      7.38628121753716,
+      5.997354960433606,
+      9.010608010511547
+    ],
+    "storage_rb_to_opt": [
+      22.090618789614442,
+      20.31760591638283,
+      25.079696834982162
+    ],
+    "any_lp_above_rb": []
+  },
+  "rows": [
+    {
+      "config": "grid_only",
+      "rulebased_cost": 50095.03448641347,
+      "best_rl_cost": 49869.14587097302,
+      "best_rl_algo": "SAC",
+      "lp_optimum_cost": 47090.657450711624,
+      "rb_to_opt_pct": 5.997354960433606,
+      "rl_to_opt_pct": 5.5715580680892565,
+      "rl_vs_rb_pct": 0.4509201715426005,
+      "rl_beats_rb_sig": true,
+      "lp_le_rb": true,
+      "lp_le_rl": true
+    },
+    {
+      "config": "grid_solar",
+      "rulebased_cost": 45461.79355802499,
+      "best_rl_cost": 44957.55469081085,
+      "best_rl_algo": "SAC",
+      "lp_optimum_cost": 42457.41652232313,
+      "rb_to_opt_pct": 6.608575686454678,
+      "rl_to_opt_pct": 5.561107995490551,
+      "rl_vs_rb_pct": 1.1091486449397192,
+      "rl_beats_rb_sig": true,
+      "lp_le_rb": true,
+      "lp_le_rl": true
+    },
+    {
+      "config": "grid_wind",
+      "rulebased_cost": 37893.0960436506,
+      "best_rl_cost": 37617.056282394915,
+      "best_rl_algo": "SAC",
+      "lp_optimum_cost": 34888.709255150054,
+      "rb_to_opt_pct": 7.928586212748809,
+      "rl_to_opt_pct": 7.252951976791841,
+      "rl_vs_rb_pct": 0.7284698007724296,
+      "rl_beats_rb_sig": true,
+      "lp_le_rb": true,
+      "lp_le_rl": true
+    },
+    {
+      "config": "grid_gas",
+      "rulebased_cost": 48549.67964602791,
+      "best_rl_cost": 48926.005094543856,
+      "best_rl_algo": "PPO",
+      "lp_optimum_cost": 43843.60525837178,
+      "rb_to_opt_pct": 9.693317076379827,
+      "rl_to_opt_pct": 10.387931379950032,
+      "rl_vs_rb_pct": -0.7751347717630891,
+      "rl_beats_rb_sig": true,
+      "lp_le_rb": true,
+      "lp_le_rl": true
+    },
+    {
+      "config": "grid_solar_wind",
+      "rulebased_cost": 33262.5652340506,
+      "best_rl_cost": 32736.472204993264,
+      "best_rl_algo": "TD3",
+      "lp_optimum_cost": 30265.405866569607,
+      "rb_to_opt_pct": 9.010608010511547,
+      "rl_to_opt_pct": 7.548358671484304,
+      "rl_vs_rb_pct": 1.581636970436582,
+      "rl_beats_rb_sig": true,
+      "lp_le_rb": true,
+      "lp_le_rl": true
+    },
+    {
+      "config": "grid_solar_battery",
+      "rulebased_cost": 42918.6306662481,
+      "best_rl_cost": 43461.12951788808,
+      "best_rl_algo": "PPO",
+      "lp_optimum_cost": 34198.59242277198,
+      "rb_to_opt_pct": 20.31760591638283,
+      "rl_to_opt_pct": 21.31223278793008,
+      "rl_vs_rb_pct": -1.264017148773115,
+      "rl_beats_rb_sig": true,
+      "lp_le_rb": true,
+      "lp_le_rl": true
+    },
+    {
+      "config": "grid_wind_battery",
+      "rulebased_cost": 35040.57949293814,
+      "best_rl_cost": 35979.461395734725,
+      "best_rl_algo": "PPO",
+      "lp_optimum_cost": 27602.79625934049,
+      "rb_to_opt_pct": 21.22619928445136,
+      "rl_to_opt_pct": 23.2817969236951,
+      "rl_vs_rb_pct": -2.6794131729066017,
+      "rl_beats_rb_sig": true,
+      "lp_le_rb": true,
+      "lp_le_rl": true
+    },
+    {
+      "config": "grid_solar_gas",
+      "rulebased_cost": 43916.43871763941,
+      "best_rl_cost": 44040.82464919209,
+      "best_rl_algo": "PPO",
+      "lp_optimum_cost": 39210.36432998329,
+      "rb_to_opt_pct": 10.715974530434506,
+      "rl_to_opt_pct": 10.968142303614673,
+      "rl_vs_rb_pct": -0.2832331928196801,
+      "rl_beats_rb_sig": true,
+      "lp_le_rb": true,
+      "lp_le_rl": true
+    },
+    {
+      "config": "grid_wind_gas",
+      "rulebased_cost": 36347.74120326503,
+      "best_rl_cost": 36258.26843395074,
+      "best_rl_algo": "SAC",
+      "lp_optimum_cost": 31641.833064388364,
+      "rb_to_opt_pct": 12.946906693761612,
+      "rl_to_opt_pct": 12.732090000303867,
+      "rl_vs_rb_pct": 0.24615771531424527,
+      "rl_beats_rb_sig": false,
+      "lp_le_rb": true,
+      "lp_le_rl": true
+    },
+    {
+      "config": "grid_solar_wind_battery",
+      "rulebased_cost": 29834.27931330952,
+      "best_rl_cost": 30734.445016727423,
+      "best_rl_algo": "PPO",
+      "lp_optimum_cost": 23348.613352055396,
+      "rb_to_opt_pct": 21.73897312264141,
+      "rl_to_opt_pct": 24.031120980555336,
+      "rl_vs_rb_pct": -3.017219534498103,
+      "rl_beats_rb_sig": true,
+      "lp_le_rb": true,
+      "lp_le_rl": true
+    },
+    {
+      "config": "grid_solar_wind_gas",
+      "rulebased_cost": 31718.939555232082,
+      "best_rl_cost": 31586.026056703566,
+      "best_rl_algo": "TD3",
+      "lp_optimum_cost": 27111.833659799126,
+      "rb_to_opt_pct": 14.52477907532381,
+      "rl_to_opt_pct": 14.165100696340598,
+      "rl_vs_rb_pct": 0.41903512662228887,
+      "rl_beats_rb_sig": false,
+      "lp_le_rb": true,
+      "lp_le_rl": true
+    },
+    {
+      "config": "all_sources",
+      "rulebased_cost": 28997.849462812486,
+      "best_rl_cost": 30449.63999615671,
+      "best_rl_algo": "PPO",
+      "lp_optimum_cost": 21725.27672887461,
+      "rb_to_opt_pct": 25.079696834982162,
+      "rl_to_opt_pct": 28.651778045268422,
+      "rl_vs_rb_pct": -5.006545520577419,
+      "rl_beats_rb_sig": true,
+      "lp_le_rb": true,
+      "lp_le_rl": true
+    }
+  ]
+}

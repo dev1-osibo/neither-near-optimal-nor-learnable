@@ -1,0 +1,427 @@
+{
+  "note": "Per-episode paired foresight premium (persistence vs oracle) for PPO and SAC; premium=(persist-oracle)/persist*100; sig = bootstrap 95% CI excludes 0.",
+  "summary": {
+    "PPO": {
+      "mean_premium_pct": 0.07570540864670139,
+      "min": -1.0711500016839206,
+      "max": 1.3898733553640612,
+      "n_sig": 9
+    },
+    "SAC": {
+      "mean_premium_pct": -0.37269885917030693,
+      "min": -2.9955942682024546,
+      "max": 0.43443930321348384,
+      "n_sig": 5
+    }
+  },
+  "rows": [
+    {
+      "algo": "PPO",
+      "config": "grid_only",
+      "persistence_cost": 50055.03297698868,
+      "oracle_cost": 49937.17081680255,
+      "foresight_premium_pct": 0.23546515340488053,
+      "premium_t_p": 4.3383119214020534e-07,
+      "premium_wilcoxon_p": 2.403959133729006e-09,
+      "premium_ci95": [
+        71.87532121160423,
+        159.63222408521116
+      ],
+      "premium_sig": true,
+      "rulebased_cost": 50095.03448641347,
+      "persistence_beats_rb": true,
+      "oracle_beats_rb": true
+    },
+    {
+      "algo": "PPO",
+      "config": "grid_solar",
+      "persistence_cost": 45096.31649613846,
+      "oracle_cost": 45193.758305135925,
+      "foresight_premium_pct": -0.21607487388868016,
+      "premium_t_p": 2.1148927025082556e-06,
+      "premium_wilcoxon_p": 3.509613678692839e-05,
+      "premium_ci95": [
+        -137.59748114069947,
+        -60.60214642226387
+      ],
+      "premium_sig": true,
+      "rulebased_cost": 45461.79355802499,
+      "persistence_beats_rb": true,
+      "oracle_beats_rb": true
+    },
+    {
+      "algo": "PPO",
+      "config": "grid_wind",
+      "persistence_cost": 37692.310367521044,
+      "oracle_cost": 37507.19778998729,
+      "foresight_premium_pct": 0.4911149667632811,
+      "premium_t_p": 1.9112170920314545e-13,
+      "premium_wilcoxon_p": 2.1809023528063862e-14,
+      "premium_ci95": [
+        138.68959986534753,
+        229.23812562073388
+      ],
+      "premium_sig": true,
+      "rulebased_cost": 37893.0960436506,
+      "persistence_beats_rb": true,
+      "oracle_beats_rb": true
+    },
+    {
+      "algo": "PPO",
+      "config": "grid_solar_wind",
+      "persistence_cost": 32935.220688616035,
+      "oracle_cost": 32825.320488993595,
+      "foresight_premium_pct": 0.3336859365889532,
+      "premium_t_p": 1.9859460806075568e-09,
+      "premium_wilcoxon_p": 1.4097650661557972e-12,
+      "premium_ci95": [
+        74.981646504027,
+        142.15229518379212
+      ],
+      "premium_sig": true,
+      "rulebased_cost": 33262.5652340506,
+      "persistence_beats_rb": true,
+      "oracle_beats_rb": true
+    },
+    {
+      "algo": "PPO",
+      "config": "grid_gas",
+      "persistence_cost": 48926.005094543856,
+      "oracle_cost": 48809.61455717343,
+      "foresight_premium_pct": 0.23789094806640232,
+      "premium_t_p": 0.008381897767562298,
+      "premium_wilcoxon_p": 5.712507729099037e-12,
+      "premium_ci95": [
+        18.116624930810517,
+        190.55135876684747
+      ],
+      "premium_sig": true,
+      "rulebased_cost": 48549.67964602791,
+      "persistence_beats_rb": false,
+      "oracle_beats_rb": false
+    },
+    {
+      "algo": "PPO",
+      "config": "grid_solar_gas",
+      "persistence_cost": 44040.82464919209,
+      "oracle_cost": 44059.12764820584,
+      "foresight_premium_pct": -0.04155916506912333,
+      "premium_t_p": 0.478071279450673,
+      "premium_wilcoxon_p": 0.09316094520816508,
+      "premium_ci95": [
+        -73.49724304587642,
+        26.478176225343944
+      ],
+      "premium_sig": false,
+      "rulebased_cost": 43916.43871763941,
+      "persistence_beats_rb": false,
+      "oracle_beats_rb": false
+    },
+    {
+      "algo": "PPO",
+      "config": "grid_wind_gas",
+      "persistence_cost": 36337.92844346539,
+      "oracle_cost": 36671.32949175688,
+      "foresight_premium_pct": -0.9175015268418234,
+      "premium_t_p": 6.08941127364849e-16,
+      "premium_wilcoxon_p": 2.7256613221059093e-25,
+      "premium_ci95": [
+        -411.644165171234,
+        -264.255991403309
+      ],
+      "premium_sig": true,
+      "rulebased_cost": 36347.74120326503,
+      "persistence_beats_rb": true,
+      "oracle_beats_rb": false
+    },
+    {
+      "algo": "PPO",
+      "config": "grid_solar_wind_gas",
+      "persistence_cost": 31746.30398959457,
+      "oracle_cost": 31571.03002069007,
+      "foresight_premium_pct": 0.55210826734966,
+      "premium_t_p": 3.061110287651388e-09,
+      "premium_wilcoxon_p": 2.1944072663499826e-21,
+      "premium_ci95": [
+        114.3913113294841,
+        225.02851302616057
+      ],
+      "premium_sig": true,
+      "rulebased_cost": 31718.939555232082,
+      "persistence_beats_rb": false,
+      "oracle_beats_rb": true
+    },
+    {
+      "algo": "PPO",
+      "config": "grid_solar_battery",
+      "persistence_cost": 43461.12951788808,
+      "oracle_cost": 43415.65059379792,
+      "foresight_premium_pct": 0.10464275686034273,
+      "premium_t_p": 0.37156453787692356,
+      "premium_wilcoxon_p": 0.31235109959054275,
+      "premium_ci95": [
+        -42.67027759325596,
+        154.94186884374386
+      ],
+      "premium_sig": false,
+      "rulebased_cost": 42918.6306662481,
+      "persistence_beats_rb": false,
+      "oracle_beats_rb": false
+    },
+    {
+      "algo": "PPO",
+      "config": "grid_wind_battery",
+      "persistence_cost": 35979.461395734725,
+      "oracle_cost": 36047.83349477279,
+      "foresight_premium_pct": -0.19003091315361711,
+      "premium_t_p": 0.29364905947191,
+      "premium_wilcoxon_p": 0.032537984341003634,
+      "premium_ci95": [
+        -190.1368471279811,
+        64.90857865878714
+      ],
+      "premium_sig": false,
+      "rulebased_cost": 35040.57949293814,
+      "persistence_beats_rb": false,
+      "oracle_beats_rb": false
+    },
+    {
+      "algo": "PPO",
+      "config": "grid_solar_wind_battery",
+      "persistence_cost": 30734.445016727423,
+      "oracle_cost": 31063.657025041644,
+      "foresight_premium_pct": -1.0711500016839206,
+      "premium_t_p": 3.823925045799696e-17,
+      "premium_wilcoxon_p": 8.162177673486529e-22,
+      "premium_ci95": [
+        -402.4733462119027,
+        -262.60226088764813
+      ],
+      "premium_sig": true,
+      "rulebased_cost": 29834.27931330952,
+      "persistence_beats_rb": false,
+      "oracle_beats_rb": false
+    },
+    {
+      "algo": "PPO",
+      "config": "all_sources",
+      "persistence_cost": 30449.63999615671,
+      "oracle_cost": 30026.42856304585,
+      "foresight_premium_pct": 1.3898733553640612,
+      "premium_t_p": 3.4574344682254126e-06,
+      "premium_wilcoxon_p": 2.0908200239786228e-18,
+      "premium_ci95": [
+        241.66847536302407,
+        591.0961952376055
+      ],
+      "premium_sig": true,
+      "rulebased_cost": 28997.849462812486,
+      "persistence_beats_rb": false,
+      "oracle_beats_rb": false
+    },
+    {
+      "algo": "SAC",
+      "config": "grid_only",
+      "persistence_cost": 49869.14587097302,
+      "oracle_cost": 49866.791491752054,
+      "foresight_premium_pct": 0.004721113987101661,
+      "premium_t_p": 0.9502493564423518,
+      "premium_wilcoxon_p": 0.4178292158656056,
+      "premium_ci95": [
+        -68.71477655181567,
+        77.65750854693357
+      ],
+      "premium_sig": false,
+      "rulebased_cost": 50095.03448641347,
+      "persistence_beats_rb": true,
+      "oracle_beats_rb": true
+    },
+    {
+      "algo": "SAC",
+      "config": "grid_solar",
+      "persistence_cost": 44957.55469081085,
+      "oracle_cost": 44962.79460758839,
+      "foresight_premium_pct": -0.0116552530794324,
+      "premium_t_p": 0.8176425452957543,
+      "premium_wilcoxon_p": 0.1444760423258131,
+      "premium_ci95": [
+        -47.50856197054507,
+        41.384153214952285
+      ],
+      "premium_sig": false,
+      "rulebased_cost": 45461.79355802499,
+      "persistence_beats_rb": true,
+      "oracle_beats_rb": true
+    },
+    {
+      "algo": "SAC",
+      "config": "grid_wind",
+      "persistence_cost": 37617.056282394915,
+      "oracle_cost": 37523.79428444828,
+      "foresight_premium_pct": 0.24792476382656908,
+      "premium_t_p": 0.005009462218756862,
+      "premium_wilcoxon_p": 9.998768117972825e-07,
+      "premium_ci95": [
+        29.194933782013734,
+        157.80263272454954
+      ],
+      "premium_sig": true,
+      "rulebased_cost": 37893.0960436506,
+      "persistence_beats_rb": true,
+      "oracle_beats_rb": true
+    },
+    {
+      "algo": "SAC",
+      "config": "grid_solar_wind",
+      "persistence_cost": 33000.909913756914,
+      "oracle_cost": 33081.343610512,
+      "foresight_premium_pct": -0.24373175456462595,
+      "premium_t_p": 7.585366512691528e-05,
+      "premium_wilcoxon_p": 4.5866899420158144e-10,
+      "premium_ci95": [
+        -117.30313524147266,
+        -40.24268447351555
+      ],
+      "premium_sig": true,
+      "rulebased_cost": 33262.5652340506,
+      "persistence_beats_rb": true,
+      "oracle_beats_rb": true
+    },
+    {
+      "algo": "SAC",
+      "config": "grid_gas",
+      "persistence_cost": 49064.763311213814,
+      "oracle_cost": 49054.630433371734,
+      "foresight_premium_pct": 0.020652046719958066,
+      "premium_t_p": 0.8495577720602192,
+      "premium_wilcoxon_p": 0.0024481066690278126,
+      "premium_ci95": [
+        -105.31252847293202,
+        107.45766915130268
+      ],
+      "premium_sig": false,
+      "rulebased_cost": 48549.67964602791,
+      "persistence_beats_rb": false,
+      "oracle_beats_rb": false
+    },
+    {
+      "algo": "SAC",
+      "config": "grid_solar_gas",
+      "persistence_cost": 44157.5516125145,
+      "oracle_cost": 44178.04417890147,
+      "foresight_premium_pct": -0.04640784110226363,
+      "premium_t_p": 0.6736449982889002,
+      "premium_wilcoxon_p": 0.918364333075389,
+      "premium_ci95": [
+        -110.612082965543,
+        80.66105903345091
+      ],
+      "premium_sig": false,
+      "rulebased_cost": 43916.43871763941,
+      "persistence_beats_rb": false,
+      "oracle_beats_rb": false
+    },
+    {
+      "algo": "SAC",
+      "config": "grid_wind_gas",
+      "persistence_cost": 36258.26843395074,
+      "oracle_cost": 36445.36201173211,
+      "foresight_premium_pct": -0.5160025171146555,
+      "premium_t_p": 0.0001576543778811661,
+      "premium_wilcoxon_p": 4.866514460446985e-05,
+      "premium_ci95": [
+        -283.02602341131137,
+        -95.21833012681255
+      ],
+      "premium_sig": true,
+      "rulebased_cost": 36347.74120326503,
+      "persistence_beats_rb": true,
+      "oracle_beats_rb": false
+    },
+    {
+      "algo": "SAC",
+      "config": "grid_solar_wind_gas",
+      "persistence_cost": 31649.142608956296,
+      "oracle_cost": 31597.558274596602,
+      "foresight_premium_pct": 0.16298809417066043,
+      "premium_t_p": 0.2723561350245602,
+      "premium_wilcoxon_p": 0.015433734925249576,
+      "premium_ci95": [
+        -43.33937548582211,
+        139.89810928608168
+      ],
+      "premium_sig": false,
+      "rulebased_cost": 31718.939555232082,
+      "persistence_beats_rb": true,
+      "oracle_beats_rb": true
+    },
+    {
+      "algo": "SAC",
+      "config": "grid_solar_battery",
+      "persistence_cost": 44115.30912759109,
+      "oracle_cost": 44026.18604597263,
+      "foresight_premium_pct": 0.20202302416310966,
+      "premium_t_p": 0.259034133503048,
+      "premium_wilcoxon_p": 0.019018543134697363,
+      "premium_ci95": [
+        -64.12794953133044,
+        247.56174235743407
+      ],
+      "premium_sig": false,
+      "rulebased_cost": 42918.6306662481,
+      "persistence_beats_rb": false,
+      "oracle_beats_rb": false
+    },
+    {
+      "algo": "SAC",
+      "config": "grid_wind_battery",
+      "persistence_cost": 36033.44978627734,
+      "oracle_cost": 37112.865742710674,
+      "foresight_premium_pct": -2.9955942682024546,
+      "premium_t_p": 8.310303010534607e-19,
+      "premium_wilcoxon_p": 3.8042341253251474e-23,
+      "premium_ci95": [
+        -1297.3422873829422,
+        -872.0040483910464
+      ],
+      "premium_sig": true,
+      "rulebased_cost": 35040.57949293814,
+      "persistence_beats_rb": false,
+      "oracle_beats_rb": false
+    },
+    {
+      "algo": "SAC",
+      "config": "grid_solar_wind_battery",
+      "persistence_cost": 31158.924777064294,
+      "oracle_cost": 31698.517282640383,
+      "foresight_premium_pct": -1.731743022061134,
+      "premium_t_p": 4.1626078947098185e-06,
+      "premium_wilcoxon_p": 1.3403011702639323e-18,
+      "premium_ci95": [
+        -741.3366805271042,
+        -294.2509558697322
+      ],
+      "premium_sig": true,
+      "rulebased_cost": 29834.27931330952,
+      "persistence_beats_rb": false,
+      "oracle_beats_rb": false
+    },
+    {
+      "algo": "SAC",
+      "config": "all_sources",
+      "persistence_cost": 30912.091454898808,
+      "oracle_cost": 30777.797180173424,
+      "foresight_premium_pct": 0.43443930321348384,
+      "premium_t_p": 0.14507246707913202,
+      "premium_wilcoxon_p": 0.004334159291967542,
+      "premium_ci95": [
+        -44.634246077116046,
+        318.8564608901368
+      ],
+      "premium_sig": false,
+      "rulebased_cost": 28997.849462812486,
+      "persistence_beats_rb": false,
+      "oracle_beats_rb": false
+    }
+  ]
+}

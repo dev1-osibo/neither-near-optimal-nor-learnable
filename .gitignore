@@ -24,3 +24,14 @@ __pycache__/
 # === OS ===
 .DS_Store
 Thumbs.db
+
+# === Large model archives & backups (exceed GitHub 100MB limit) ===
+*.tar
+results/retrain_*_models/
+results/rl_backup_*/
+
+# === Internal-only docs (not part of the public release) ===
+paper/AUDIT_REPORT.md
+paper/LANDSCAPE_VALIDATION_*.md
+results/AUDIT_PASS_*.md
+*.docx
