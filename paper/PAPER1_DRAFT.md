@@ -20,15 +20,15 @@ environmental signals are real ERCOT prices, EIA-derived grid carbon, and measur
 Four RL algorithms (PPO, SAC, TD3, A2C) are compared against four non-learned baselines
 (DoNothing, a time-of-use RuleBased controller, Greedy, and a forecast-driven MPC) across
 twelve on-site source configurations, under a strict 2020–2023 / 2024–2025 temporal split and a
-no-lookahead forecast, and — critically — against a **true per-episode linear-programming
-optimum** (economic dispatch with perfect foresight), which we use in place of the weak
+no-lookahead forecast, and — critically — against an **offline per-episode linear-programming
+optimum** (cost-optimal dispatch with perfect foresight, under fixed cooling), which we use in place of the weak
 quantile-threshold "oracle" common in this literature. Two findings result. First, on the
 honest protocol the best RL controller significantly beats the heuristic in only **4 of 12**
 configurations — all four renewable-only, by **0.5–1.6%** — and significantly *underperforms* it
 in **every** storage configuration (best-algorithm losses to **−5.0%** at the full asset mix),
 the opposite of where learning is assumed to help; handing the learner **perfect price foresight**
 changes essentially nothing (mean premium ≈0 for both PPO and SAC), so the result is not an
-artifact of the no-lookahead forecast. Second, and more consequentially, against the *true*
+artifact of the no-lookahead forecast. Second, and more consequentially, against the *offline*
 optimum **neither controller is near-optimal where it matters**: the heuristic sits ~6–9% above
 the optimum in renewable-only dispatch but **~20–25% above it in storage-rich configurations**,
 and RL is further still — a large online-to-offline gap that persists across a fourfold change
@@ -38,7 +38,7 @@ uncertainty, not forecast quality.) RL's one usable affordance is reward-weight 
 cost-heavy weighting is ~5% cheaper than a balanced one, while the carbon and water levers,
 though now statistically resolved, are physically small (~1%). We conclude that the standard
 framing is backwards: a well-tuned heuristic is a strong baseline that learning rarely beats
-and often loses to, but *both* leave large value unclaimed against a genuine optimum in exactly
+and often loses to, but *both* leave large value unclaimed against the offline optimum in exactly
 the storage-rich settings the field is rushing toward — a concrete open problem, not a solved one.
 
 **Keywords:** data-center energy, reinforcement learning, model predictive control, behind-the-meter
@@ -99,14 +99,15 @@ retained solely as a labeled upper bound. We then measure what advantage, if any
    controllers across twelve source configurations, under a temporal split and a no-lookahead
    forecast: RL significantly beats the well-tuned heuristic in only 4/12 (renewable-only)
    configurations and significantly loses in every storage configuration.
-3. A **true LP economic-dispatch optimum** used as the ceiling in place of the weak
+3. An **offline LP economic-dispatch optimum** (cost-optimal dispatch, perfect foresight, fixed
+   cooling) used as the ceiling in place of the weak
    quantile-threshold "oracle" prevalent in this literature, revealing a large
    **online-to-offline gap** (~6–9% renewable, **~20–25% storage**) that neither the heuristic
    nor RL closes — with a side-by-side demonstration that the quantile oracle *understates* that
    gap by 3–5× and thereby manufactures a spurious "near-optimal heuristic" conclusion.
 4. A **foresight-premium ablation** (PPO **and** SAC, with a paired significance test) showing
    perfect price foresight barely helps the learners (mean premium ≈0) even though it is worth
-   20–25% to the true optimum on storage — isolating the bottleneck as online storage
+   20–25% to the offline optimum on storage — isolating the bottleneck as online storage
    coordination under uncertainty, not forecast quality.
 5. A **multi-objective weight sweep** (20 seeds, with a carbon-visible observation) showing the
    cost lever is strong (~5%) while the carbon/water levers are statistically real but
@@ -157,7 +158,7 @@ generation and storage at a single data center but along different axes, and we 
 Rafique et al. (2026, *Energies*) design a hybrid MILP-plus-RL controller for multi-zonal data
 centers with renewables and battery, reporting the hybrid beats an uncertainty-aware MILP by up
 to ~33%; their question is *controller design* (RL vs MILP), whereas ours is a *benchmark*
-evaluation (RL vs a well-tuned heuristic, both measured against a true LP optimum), and our
+evaluation (RL vs a well-tuned heuristic, both measured against an offline LP optimum), and our
 finding is the opposite in spirit — RL does not reliably beat the rule. Abdelhady et al. (2026,
 *Applied Energy*) develop a regret-minimization framework for *strategic portfolio investment* in
 on-site solar, wind, gas, and battery for hyperscale sites, showing diversified portfolios
@@ -172,7 +173,7 @@ companion study (§6.6). Liu, Shin & Deka (2026, arXiv:2605.16190) co-optimize c
 flexible compute for grid-services value via robust day-ahead optimization, again single-storage
 and optimization-based rather than a multi-source RL-vs-heuristic benchmark. Together these works
 investigate our seven axes *separately*; none integrates them into one leakage-free,
-multi-source, RL-vs-heuristic-vs-true-optimum benchmark.
+multi-source, RL-vs-heuristic-vs-offline-optimum benchmark.
 
 ### 2.2 Novelty delta
 Prior systems fall into three camps: (a) shifting workload in space and time across a **fleet
@@ -183,9 +184,9 @@ grid-charged **battery**, but not an on-site *generation* mix (SustainDC). None 
 *single-facility, behind-the-meter* problem of co-dispatching grid import with on-site solar,
 wind, battery, and gas against coupled cost/carbon/water/SLA objectives, and none does so
 under a **leakage-free, oracle-free** evaluation. Our contribution is not a new algorithm; it is
-the honest benchmark, a **true LP economic-dispatch optimum used as the ceiling**, and the
+the honest benchmark, an **offline LP economic-dispatch optimum used as the ceiling**, and the
 findings they produce — that learned control loses to a well-tuned heuristic wherever storage is
-present, and that against a genuine optimum *both* leave a large (~20–25%) unclaimed gap on
+present, and that against the offline optimum *both* leave a large (~20–25%) unclaimed gap on
 storage that the quantile-threshold "oracle" common in this literature hides. The prevailing
 benchmark line in this field (SustainDC, Green-DCC, DCcluster-Opt, all from one group) cannot
 surface this because it never isolates the single-site, multi-source generation subproblem and
@@ -196,7 +197,9 @@ does not measure against a genuine optimization ceiling.
 ## 3. SYSTEM MODEL AND SUBSTRATE
 
 We model the facility as an hourly discrete-time control problem over one-week (168-hour)
-episodes. Every physical quantity below is implemented exactly as stated; all parameters are
+episodes — a horizon chosen to span the dominant weekly price and solar/wind cycle (so a full
+charge/discharge arbitrage cycle fits within an episode) while keeping the credit-assignment
+horizon tractable. Every physical quantity below is implemented exactly as stated; all parameters are
 disclosed and sensitivity-tested (§7). Units: prices
 are converted to $/kWh (ERCOT LMP $/MWh ÷ 1000), grid carbon to kg/kWh (gCO₂/kWh ÷ 1000), and
 gas to $/kWh from Henry Hub $/MMBtu via division by 0.11723 × 1000.
@@ -266,8 +269,10 @@ charging incurs cost and carbon at the current LMP/intensity, while excess renew
 (generation above demand) charges the battery for free up to 95% SoC. This free renewable
 charging is applied automatically **regardless of the agent's battery action** — surplus
 on-site generation is never spilled while headroom exists — so the SoC transition is not fully
-determined by the agent's explicit battery command; we disclose this as an implicit dynamic
-the learner must infer (revisited in §7 and §6.2 as one reason storage coordination is hard). *Gas:* dispatchable up to 2 MW at Henry Hub cost
+determined by the agent's explicit battery command. All inputs to this rule (SoC, current
+renewable availability, demand) are in the observation, so the dynamic is Markov-preserving;
+it reduces the agent's direct control authority over SoC without hiding state (revisited in
+§7 Threat #11 and §6.2 as one reason storage coordination is hard). *Gas:* dispatchable up to 2 MW at Henry Hub cost
 and 0.41 kgCO₂/kWh (§3.1).
 
 ### 3.5 Real market and environmental data
@@ -296,7 +301,9 @@ Per hour we accumulate three physical costs from the dispatch above: monetary co
 grid-charging + gas + grid draw, each × its price), carbon (same energies × their carbon
 factors), and water via an evaporative model
 water(t) = cooling(t) · 1.8 · h_f · T_f · w_f / 1000 [m³], where h_f = 1 + (50 − RH)/100
-(drier air evaporates more water per unit of cooling),
+(drier air evaporates more water per unit of cooling); the 1.8 base coefficient is a mid-range
+water-usage-effectiveness value for evaporative data-center cooling and enters only the water
+objective (its sensitivity scope is in Table VI). Here
 T_f = 1.2 if T > 25 °C, 0.5 if T < 10 °C, else 1.0, and w_f = 1 + 0.05·offset. The reward is
 the negative weighted sum of the four **normalized** objectives:
 
@@ -309,7 +316,11 @@ deferral ceiling. The divisors C, K, W are the
 mean hourly cost, carbon, and water over the loaded substrate — computed **from the data**, not
 hand-set: C = mean(D·price) = 592.1, K = mean(D·carbon) = 3683.7,
 W = mean(water_ref) = 2.638. Data-derived divisors keep every objective at order ≈ 1 so none
-silently dominates, and they recalibrate automatically if the substrate changes. Unless a
+silently dominates, and they recalibrate automatically if the substrate changes. The divisors
+depend only on the loaded substrate, and every reported verdict compares controllers *within the
+same configuration* (RL against the baselines on identical divisors, weights, and weeks), so the
+normalization sets the scale of the training reward but cannot bias the RL-vs-heuristic
+comparison. Unless a
 sweep overrides them (§5.7), the weights are α = (cost 0.4, carbon 0.3, water 0.2, SLA 0.1).
 
 ### 3.8 Parameter summary
@@ -378,20 +389,32 @@ the comparison is like-for-like. We define them precisely for reproducibility.
   capacity, hour-by-hour energy balance with renewables used first, and workload deferral
   modeled with the environment's own SLA-avoiding 1/12-per-hour backlog drain. Solved with
   perfect price/renewable/demand foresight (HiGHS), it is a genuine per-episode cost minimum —
-  a true lower bound on achievable cost, verified to satisfy LP ≤ RuleBased on every episode.
+  a per-episode lower bound on achievable dispatch cost, verified to satisfy LP ≤ RuleBased on every episode.
   It replaces the quantile-threshold rule (charge in the cheapest price quartile, discharge in
   the most expensive) that much of this literature labels the "oracle"; that
-  rule ignores SoC and coupling and is itself far from optimal, so it *understates* the true
+  rule ignores SoC and coupling and is itself far from optimal, so it *understates* the
   optimality gap (§5.2). The LP is deliberately conservative in one respect — it does not
-  exploit the cooling-offset cost lever — so its reported gap is a lower bound on the true one.
-  It is a ceiling for measurement, never a deployable controller.
+  exploit the cooling-offset cost lever — so its reported gap is a lower bound on the unrestricted one.
+  Because it fixes the cooling lever and assumes perfect foresight, we call it the **offline
+  (cost-optimal dispatch) optimum**: a tight *offline* benchmark for the dispatch of
+  battery/gas/grid/deferral, not a claim of global optimality over every control lever. It is a
+  ceiling for measurement, never a deployable controller. The LP minimizes **cost only**,
+  whereas the RL reward is multi-objective; we compare on **cost** because cost carries the
+  dominant weight (α = 0.4) and is the reported metric, and because this makes the comparison
+  *conservative* toward RL — a cost-only optimum is the easiest target for a cost-bearing
+  controller to approach, so the gap we attribute to a learner is if anything understated by its
+  attention to carbon/water. The cost-heavy Pareto point (§5.7), where RL is re-weighted almost
+  entirely toward cost and still leaves the storage gap open, confirms the gap is not an artifact
+  of this multi-objective asymmetry.
 
 ### 4.3 Learned controllers
 We train **PPO** (Schulman et al. 2017), **SAC** (Haarnoja et al. 2018), **TD3** (Fujimoto
 et al. 2018), and **A2C** (Mnih et al. 2016), all via Stable-Baselines3 (Raffin et al. 2021),
 with a shared MLP policy and identical
 hyperparameters across all configurations, so differences reflect the configuration and the
-algorithm, not per-case tuning. Salient settings: learning rate 3×10⁻⁴ (7×10⁻⁴ for A2C),
+algorithm, not per-case tuning. The shared-hyperparameter design is deliberate: per-configuration
+tuning would introduce exactly the optimistic bias (tuning on the evaluation distribution) that
+inflates RL results in this literature, so we forgo it and report the untuned learners. Salient settings: learning rate 3×10⁻⁴ (7×10⁻⁴ for A2C),
 γ = 0.99, GAE λ = 0.95; PPO with n_steps 2048, batch 64, 10 epochs, clip 0.2; SAC/TD3 with
 replay buffer 10⁵ and batch 256 (SAC with automatic entropy tuning); A2C at the
 Stable-Baselines3 default n_steps = 5. Each run trains for
@@ -400,7 +423,11 @@ per-algorithm defaults: A2C's 5-step rollout is short for the 168-hour storage
 credit-assignment problem (a charge decision often pays off many hours later), so A2C's
 comparatively large storage losses (§5.4) partly reflect this hyperparameter mismatch rather
 than a pure algorithmic property. We report A2C as-is for completeness but base the headline
-verdict on the best-of-four algorithm per configuration.
+verdict on the best-of-four algorithm per configuration. All four use **feedforward (MLP)
+policies**; recurrent policies (LSTM/Transformer), which are the natural architecture for
+long-horizon storage credit assignment, are out of scope here and are the most important
+learned-control extension we flag for future work (§6.6). The storage findings below should
+therefore be read as a result about *memoryless* learned controllers under this training budget.
 
 ### 4.4 Protocol and statistics
 We train **240 policies** (4 algorithms × 12 configurations × 5 seeds) with hardened
@@ -455,21 +482,21 @@ degrades toward inaction (§5.5) — it is not a competent forecast-driven contr
 | grid_solar_wind_battery | 33,912 | **29,834** | 32,729 | 33,478 | +12.2% |
 | all_sources | 33,912 | **28,998** | 31,103 | 33,184 | +14.4% |
 
-### 5.2 How far is the heuristic from the *true* optimum? Not near, where it counts.
+### 5.2 How far is the heuristic from the *offline* optimum? Not near, where it counts.
 A central methodological choice is the ceiling. Much of this
 literature calls a quantile-threshold rule (charge in the cheapest price quartile,
 discharge in the most expensive) the "oracle." That rule ignores state-of-charge limits and
 inter-hour coupling, so it is itself far from optimal, and comparing against it manufactures a
 flattering conclusion. Measured against it, RuleBased looks "near-optimal": the RB→quantile-oracle
 gap is only 4–7% for storage configs and even *touches zero* at a 40 MWh battery (Table IV,
-right block). Measured against the **true LP optimum**, the picture inverts.
+right block). Measured against the **offline LP optimum**, the picture inverts.
 
 Table Ib reports, per configuration, how far RuleBased and the best RL controller sit above the
 genuine per-episode LP optimum (§4.2). The heuristic is near-optimal *only* in renewable-only
 dispatch (6.0–9.0%); in every storage-rich configuration it leaves **20–25%** on the table, and
 RL is further still. The quantile oracle understated this gap by 3–5×.
 
-**TABLE Ib — Distance above the TRUE LP optimum (held-out test, n = 200). Gap = (cost − LP)/cost.
+**TABLE Ib — Distance above the OFFLINE LP optimum (held-out test, n = 200). Gap = (cost − LP)/cost.
 "Quantile-oracle gap" is the old, weak ceiling shown for contrast. LP ≤ RuleBased every config.**
 
 | Configuration | RuleBased $ | Best RL $ | LP optimum $ | RB→opt | RL→opt | (old quantile-oracle RB gap) |
@@ -494,7 +521,7 @@ RL actually *widens*. Renewable-only dispatch is the only regime where the heuri
 comes close (6–9%). This gap — not a 1% RL-vs-heuristic delta — is the central finding.
 
 ![Figure 3](figures/fig_optimality_gap.png)
-*Figure 3. Distance above the true LP optimum, per configuration. RuleBased (blue) is within
+*Figure 3. Distance above the offline LP optimum, per configuration. RuleBased (blue) is within
 ~6–9% in renewable-only dispatch but ~20–25% above optimum in storage-rich configs; the best RL
 controller (red) is further still. Neither closes the online-to-offline gap.*
 
@@ -539,7 +566,7 @@ further, and per-algorithm Holm tests confirm the losses are significant. This i
 of the common assumption that storage — with its inter-temporal coupling — is where learning
 adds the most value.
 
-Two readings are tempting; the true-optimum ceiling (§5.2) forces the correct one. It is *not*
+Two readings are tempting; the offline-optimum ceiling (§5.2) forces the correct one. It is *not*
 that "the fixed schedule is already near-optimal, and RL merely mis-times against it": against
 the LP optimum the schedule itself leaves 20–25% unclaimed on these very configs (Table Ib). The
 accurate statement is that **storage makes the problem hard for everyone, and hardest for the
@@ -560,7 +587,11 @@ up to +14.4% with the full asset mix. This is a direct consequence of the honest
 a persistence forecast, MPC's price-versus-future signal is near zero, so its lookahead logic
 rarely fires and it degrades toward a do-little controller. It is a *naive-forecast* MPC, not a
 competent one — we include it only to show that bolting a controller onto a zero-information
-forecast buys nothing.
+forecast buys nothing. We therefore read the MPC row as a **sanity floor, not as evidence about
+the potential of competent forecast-driven control**, and we do not draw any conclusion about MPC
+as a method from it. The fair perfect-foresight reference point in this paper is the LP optimum;
+a realistic-forecast MPC (finite forecast error, not zero information and not perfect foresight)
+is the natural next controller and is deferred to future work (§6).
 
 The interesting question is what a *good* forecast-driven optimizer could do, and here the LP
 optimum is informative in a way the old quantile "oracle" was not. The LP is precisely a
@@ -660,11 +691,11 @@ observation.*
 
 ### 5.8 Sizing sensitivity
 Is the large storage gap an artifact of the 20 MWh battery? We re-evaluate RuleBased against the
-true LP optimum at 10, 20, and 40 MWh (rate scaled C/2). Table IV shows the gap is large at every
+offline LP optimum at 10, 20, and 40 MWh (energy and power scaled together at C/2). Table IV shows the gap is large at every
 size — 14–25% — growing from 10→20 MWh and then plateauing; it is not a sizing artifact and it
 does not shrink with more storage.
 
-**TABLE IV — RuleBased→true-optimum gap (%) by battery capacity, matched protocol. For contrast,
+**TABLE IV — RuleBased→offline-optimum gap (%) by battery capacity, matched protocol. For contrast,
 the old *quantile-oracle* gap (right block) shrinks to ~0 at 40 MWh — the weak oracle's artifact,
 not reality.**
 
@@ -675,28 +706,45 @@ not reality.**
 | grid_solar_wind_battery | 18.3 | 21.7 | 21.8 | | 5.6 / 4.7 / 0.9 |
 | all_sources | 22.9 | 25.1 | 24.9 | | 7.9 / 6.9 / 3.7 |
 
-Against the true optimum the heuristic leaves ~20–25% unclaimed across a fourfold sizing range,
+Against the offline optimum the heuristic leaves ~20–25% unclaimed across a fourfold sizing range,
 so its storage sub-optimality is structural, not a design-point artifact. The contrast column is
 itself a finding: the quantile "oracle" gap *shrinks toward zero* at 40 MWh — because that
 threshold rule is also poor at exploiting a large store, so it converges to RuleBased — which is
 exactly how a weak ceiling manufactures a false "the heuristic becomes near-optimal with more
-storage" conclusion. The true optimum shows the opposite: more storage means more unexploited
+storage" conclusion. The offline optimum shows the opposite: more storage means more unexploited
 value, for both the heuristic and (per §5.4) the learner. Training PPO on `all_sources` at
 40 MWh confirms the learner side directly: RL loses to RuleBased by **−6.4%** at 40 MWh
 (RL $28,071 vs RB $26,376), a wider deficit than the −5.0% at 20 MWh, and it sits ~30% above the
-true optimum — the RL storage shortfall widens with capacity rather than washing out.
+offline optimum — the RL storage shortfall widens with capacity rather than washing out.
 
 ![Figure 7](figures/fig_sizing_sensitivity.png)
-*Figure 7. Battery-sizing sensitivity of the RuleBased→true-optimum gap. The ~20–25% storage gap
+*Figure 7. Battery-sizing sensitivity of the RuleBased→offline-optimum gap. The ~20–25% storage gap
 persists across a 4× sizing range (growing 10→20 MWh, then flat) — structural, not a sizing
 artifact.*
+
+### 5.9 Training convergence
+Because a negative RL finding invites the objection that the learners were simply undertrained,
+we log a held-out evaluation at every 100k-step checkpoint and inspect the full learning curve.
+Figure 8 plots evaluation reward against training step (mean ± std over the five seeds) for all
+four algorithms, on a representative renewable-only win (`grid_solar_wind`) and the hardest
+storage loss (`all_sources`). Every learner **plateaus well before 1M steps**: across the final
+200k steps the mean evaluation reward changes by less than **0.7%** for every algorithm in both
+configurations (e.g. PPO −0.69%, SAC +0.21%, TD3 −0.04%, A2C −0.58% on `all_sources`). The
+storage-configuration losses are therefore a *converged* property of the learned policies under
+this training budget, not an artifact of stopping early. A longer 2–5M-step run on the hardest
+configuration is a planned confirmation (§6.6).
+
+![Figure 8](figures/fig_learning_curves.png)
+*Figure 8. Learning curves: held-out evaluation reward vs training steps (mean ± std over 5
+seeds), for a renewable-only win (left) and the hardest storage loss (right). All four algorithms
+plateau before 1M steps; the storage losses are not an undertraining artifact.*
 
 ---
 
 ## 6. DISCUSSION
 
 ### 6.1 Near-optimal for renewables, far from optimal for storage
-The heuristic's distance from the true optimum splits cleanly by regime, and the split is
+The heuristic's distance from the offline optimum splits cleanly by regime, and the split is
 instructive. In **renewable-only** dispatch the fixed schedule is genuinely near-optimal (~6–9%
 from the LP): the exploitable structure is highly regular (ERCOT prices and solar/wind
 availability are strongly diurnal), the deferral headroom is small (the replayed
@@ -712,7 +760,7 @@ large gap that no controller we tested closes."
 
 ### 6.2 Why storage is where RL fails, not where it wins
 The intuitive expectation is that storage — with its inter-temporal coupling — is exactly
-where a learner should beat a myopic rule. We observe the opposite, and the true optimum sharpens
+where a learner should beat a myopic rule. We observe the opposite, and the offline optimum sharpens
 why. It is *not* that the fixed schedule leaves little headroom — against the LP it leaves 20–25%
 (§5.2). Rather, storage turns each per-hour decision into a **credit-assignment problem across
 the week** — a charge now pays off many hours later — which is precisely where RL's value
@@ -731,7 +779,7 @@ of the weekly bill in renewable-only dispatch (~$20k/yr for a ~10 MW site), nega
 battery is present. Against ~$80–120M of build capital and the cost of training, validating,
 serving, and assuring a safety-critical learned controller, a sub-2% renewable-only trim that
 turns into a 1–5% *loss* on storage does not justify RL for this problem. The second number is the
-one that matters: the **20–25% storage gap to the true optimum** that *neither* controller
+one that matters: the **20–25% storage gap to the offline optimum** that *neither* controller
 captures. That is the real, unclaimed prize, and it is an order of magnitude larger than anything
 the RL-vs-heuristic contest is fighting over. The engineering takeaway is therefore twofold: do
 not deploy RL for single-facility behind-the-meter dispatch (a well-tuned heuristic is cheaper,
@@ -780,6 +828,22 @@ benchmark established here is its foundation. A recent critical review of energy
 solutions for AI data centers (Mohammadi et al. 2026, arXiv:2603.00415) independently identifies
 gaps in simulation tools, degradation and forecasting models, and multi-layer sizing as open
 challenges — the same integration gap this benchmark is built to probe.
+
+Several planned robustness checks would further stress-test the conclusions and are the natural
+extensions of this benchmark: (i) a longer 2–5M-step training run on the hardest storage
+configuration, to confirm the plateau of §5.9 at a larger budget; (ii) injecting stochasticity
+into the replayed workload and testing a second trace, to rule out the deterministic-load
+explanation (§7.13); (iii) a **realistic-forecast** MPC (finite forecast error) to measure how
+much of the perfect-foresight LP gap a competent online optimizer can actually close; (iv) a
+fully agent-controlled battery (no automatic renewable charging) to isolate the effect of that
+dynamic; (v) a battery round-trip-efficiency sweep (0.85 / 0.90 / 0.95); (vi) a
+hyperparameter-robustness sweep for PPO and SAC; and — most important — (vii) **recurrent
+policies (LSTM/Transformer)**, the natural architecture for the long-horizon storage
+credit-assignment problem that our feedforward learners handle worst (§4.3, §6.2): whether memory
+closes the storage gap is the sharpest open question this benchmark poses. Each targets a specific
+alternative explanation rather than the headline finding, which the leakage-free protocol, the
+foresight ablation, and the convergence curves already support for the feedforward policies
+studied here.
 
 ---
 
@@ -852,12 +916,36 @@ reward-shaping offset identical across all controllers, not an evaluation leak.
    the explicit action; and (b) the SLA penalty *latches* — once any violation occurs it is
    charged every remaining hour of the episode (§3.7). Both are identical across all controllers,
    so they do not bias the relative comparison, but they help explain why storage coordination
-   is hard for the learner (§6.2).
+   is hard for the learner (§6.2). We note that the auto-charging reduces the agent's *control
+   authority* over one state dimension but does **not** violate the Markov property: the
+   observation includes SoC, current renewable availability, and current demand, so the SoC
+   transition is a deterministic function of the observed state and action — even though the
+   agent's battery action alone does not uniquely determine it.
 12. **Foresight-ablation seed parity.** The foresight premium (§5.6) pairs the oracle-mode and
    persistence-mode PPO runs by construction — both were launched from the same
    `EVAL_SEED_BASE = 8000` held-out seed set (8000–8199) in the same harness — but this parity
    is assumed from the launch configuration rather than re-verified episode-by-episode from a
    stored seed vector in each artifact. A per-episode seed-hash check is left as a hardening item.
+13. **Deterministic replayed load.** The workload is a fixed typical-week profile replayed across
+   the horizon (§3.2), so load is deterministic while price, weather, and carbon vary. This
+   removes one source of stochasticity and could, in principle, narrow the advantage a learner
+   might extract from adapting to load fluctuations. Two points bound the concern: the structure
+   the controllers actually compete over — diurnal price/renewable variation and multi-hour
+   storage arbitrage — is present independent of load stochasticity, and the storage
+   credit-assignment difficulty (§6.2) does not arise from load noise. Injecting load variability
+   (and testing a second workload trace) is a planned robustness check (§6).
+14. **Training convergence.** A negative RL result invites an undertraining objection. Figure 8
+   (§5.9) shows all four algorithms plateau well before 1M steps — held-out reward changes by
+   <0.7% over the final 200k steps on both a renewable-only win and the hardest storage loss — so
+   the storage losses are a converged property of the learned policies. A longer 2–5M-step run on
+   the hardest configuration is a planned confirmation (§6).
+15. **Asymmetric search difficulty.** The RL controllers optimize a 4-dimensional continuous
+   action space (deferral, cooling, battery, gas) online, whereas RuleBased is a near-deterministic
+   fixed schedule; the learner is therefore solving a substantially larger search problem. This is
+   inherent to comparing a learned controller against a fixed rule and does not affect the
+   cost comparison itself — both are scored on identical held-out weeks — but it is part of why a
+   simple rule is a demanding baseline, and it reinforces the practical point (§6.3) that the
+   added search and assurance burden of RL is not repaid here.
 
 ---
 
@@ -869,13 +957,15 @@ configurations — all renewable-only, by 0.5–1.6% — and significantly *unde
 storage configuration, to −5.0% at the full asset mix; handing the learner perfect price
 foresight changes essentially nothing for either PPO or SAC. So the field's premise is at best
 half-right: sophistication is not free, and a well-tuned heuristic is a strong baseline that
-learning here rarely beats and often loses to.
+learning here rarely beats and often loses to — at least for the feedforward policies evaluated
+here; whether recurrent architectures change the storage verdict is the key open question we
+leave to future work (§6.6).
 
 But the more consequential finding comes from measuring against a *true* per-episode LP optimum
 rather than the quantile-threshold "oracle" this literature usually reports. That correction
 alone flips the standard conclusion: the heuristic is near-optimal (~6–9%) only in renewable-only
 dispatch, while in storage-rich configurations **both the heuristic and RL sit ~20–25% above the
-true optimum** — a large online-to-offline gap that persists across a fourfold battery range and
+offline optimum** — a large online-to-offline gap that persists across a fourfold battery range and
 that no controller we tested closes. Perfect foresight is worth that 20–25% to the optimum yet
 ~0% to the learners, which locates the bottleneck precisely: online storage coordination under
 uncertainty, not forecast quality or the choice between heuristic and RL. RL's one usable
@@ -898,7 +988,7 @@ learned control may finally earn its keep (a companion study).
 
 **Artifacts.** All code and result artifacts are released in a public repository
 (https://github.com/dev1-osibo/neither-near-optimal-nor-learnable): the simulation environment, the baseline
-controllers, the true-optimum LP solver, the training harness, the evaluation and analysis
+controllers, the offline-optimum LP solver, the training harness, the evaluation and analysis
 scripts, the automated integrity tests, the fixed seeds, and the exact temporal split, together
 with a data-provenance description and the full set of result files. Every table and figure in
 this paper regenerates from the released artifacts with a single command, and the complete
