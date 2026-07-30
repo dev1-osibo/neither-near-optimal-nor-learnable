@@ -4,7 +4,7 @@
 
 Babasola Osibo · basola.osibo@gmail.com
 
-This repository contains the environment, controllers, true-optimum solver, training/evaluation
+This repository contains the environment, controllers, offline-optimum LP solver, training/evaluation
 harness, and result artifacts for the paper. Every table and figure in the paper regenerates from
 the scripts here.
 
@@ -18,7 +18,7 @@ solar, wind, battery, and gas against cost / carbon / water / SLA objectives. Fo
 (PPO, SAC, TD3, A2C) are compared against four non-learned baselines (DoNothing, a time-of-use
 RuleBased heuristic, Greedy, and a naive-forecast MPC) across **twelve** source configurations,
 under a strict 2020–2023 / 2024–2025 temporal split with no forecast lookahead — and against a
-**true per-episode LP economic-dispatch optimum** used as the offline ceiling.
+**per-episode offline LP economic-dispatch optimum** used as the offline ceiling.
 
 ## Headline findings
 
@@ -26,7 +26,7 @@ under a strict 2020–2023 / 2024–2025 temporal split with no forecast lookahe
   **4 of 12** configurations (all renewable-only, by 0.5–1.6%) and **significantly loses in every
   storage configuration** (to −5.0% at the full asset mix).
 - Perfect price foresight barely moves the learners (mean premium ≈ 0 for PPO and SAC).
-- Against the true LP optimum, **neither** controller is near-optimal where it matters: ~6–9%
+- Against the offline LP optimum, **neither** controller is near-optimal where it matters: ~6–9%
   above optimum for renewable-only dispatch, but **~20–25% above** in storage-rich configurations
   — a large online-to-offline gap that persists across a fourfold battery-sizing range.
 - RL's one usable affordance is reward-weight steering on **cost** (~5%); carbon/water levers are
@@ -50,7 +50,7 @@ details in `paper/DATA_METHODOLOGY_NOTES.md`.
 src/
   dc_energy_env.py            # the Gym environment (substrate + dispatch + reward)
   baselines.py               # DoNothing, RuleBased, Greedy, MPC controllers
-  lp_oracle.py               # true per-episode LP economic-dispatch optimum (HiGHS)
+  lp_oracle.py               # per-episode offline LP economic-dispatch optimum (HiGHS)
   workload_power.py          # trace → IT power (Fan envelope) + PUE(T) cooling
   build_workload_load.py     # reconstruct hourly utilization from the raw trace
   train_rl_temporal.py       # training harness (temporal split, checkpointed)
