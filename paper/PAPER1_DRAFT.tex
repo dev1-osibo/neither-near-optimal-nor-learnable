@@ -68,6 +68,32 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% Unicode symbol coverage for XeLaTeX (maps glyphs the text font lacks to math equivalents)
+\usepackage{newunicodechar}
+\newunicodechar{−}{\ensuremath{-}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{±}{\ensuremath{\pm}}
+\newunicodechar{·}{\ensuremath{\cdot}}
+\newunicodechar{√}{\ensuremath{\surd}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{α}{\ensuremath{\alpha}}
+\newunicodechar{φ}{\ensuremath{\varphi}}
+\newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{γ}{\ensuremath{\gamma}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{μ}{\ensuremath{\mu}}
+\newunicodechar{η}{\ensuremath{\eta}}
+\newunicodechar{²}{\textsuperscript{2}}
+\newunicodechar{³}{\textsuperscript{3}}
+\newunicodechar{₂}{\textsubscript{2}}
+\newunicodechar{°}{\ensuremath{{}^\circ}}
+% Keep wide tables on the page (p-width columns preserved; text shrunk to avoid overflow)
+\usepackage{etoolbox}
+\AtBeginEnvironment{longtable}{\footnotesize}
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
@@ -97,8 +123,8 @@ to dispatch these assets against cost, carbon, water, and service-level
 objectives. Much of that literature reports RL advantages under
 evaluation protocols that leak information: episodes drawn from the same
 period used for training, or perfect price foresight fed into the
-controller. We construct a leakage-free, real-data benchmark for a
-single facility whose IT load is a replayed real workload trace (Alibaba
+controller. I construct a leakage-free, real-data benchmark for a single
+facility whose IT load is a replayed real workload trace (Alibaba
 GPU-2020), whose cooling follows a physical temperature-dependent model,
 and whose market and environmental signals are real ERCOT prices,
 EIA-derived grid carbon, and measured weather. Four RL algorithms (PPO,
@@ -108,7 +134,7 @@ forecast-driven MPC) across twelve on-site source configurations, under
 a strict 2020--2023 / 2024--2025 temporal split and a no-lookahead
 forecast, and --- critically --- against an \textbf{offline per-episode
 linear-programming optimum} (cost-optimal dispatch with perfect
-foresight, under fixed cooling), which we use in place of the weak
+foresight, under fixed cooling), which I use in place of the weak
 quantile-threshold ``oracle'' common in this literature. Two findings
 result. First, on the honest protocol the best RL controller
 significantly beats the heuristic in only \textbf{4 of 12}
@@ -130,8 +156,8 @@ the bottleneck is online storage coordination under uncertainty, not
 forecast quality.) RL's one usable affordance is reward-weight steering:
 a cost-heavy weighting is \textasciitilde5\% cheaper than a balanced
 one, while the carbon and water levers, though now statistically
-resolved, are physically small (\textasciitilde1\%). We conclude that
-the standard framing is backwards: a well-tuned heuristic is a strong
+resolved, are physically small (\textasciitilde1\%). I conclude that the
+standard framing is backwards: a well-tuned heuristic is a strong
 baseline that learning rarely beats and often loses to, but \emph{both}
 leave large value unclaimed against the offline optimum in exactly the
 storage-rich settings the field is rushing toward --- a concrete open
@@ -177,13 +203,13 @@ locally, which is exactly what behind-the-meter dispatch does.
 
 A large body of recent work applies deep reinforcement learning to
 data-center energy management and reports that learned controllers beat
-conventional control. We revisit that claim for the single-facility
-case, and we do so under an evaluation designed to remove the two
-shortcuts that most often inflate RL results in this field.
+conventional control. I revisit that claim for the single-facility case,
+and I do so under an evaluation designed to remove the two shortcuts
+that most often inflate RL results in this field.
 
 \subsubsection{1.2 The honesty gap}\label{the-honesty-gap}
 
-Two evaluation flaws recur in the literature and in our own experiments:
+Two evaluation flaws recur in the literature and in my own experiments:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -200,11 +226,11 @@ Two evaluation flaws recur in the literature and in our own experiments:
   transfer to a setting where the future must be forecast.
 \end{enumerate}
 
-We remove both. Training uses only episodes that begin and end before a
+I remove both. Training uses only episodes that begin and end before a
 fixed split date; evaluation uses only the held-out later period. The
 controller receives no lookahead --- its forecast inputs are the current
 price (a persistence forecast) --- and perfect foresight is retained
-solely as a labeled upper bound. We then measure what advantage, if any,
+solely as a labeled upper bound. I then measure what advantage, if any,
 survives.
 
 \subsubsection{1.3 Contributions}\label{contributions}
@@ -246,10 +272,9 @@ survives.
   real but physically small (\textasciitilde1\%).
 \end{enumerate}
 
-This work is the rigorous, real-data validation of the buildable core of
-the author's prior vision paper (Osibo 2025), deliberately stripped of
-that paper's speculative elements (quantum, blockchain energy trading,
-urban-mobility signals). It uses only real, causal, reproducible inputs.
+This work provides a rigorous, real-data validation of the operational
+core of the author's earlier vision paper (Osibo 2025), using only real,
+causal, and reproducible inputs.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -294,37 +319,37 @@ problem.
 
 \emph{Forecasting and control building blocks.} Temporal Fusion
 Transformers (Lim et al.~2021) and model-predictive control (e.g., Lazic
-et al.~2018 for data-center cooling) are standard components we reuse as
+et al.~2018 for data-center cooling) are standard components I reuse as
 baselines rather than as contributions.
 
-\emph{Single-site on-site-asset work adjacent to ours.} A recent cluster
-of papers studies on-site generation and storage at a single data center
-but along different axes, and we distinguish each. Rafique et al.~(2026,
-\emph{Energies}) design a hybrid MILP-plus-RL controller for multi-zonal
-data centers with renewables and battery, reporting the hybrid beats an
-uncertainty-aware MILP by up to \textasciitilde33\%; their question is
-\emph{controller design} (RL vs MILP), whereas ours is a
-\emph{benchmark} evaluation (RL vs a well-tuned heuristic, both measured
-against an offline LP optimum), and our finding is the opposite in
-spirit --- RL does not reliably beat the rule. Abdelhady et al.~(2026,
-\emph{Applied Energy}) develop a regret-minimization framework for
-\emph{strategic portfolio investment} in on-site solar, wind, gas, and
-battery for hyperscale sites, showing diversified portfolios dominate
-grid-only ones; that is an asset-sizing problem at a multi-year horizon,
-while we study hour-by-hour operational dispatch of an already-sized
-asset mix. Figini \& Paolone (2025, arXiv:2412.13853) and Iqbal \&
-Sarwat (2026, \emph{IEEE Access}) each solve a \emph{sizing} or
-\emph{reliability-under-outage} problem for a single storage/PV stack
---- the former carbon/cost-aware PV+ESS sizing, the latter
-behind-the-meter BESS dispatch for critical-load continuity under
+\emph{Single-site on-site-asset work adjacent to this study.} A recent
+cluster of papers studies on-site generation and storage at a single
+data center but along different axes, and I distinguish each. Rafique et
+al.~(2026, \emph{Energies}) design a hybrid MILP-plus-RL controller for
+multi-zonal data centers with renewables and battery, reporting the
+hybrid beats an uncertainty-aware MILP by up to \textasciitilde33\%;
+their question is \emph{controller design} (RL vs MILP), whereas this
+study is a \emph{benchmark} evaluation (RL vs a well-tuned heuristic,
+both measured against an offline LP optimum), and my finding is the
+opposite in spirit --- RL does not reliably beat the rule. Abdelhady et
+al.~(2026, \emph{Applied Energy}) develop a regret-minimization
+framework for \emph{strategic portfolio investment} in on-site solar,
+wind, gas, and battery for hyperscale sites, showing diversified
+portfolios dominate grid-only ones; that is an asset-sizing problem at a
+multi-year horizon, while I study hour-by-hour operational dispatch of
+an already-sized asset mix. Figini \& Paolone (2025, arXiv:2412.13853)
+and Iqbal \& Sarwat (2026, \emph{IEEE Access}) each solve a
+\emph{sizing} or \emph{reliability-under-outage} problem for a single
+storage/PV stack --- the former carbon/cost-aware PV+ESS sizing, the
+latter behind-the-meter BESS dispatch for critical-load continuity under
 stochastic outages --- neither compares RL to a heuristic nor uses an LP
 optimum as a ceiling; the outage regime Iqbal \& Sarwat target is
-precisely the non-stationary setting we defer to a companion study
+precisely the non-stationary setting I defer to a companion study
 (§6.6). Liu, Shin \& Deka (2026, arXiv:2605.16190) co-optimize
 co-located BESS and flexible compute for grid-services value via robust
 day-ahead optimization, again single-storage and optimization-based
 rather than a multi-source RL-vs-heuristic benchmark. Together these
-works investigate our seven axes \emph{separately}; none integrates them
+works investigate my seven axes \emph{separately}; none integrates them
 into one leakage-free, multi-source, RL-vs-heuristic-vs-offline-optimum
 benchmark.
 
@@ -340,7 +365,7 @@ not an on-site \emph{generation} mix (SustainDC). None targets the
 \emph{single-facility, behind-the-meter} problem of co-dispatching grid
 import with on-site solar, wind, battery, and gas against coupled
 cost/carbon/water/SLA objectives, and none does so under a
-\textbf{leakage-free, oracle-free} evaluation. Our contribution is not a
+\textbf{leakage-free, oracle-free} evaluation. My contribution is not a
 new algorithm; it is the honest benchmark, an \textbf{offline LP
 economic-dispatch optimum used as the ceiling}, and the findings they
 produce --- that learned control loses to a well-tuned heuristic
@@ -357,7 +382,7 @@ subproblem and does not measure against a genuine optimization ceiling.
 \subsection{3. SYSTEM MODEL AND
 SUBSTRATE}\label{system-model-and-substrate}
 
-We model the facility as an hourly discrete-time control problem over
+I model the facility as an hourly discrete-time control problem over
 one-week (168-hour) episodes --- a horizon chosen to span the dominant
 weekly price and solar/wind cycle (so a full charge/discharge arbitrage
 cycle fits within an episode) while keeping the credit-assignment
@@ -385,7 +410,7 @@ MWh battery rated at 10 MW (C/2) with a \textbf{0.90 round-trip
 efficiency} (√0.90 ≈ 0.949 applied at each of charge and discharge;
 §3.4), and a 2 MW gas generator with a CO₂ emission factor of 0.41
 kgCO₂/kWh (EIA/EPA natural-gas electricity, \textasciitilde0.91 lb
-CO₂/kWh). We study the \textbf{twelve} source configurations obtained by
+CO₂/kWh). I study the \textbf{twelve} source configurations obtained by
 enabling subsets of \{solar, wind, battery, gas\} on top of the
 always-present grid tie (grid\_only, grid\_solar, grid\_wind, grid\_gas,
 grid\_solar\_wind, grid\_solar\_battery, grid\_wind\_battery,
@@ -399,11 +424,11 @@ power}\label{real-workload-trace-it-power}
 
 IT load is driven by a \textbf{replayed real workload trace}, not a
 synthetic profile. From the Alibaba \texttt{cluster-trace-gpu-v2020}
-trace we reconstruct hourly cluster utilization by replaying instance
+trace I reconstruct hourly cluster utilization by replaying instance
 start/end events weighted by per-instance usage and normalizing by
 machine capacity (the method established for this trace, Weng et
 al.~2022). Because the trace timestamps are desensitized (time-of-day
-and day-of-week are real, calendar dates are not), we collapse the
+and day-of-week are real, calendar dates are not), I collapse the
 reconstruction into a \textbf{typical-week profile} of 168 values
 indexed by (day-of-week × 24 + hour-of-day) and replay it onto the
 2020--2025 timestamp axis. Utilization u(t) ∈ {[}0,1{]} maps to IT power
@@ -495,7 +520,7 @@ on-site generation is always used first.
 
 \subsubsection{3.7 Objectives and reward}\label{objectives-and-reward}
 
-Per hour we accumulate three physical costs from the dispatch above:
+Per hour I accumulate three physical costs from the dispatch above:
 monetary cost (battery grid-charging + gas + grid draw, each × its
 price), carbon (same energies × their carbon factors), and water via an
 evaporative model water(t) = cooling(t) · 1.8 · h\_f · T\_f · w\_f /
@@ -603,7 +628,7 @@ foresight ablation in §5.6; it is never a headline result.
 definitions)}\label{baselines-exact-definitions}
 
 All baselines act on the same 18-dim observation and 4-dim action space
-as the RL agents, so the comparison is like-for-like. We define them
+as the RL agents, so the comparison is like-for-like. I define them
 precisely for reproducibility.
 
 \begin{itemize}
@@ -633,7 +658,7 @@ precisely for reproducibility.
   explicitly and revisited in §5.5.
 \item
   \textbf{LP optimum} (offline economic-dispatch ceiling, perfect
-  foresight) --- for each episode we solve a linear program that
+  foresight) --- for each episode I solve a linear program that
   minimizes total dispatch cost (grid draw + gas + grid-charging)
   subject to the exact physical constraints every controller faces:
   battery state-of-charge dynamics with the 0.90 round-trip efficiency
@@ -650,17 +675,17 @@ precisely for reproducibility.
   optimality gap (§5.2). The LP is deliberately conservative in one
   respect --- it does not exploit the cooling-offset cost lever --- so
   its reported gap is a lower bound on the unrestricted one. Because it
-  fixes the cooling lever and assumes perfect foresight, we call it the
+  fixes the cooling lever and assumes perfect foresight, I call it the
   \textbf{offline (cost-optimal dispatch) optimum}: a tight
   \emph{offline} benchmark for the dispatch of
   battery/gas/grid/deferral, not a claim of global optimality over every
   control lever. It is a ceiling for measurement, never a deployable
   controller. The LP minimizes \textbf{cost only}, whereas the RL reward
-  is multi-objective; we compare on \textbf{cost} because cost carries
+  is multi-objective; I compare on \textbf{cost} because cost carries
   the dominant weight (α = 0.4) and is the reported metric, and because
   this makes the comparison \emph{conservative} toward RL --- a
   cost-only optimum is the easiest target for a cost-bearing controller
-  to approach, so the gap we attribute to a learner is if anything
+  to approach, so the gap I attribute to a learner is if anything
   understated by its attention to carbon/water. The cost-heavy Pareto
   point (§5.7), where RL is re-weighted almost entirely toward cost and
   still leaves the storage gap open, confirms the gap is not an artifact
@@ -669,7 +694,7 @@ precisely for reproducibility.
 
 \subsubsection{4.3 Learned controllers}\label{learned-controllers}
 
-We train \textbf{PPO} (Schulman et al.~2017), \textbf{SAC} (Haarnoja et
+I train \textbf{PPO} (Schulman et al.~2017), \textbf{SAC} (Haarnoja et
 al.~2018), \textbf{TD3} (Fujimoto et al.~2018), and \textbf{A2C} (Mnih
 et al.~2016), all via Stable-Baselines3 (Raffin et al.~2021), with a
 shared MLP policy and identical hyperparameters across all
@@ -677,7 +702,7 @@ configurations, so differences reflect the configuration and the
 algorithm, not per-case tuning. The shared-hyperparameter design is
 deliberate: per-configuration tuning would introduce exactly the
 optimistic bias (tuning on the evaluation distribution) that inflates RL
-results in this literature, so we forgo it and report the untuned
+results in this literature, so I forgo it and report the untuned
 learners. Salient settings: learning rate 3×10⁻⁴ (7×10⁻⁴ for A2C), γ =
 0.99, GAE λ = 0.95; PPO with n\_steps 2048, batch 64, 10 epochs, clip
 0.2; SAC/TD3 with replay buffer 10⁵ and batch 256 (SAC with automatic
@@ -687,12 +712,12 @@ follows from using stock per-algorithm defaults: A2C's 5-step rollout is
 short for the 168-hour storage credit-assignment problem (a charge
 decision often pays off many hours later), so A2C's comparatively large
 storage losses (§5.4) partly reflect this hyperparameter mismatch rather
-than a pure algorithmic property. We report A2C as-is for completeness
+than a pure algorithmic property. I report A2C as-is for completeness
 but base the headline verdict on the best-of-four algorithm per
 configuration. All four use \textbf{feedforward (MLP) policies};
 recurrent policies (LSTM/Transformer), which are the natural
 architecture for long-horizon storage credit assignment, are out of
-scope here and are the most important learned-control extension we flag
+scope here and are the most important learned-control extension I flag
 for future work (§6.6). The storage findings below should therefore be
 read as a result about \emph{memoryless} learned controllers under this
 training budget.
@@ -700,13 +725,13 @@ training budget.
 \subsubsection{4.4 Protocol and
 statistics}\label{protocol-and-statistics}
 
-We train \textbf{240 policies} (4 algorithms × 12 configurations × 5
+I train \textbf{240 policies} (4 algorithms × 12 configurations × 5
 seeds) with hardened checkpointing: a held-out evaluation is logged at
 every 100k-step checkpoint, and for the off-policy methods the replay
 buffer is persisted so a resumed run does not silently train on a
 degraded buffer. Every controller --- RL and baseline alike --- is
 evaluated on \textbf{200 held-out episodes with matched seeds
-8000--8199}, so all methods are scored on identical weeks. We compare
+8000--8199}, so all methods are scored on identical weeks. I compare
 per-episode cost with paired tests and \textbf{Holm-correct across the
 full family of 48 tests (4 algorithms × 12 configurations)}, and report
 Wilcoxon signed-rank tests, bootstrap 95\% confidence intervals, and
@@ -722,7 +747,7 @@ smallest (0.5--1.1\%) renewable-only margins. Second, because every
 controller is scored on the \emph{same} price/weather weeks, per-episode
 costs are highly correlated and the paired-difference standard deviation
 is small, so Cohen's d is inflated relative to the economic effect (e.g.
-d ≈ 0.84 accompanies a 0.51\% cost change); we therefore treat the
+d ≈ 0.84 accompanies a 0.51\% cost change); I therefore treat the
 \textbf{bootstrap 95\% CI on the mean cost difference} as the primary
 effect-size and read d only as a secondary signal. To avoid a
 garden-of-forking-paths, the substrate and hyperparameters were fixed
@@ -971,16 +996,16 @@ deepening with asset-mix complexity to −5.0\% at the full mix.}
 \subsubsection{5.5 The naive MPC, and where the real headroom
 is}\label{the-naive-mpc-and-where-the-real-headroom-is}
 
-Table I shows our MPC underperforming RuleBased everywhere, by +0.4\% in
+Table I shows my MPC underperforming RuleBased everywhere, by +0.4\% in
 the simplest cases and up to +14.4\% with the full asset mix. This is a
 direct consequence of the honest protocol: with a persistence forecast,
 MPC's price-versus-future signal is near zero, so its lookahead logic
 rarely fires and it degrades toward a do-little controller. It is a
-\emph{naive-forecast} MPC, not a competent one --- we include it only to
+\emph{naive-forecast} MPC, not a competent one --- I include it only to
 show that bolting a controller onto a zero-information forecast buys
-nothing. We therefore read the MPC row as a \textbf{sanity floor, not as
+nothing. I therefore read the MPC row as a \textbf{sanity floor, not as
 evidence about the potential of competent forecast-driven control}, and
-we do not draw any conclusion about MPC as a method from it. The fair
+I do not draw any conclusion about MPC as a method from it. The fair
 perfect-foresight reference point in this paper is the LP optimum; a
 realistic-forecast MPC (finite forecast error, not zero information and
 not perfect foresight) is the natural next controller and is deferred to
@@ -992,12 +1017,12 @@ quantile ``oracle'' was not. The LP is precisely a perfect-foresight
 receding-horizon optimizer solved to global optimality, and it captures
 the 20--25\% storage headroom that RuleBased and RL both miss (§5.2). In
 other words, the large online-to-offline gap is largely the \emph{value
-of forecast-driven optimization that we did not attempt to realize
+of forecast-driven optimization that I did not attempt to realize
 online}. This reframes forecast-MPC (e.g.~with a
 Temporal-Fusion-Transformer price model, Lim et al.~2021) as the single
 most promising direction for closing the gap. How much of the
 perfect-foresight 20--25\% survives realistic forecast error is exactly
-the open question this benchmark is built to pose; we leave the
+the open question this benchmark is built to pose; I leave the
 forecast-MPC arm to future work and flag it as the natural next
 controller, not a settled non-issue.
 
@@ -1005,8 +1030,8 @@ controller, not a settled non-issue.
 ablation}\label{foresight-premium-ablation}
 
 The common rebuttal to a weak RL showing is ``it would win with a better
-forecaster.'' We test this directly by training \textbf{both PPO and
-SAC} (the two algorithms that produce the wins and the least-bad storage
+forecaster.'' I test this directly by training \textbf{both PPO and SAC}
+(the two algorithms that produce the wins and the least-bad storage
 losses) across all twelve configurations with \textbf{perfect price
 foresight} in the observation (\texttt{forecast\_mode\ =\ oracle}), and
 comparing per-configuration held-out cost to the honest persistence
@@ -1069,9 +1094,9 @@ ingredient for learned control in this regime.}
 \subsubsection{5.7 Multi-objective weight
 sweep}\label{multi-objective-weight-sweep}
 
-Although RL does not beat the heuristic on the scalar objective, we ask
-a distinct question: when RL \emph{is} used, do its reward weights give
-an operator predictable control over the cost/carbon/water tradeoff? We
+Although RL does not beat the heuristic on the scalar objective, I ask a
+distinct question: when RL \emph{is} used, do its reward weights give an
+operator predictable control over the cost/carbon/water tradeoff? I
 train PPO on \texttt{all\_sources} under four weightings --- cost-heavy,
 carbon-heavy, water-heavy, and balanced --- with \textbf{20 seeds each}
 (enough that the smaller levers are adequately powered), on the same
@@ -1144,7 +1169,7 @@ grid carbon is a visible observation.}
 
 \subsubsection{5.8 Sizing sensitivity}\label{sizing-sensitivity}
 
-Is the large storage gap an artifact of the 20 MWh battery? We
+Is the large storage gap an artifact of the 20 MWh battery? I
 re-evaluate RuleBased against the offline LP optimum at 10, 20, and 40
 MWh (energy and power scaled together at C/2). Table IV shows the gap is
 large at every size --- 14--25\% --- growing from 10→20 MWh and then
@@ -1213,8 +1238,8 @@ structural, not a sizing artifact.}
 \subsubsection{5.9 Training convergence}\label{training-convergence}
 
 Because a negative RL finding invites the objection that the learners
-were simply undertrained, we log a held-out evaluation at every
-100k-step checkpoint and inspect the full learning curve. Figure 8 plots
+were simply undertrained, I log a held-out evaluation at every 100k-step
+checkpoint and inspect the full learning curve. Figure 8 plots
 evaluation reward against training step (mean ± std over the five seeds)
 for all four algorithms, on a representative renewable-only win
 (\texttt{grid\_solar\_wind}) and the hardest storage loss
@@ -1257,13 +1282,13 @@ of that path, whereas the fixed schedule commits to two windows a day
 and the learner mistimes. The lesson is not ``heuristics are
 near-optimal'' (the conclusion a weak quantile oracle invites) but ``the
 optimality gap is small only where the problem is near-static; storage
-opens a large gap that no controller we tested closes.''
+opens a large gap that no controller I tested closes.''
 
 \subsubsection{6.2 Why storage is where RL fails, not where it
 wins}\label{why-storage-is-where-rl-fails-not-where-it-wins}
 
 The intuitive expectation is that storage --- with its inter-temporal
-coupling --- is exactly where a learner should beat a myopic rule. We
+coupling --- is exactly where a learner should beat a myopic rule. I
 observe the opposite, and the offline optimum sharpens why. It is
 \emph{not} that the fixed schedule leaves little headroom --- against
 the LP it leaves 20--25\% (§5.2). Rather, storage turns each per-hour
@@ -1330,23 +1355,23 @@ observable to the agent.
 \subsubsection{6.5 Implications for how the field
 evaluates}\label{implications-for-how-the-field-evaluates}
 
-Our results also carry a methodological message, and we are careful to
+My results also carry a methodological message, and I am careful to
 separate the two common shortcuts. \textbf{Temporal leakage} ---
 sampling train and test episodes from the same record --- demonstrably
-inflates the apparent advantage: in our experiments, a leaky split
+inflates the apparent advantage: in my experiments, a leaky split
 reported a larger RL edge that the temporal split removed. The second
-shortcut, \textbf{oracle price foresight} in the observation, we tested
+shortcut, \textbf{oracle price foresight} in the observation, I tested
 head-on (§5.6) and found it does \emph{not} help the learned controller
-here (mean premium ≈0); so in our case its removal is not what drives
-the verdict, but it remains bad practice because it flatters
-forecast-driven controllers and is undeployable. The honest picture is
-thus doubly robust: the advantage is small under a leakage-free split,
-and it does not grow even with perfect foresight. Because these
-shortcuts are widespread, some reported single-site RL gains are
-plausibly evaluation artifacts rather than control skill. We therefore
-argue that leakage-free splits, oracle-free observations, and a
-\emph{well-tuned heuristic reported as the comparator} (not a strawman)
-should be the default hygiene for this literature.
+here (mean premium ≈0); so in my case its removal is not what drives the
+verdict, but it remains bad practice because it flatters forecast-driven
+controllers and is undeployable. The honest picture is thus doubly
+robust: the advantage is small under a leakage-free split, and it does
+not grow even with perfect foresight. Because these shortcuts are
+widespread, some reported single-site RL gains are plausibly evaluation
+artifacts rather than control skill. I therefore argue that leakage-free
+splits, oracle-free observations, and a \emph{well-tuned heuristic
+reported as the comparator} (not a strawman) should be the default
+hygiene for this literature.
 
 \subsubsection{6.6 Scope and where learning should
 help}\label{scope-and-where-learning-should-help}
@@ -1380,12 +1405,12 @@ round-trip-efficiency sweep (0.85 / 0.90 / 0.95); (vi) a
 hyperparameter-robustness sweep for PPO and SAC; and --- most important
 --- (vii) \textbf{recurrent policies (LSTM/Transformer)}, the natural
 architecture for the long-horizon storage credit-assignment problem that
-our feedforward learners handle worst (§4.3, §6.2): whether memory
-closes the storage gap is the sharpest open question this benchmark
-poses. Each targets a specific alternative explanation rather than the
-headline finding, which the leakage-free protocol, the foresight
-ablation, and the convergence curves already support for the feedforward
-policies studied here.
+my feedforward learners handle worst (§4.3, §6.2): whether memory closes
+the storage gap is the sharpest open question this benchmark poses. Each
+targets a specific alternative explanation rather than the headline
+finding, which the leakage-free protocol, the foresight ablation, and
+the convergence curves already support for the feedforward policies
+studied here.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1399,7 +1424,7 @@ policies studied here.
   bursts; standard for this trace and disclosed.
 \item
   \textbf{GPU-dominated, heterogeneous facility.} The trace is a GPU
-  cluster; utilization→power is GPU-TDP-based. We frame the facility as
+  cluster; utilization→power is GPU-TDP-based. I frame the facility as
   an AI data center accordingly.
 \item
   \textbf{Replayed, not calendar-real, load.} Trace timestamps are
@@ -1434,8 +1459,8 @@ policies studied here.
   values, because every controller --- RL, heuristics, and the LP
   optimum --- is scored on the same substrate and seeds. Parameters that
   enter only one objective (e.g.~the water coefficient) move that
-  objective's absolute level without touching the cost verdict. We
-  regard the exact magnitude of the storage gap (20--25\%) as
+  objective's absolute level without touching the cost verdict. I regard
+  the exact magnitude of the storage gap (20--25\%) as
   parameter-dependent at the ±few-point level, but its existence and the
   qualitative renewable-vs-storage split as robust.
 
@@ -1491,7 +1516,7 @@ policies studied here.
   bounds} on the true gap. It is verified to satisfy LP ≤ RuleBased on
   every episode.
 \item
-  \textbf{MPC ran on a persistence forecast.} Disclosed; ours is a
+  \textbf{MPC ran on a persistence forecast.} Disclosed; this is a
   naive-forecast MPC included only to show a zero-information forecast
   buys nothing. Per §5.5 the LP optimum (a perfect-foresight optimizer)
   captures the 20--25\% storage headroom, so a competent forecast-driven
@@ -1514,7 +1539,7 @@ policies studied here.
 \item
   \textbf{Implicit environment dynamics around storage.} Two dispatch
   behaviors are deterministic properties of the substrate rather than
-  agent choices, and we disclose them because they shape the storage
+  agent choices, and I disclose them because they shape the storage
   results: (a) surplus on-site renewable auto-charges the battery up to
   95\% SoC \emph{regardless of the agent's battery action} (§3.4), so
   SoC is not fully controllable from the explicit action; and (b) the
@@ -1522,7 +1547,7 @@ policies studied here.
   every remaining hour of the episode (§3.7). Both are identical across
   all controllers, so they do not bias the relative comparison, but they
   help explain why storage coordination is hard for the learner (§6.2).
-  We note that the auto-charging reduces the agent's \emph{control
+  I note that the auto-charging reduces the agent's \emph{control
   authority} over one state dimension but does \textbf{not} violate the
   Markov property: the observation includes SoC, current renewable
   availability, and current demand, so the SoC transition is a
@@ -1586,7 +1611,7 @@ best half-right: sophistication is not free, and a well-tuned heuristic
 is a strong baseline that learning here rarely beats and often loses to
 --- at least for the feedforward policies evaluated here; whether
 recurrent architectures change the storage verdict is the key open
-question we leave to future work (§6.6).
+question I leave to future work (§6.6).
 
 But the more consequential finding comes from measuring against a
 \emph{true} per-episode LP optimum rather than the quantile-threshold
@@ -1596,7 +1621,7 @@ the standard conclusion: the heuristic is near-optimal
 storage-rich configurations \textbf{both the heuristic and RL sit
 \textasciitilde20--25\% above the offline optimum} --- a large
 online-to-offline gap that persists across a fourfold battery range and
-that no controller we tested closes. Perfect foresight is worth that
+that no controller I tested closes. Perfect foresight is worth that
 20--25\% to the optimum yet \textasciitilde0\% to the learners, which
 locates the bottleneck precisely: online storage coordination under
 uncertainty, not forecast quality or the choice between heuristic and
@@ -1607,7 +1632,7 @@ statistically resolved, are physically small (\textasciitilde1\%).
 The practical verdict is therefore that RL is the wrong lever for this
 problem, but the problem is far from solved: the prize is the storage
 gap, and a forecast-driven optimizer is the controller aimed at it.
-Methodologically, we argue that leakage-free splits, oracle-free
+Methodologically, I argue that leakage-free splits, oracle-free
 observations, a well-tuned heuristic reported as the comparator,
 \textbf{and a genuine optimization-based ceiling} should be the default
 hygiene for this literature --- because a weak ``oracle'' manufactures a

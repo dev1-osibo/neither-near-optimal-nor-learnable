@@ -1,0 +1,26 @@
+% Unicode symbol coverage for XeLaTeX (maps glyphs the text font lacks to math equivalents)
+\usepackage{newunicodechar}
+\newunicodechar{−}{\ensuremath{-}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{±}{\ensuremath{\pm}}
+\newunicodechar{·}{\ensuremath{\cdot}}
+\newunicodechar{√}{\ensuremath{\surd}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{α}{\ensuremath{\alpha}}
+\newunicodechar{φ}{\ensuremath{\varphi}}
+\newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{γ}{\ensuremath{\gamma}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{μ}{\ensuremath{\mu}}
+\newunicodechar{η}{\ensuremath{\eta}}
+\newunicodechar{²}{\textsuperscript{2}}
+\newunicodechar{³}{\textsuperscript{3}}
+\newunicodechar{₂}{\textsubscript{2}}
+\newunicodechar{°}{\ensuremath{{}^\circ}}
+% Keep wide tables on the page (p-width columns preserved; text shrunk to avoid overflow)
+\usepackage{etoolbox}
+\AtBeginEnvironment{longtable}{\footnotesize}
