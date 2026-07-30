@@ -2,7 +2,7 @@
 
 **An Honest, Leakage-Free Benchmark for Behind-the-Meter Data-Center Energy Dispatch**
 
-Babasola Osibo · PENTREST GLOBAL LLC · basola.osibo@gmail.com
+Babasola Osibo · basola.osibo@gmail.com
 
 This repository contains the environment, controllers, true-optimum solver, training/evaluation
 harness, and result artifacts for the paper. Every table and figure in the paper regenerates from

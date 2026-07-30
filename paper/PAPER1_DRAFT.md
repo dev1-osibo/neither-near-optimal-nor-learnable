@@ -1,7 +1,6 @@
 # Neither Near-Optimal Nor Learnable: An Honest, Leakage-Free Benchmark for Behind-the-Meter Data-Center Energy Dispatch
 
 **Author:** Babasola Osibo
-**Affiliation:** PENTREST GLOBAL LLC
 **Contact:** basola.osibo@gmail.com
 
 ---
