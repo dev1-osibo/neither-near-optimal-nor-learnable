@@ -105,3 +105,6 @@ The two tests back the paper's core honesty claims: no forecast leakage in the r
 
 If you use this benchmark, please cite the paper (preprint link to be added). BibTeX will be
 provided with the arXiv posting.
+
+## DOI
+Software DOI: 10.5281/zenodo.21711315
