@@ -105,8 +105,3 @@ The two tests back the paper's core honesty claims: no forecast leakage in the r
 
 If you use this benchmark, please cite the paper (preprint link to be added). BibTeX will be
 provided with the arXiv posting.
-
-## License
-
-Code released under the terms in `LICENSE`. The Alibaba workload trace is governed by the Alibaba
-Cluster Trace Program research license and is not redistributed here.
