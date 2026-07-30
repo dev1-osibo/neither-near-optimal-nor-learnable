@@ -1,6 +1,6 @@
 # Neither Near-Optimal Nor Learnable
 
-**An Honest, Leakage-Free Benchmark for Behind-the-Meter Data-Center Energy Dispatch**
+**A Honest, Leakage-Free Benchmark for Behind-the-Meter Data-Center Energy Dispatch**
 
 Babasola Osibo · basola.osibo@gmail.com
 
