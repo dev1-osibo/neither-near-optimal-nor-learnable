@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="650.52pt" height="172.404pt" viewBox="0 0 650.52 172.404" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Data-Centre Energy-Control Claim Qualification Benchmark</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 172.404
+L 650.52 172.404
+L 650.52 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 17.244 95.3496
+L 122.148 95.3496
+Q 126.612 95.3496 126.612 90.9144
+L 126.612 41.0184
+Q 126.612 36.5832 122.148 36.5832
+L 17.244 36.5832
+Q 12.78 36.5832 12.78 41.0184
+L 12.78 90.9144
+Q 12.78 95.3496 17.244 95.3496
+z
+" clip-path="url(#p10b0789b67)" style="fill: #eff2f5"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 129.727727 65.9664
+Q 133.587988 65.9664 136.106609 65.9664
+" clip-path="url(#p10b0789b67)" style="fill: none; stroke: #586575; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 131.306609 63.5664
+L 136.106609 65.9664
+L 131.306609 68.3664
+z
+" clip-path="url(#p10b0789b67)" style="fill: #586575; stroke: #586575; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 145.026 95.3496
+L 249.93 95.3496
+Q 254.394 95.3496 254.394 90.9144
+L 254.394 41.0184
+Q 254.394 36.5832 249.93 36.5832
+L 145.026 36.5832
+Q 140.562 36.5832 140.562 41.0184
+L 140.562 90.9144
+Q 140.562 95.3496 145.026 95.3496
+z
+" clip-path="url(#p10b0789b67)" style="fill: #eff2f5"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 257.509727 65.9664
+Q 261.369988 65.9664 263.888609 65.9664
+" clip-path="url(#p10b0789b67)" style="fill: none; stroke: #586575; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 259.088609 63.5664
+L 263.888609 65.9664
+L 259.088609 68.3664
+z
+" clip-path="url(#p10b0789b67)" style="fill: #586575; stroke: #586575; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 272.808 95.3496
+L 377.712 95.3496
+Q 382.176 95.3496 382.176 90.9144
+L 382.176 41.0184
+Q 382.176 36.5832 377.712 36.5832
+L 272.808 36.5832
+Q 268.344 36.5832 268.344 41.0184
+L 268.344 90.9144
+Q 268.344 95.3496 272.808 95.3496
+z
+" clip-path="url(#p10b0789b67)" style="fill: #e7f2f0"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 385.291727 65.9664
+Q 389.151988 65.9664 391.670609 65.9664
+" clip-path="url(#p10b0789b67)" style="fill: none; stroke: #586575; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 386.870609 63.5664
+L 391.670609 65.9664
+L 386.870609 68.3664
+z
+" clip-path="url(#p10b0789b67)" style="fill: #586575; stroke: #586575; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 400.59 95.3496
+L 505.494 95.3496
+Q 509.958 95.3496 509.958 90.9144
+L 509.958 41.0184
+Q 509.958 36.5832 505.494 36.5832
+L 400.59 36.5832
+Q 396.126 36.5832 396.126 41.0184
+L 396.126 90.9144
+Q 396.126 95.3496 400.59 95.3496
+z
+" clip-path="url(#p10b0789b67)" style="fill: #eff2f5"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 513.073727 65.9664
+Q 516.933988 65.9664 519.452609 65.9664
+" clip-path="url(#p10b0789b67)" style="fill: none; stroke: #586575; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 514.652609 63.5664
+L 519.452609 65.9664
+L 514.652609 68.3664
+z
+" clip-path="url(#p10b0789b67)" style="fill: #586575; stroke: #586575; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 528.372 95.3496
+L 633.276 95.3496
+Q 637.74 95.3496 637.74 90.9144
+L 637.74 41.0184
+Q 637.74 36.5832 633.276 36.5832
+L 528.372 36.5832
+Q 523.908 36.5832 523.908 41.0184
+L 523.908 90.9144
+Q 523.908 95.3496 528.372 95.3496
+z
+" clip-path="url(#p10b0789b67)" style="fill: #e7f2f0"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 74.16 103.1112
+L 576.36 103.1112
+" clip-path="url(#p10b0789b67)" style="fill: none; stroke: #dce2e7; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #202a35" transform="translate(40.807719 63.126869)">Causal split</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #202a35" transform="translate(21.709281 74.324681)">train-only statistics</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #202a35" transform="translate(157.763156 63.126869)">Common replay</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #202a35" transform="translate(147.860031 74.324681)">terminal settlement</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #202a35" transform="translate(285.825625 63.126869)">All-seed service</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #202a35" transform="translate(294.535 74.324681)">qualification</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #202a35" transform="translate(411.92325 63.126869)">Complete family</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #202a35" transform="translate(413.328719 74.324681)">plus multiplicity</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #202a35" transform="translate(558.799 63.126869)">Licensed</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #202a35" transform="translate(537.790406 74.324681)">claim or no claim</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9.4px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #586575" x="325.26" y="128.989813" transform="rotate(-0 325.26 128.989813)">Full-episode hindsight optimum: same modeled accounting, privileged future information; diagnostic only</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p10b0789b67">
+   <rect x="7.2" y="7.2" width="636.12" height="158.004"/>
+  </clipPath>
+ </defs>
+</svg>

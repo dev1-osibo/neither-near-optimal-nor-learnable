@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this benchmark, please cite this publication package."
+title: "Data-Centre Energy-Control Claim Qualification Benchmark"
+type: software
+authors:
+  - family-names: Osibo
+    given-names: Babasola
+version: 0.2.1
+date-released: 2026-09-26
+repository-code: "https://github.com/dev1-osibo/neither-near-optimal-nor-learnable"
+license: CC-BY-4.0
+keywords:
+  - data-centre energy management
+  - reinforcement learning
+  - service qualification
+  - reproducibility
+  - terminal accounting
+  - causal evaluation
+  - battery dispatch
+abstract: >-
+  A corrected, qualification-first benchmark for testing which data-centre
+  energy-control claims survive causal information boundaries, complete
+  terminal accounting, repeated training seeds, strict service eligibility,
+  and comparison with a same-environment hindsight reference.

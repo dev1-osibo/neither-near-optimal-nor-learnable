@@ -1,0 +1,28 @@
+{
+  "title": "Data-Centre Energy-Control Claim Qualification Benchmark",
+  "description": "A corrected, qualification-first benchmark for testing which data-centre energy-control claims survive causal information boundaries, complete terminal accounting, repeated training seeds, strict service eligibility, and comparison with a same-environment hindsight reference.",
+  "creators": [
+    {
+      "name": "Osibo, Babasola"
+    }
+  ],
+  "license": "cc-by-4.0",
+  "keywords": [
+    "data-centre energy management",
+    "reinforcement learning",
+    "service qualification",
+    "reproducibility",
+    "terminal accounting",
+    "causal evaluation",
+    "battery dispatch"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/dev1-osibo/neither-near-optimal-nor-learnable",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "upload_type": "software",
+  "version": "0.2.1"
+}
