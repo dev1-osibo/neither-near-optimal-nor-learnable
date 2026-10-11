@@ -1,9 +1,10 @@
 {
-  "title": "Data-Centre Energy-Control Claim Qualification Benchmark",
-  "description": "A corrected, qualification-first benchmark for testing which data-centre energy-control claims survive causal information boundaries, complete terminal accounting, repeated training seeds, strict service eligibility, and comparison with a same-environment hindsight reference.",
+  "title": "The Data-Centre Energy-Control Claim Qualification Benchmark",
+  "description": "Publication package containing the October 2026 preprint by Babasola Adeboye Osibo, MBL, MS, Pentrest Global (b.osibo@pentrestglobal.com), together with the benchmark’s existing software, figures and compact results. The manuscript reports benchmark version 0.2.1. This packaging release adds the approved PDF manuscript; it does not introduce new experiments or results.",
   "creators": [
     {
-      "name": "Osibo, Babasola"
+      "name": "Osibo, Babasola Adeboye",
+      "affiliation": "Pentrest Global"
     }
   ],
   "license": "cc-by-4.0",
@@ -24,5 +25,5 @@
     }
   ],
   "upload_type": "software",
-  "version": "0.2.1"
+  "version": "0.2.2"
 }
